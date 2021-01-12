@@ -1,0 +1,9 @@
+{
+	"sprite":"tiles/water.png",
+	"isObstacle":true,
+	"id":1,
+	"minRange":0,
+	"maxRange":6,
+	"useInGeneration":true
+
+}

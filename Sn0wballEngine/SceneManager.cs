@@ -8,7 +8,7 @@ namespace Sn0wballEngine
         public static void LoadScene(Scene scene)
         {
             SceneManager.scene = scene;
-            scene.Start();
+            scene?.Start();
         }
 
         public static void Update()

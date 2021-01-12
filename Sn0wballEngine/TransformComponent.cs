@@ -1,17 +1,22 @@
 ﻿using System;
-using ZeroFormatter;
 namespace Sn0wballEngine
 {
-    [ZeroFormattable]
     public class TransformComponent : Component
     {
-        [Index(0)]
-        public virtual float x { get; set; }
-        //public SNVector2f position = new SNVector2f(0,0);
-
+        public SNVector2f position { get; set; } = new SNVector2f();
+        
         public TransformComponent()
         {
 
+        }
+
+        public override void Start()
+        {
+            Console.WriteLine("im going to shoot myself");
+        }
+
+        public override void Update()
+        {
         }
 
     }

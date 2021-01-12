@@ -3,8 +3,12 @@ namespace Sn0wballEngine
 {
     public class SNVector2f
     {
-        public float x, y;
+        public float x { get; set; }
+        public float y { get; set; }
 
+        public SNVector2f() {
+        
+        }
         public SNVector2f(float x, float y)
         {
             this.x = x;

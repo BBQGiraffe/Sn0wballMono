@@ -1,0 +1,8 @@
+{
+	"sprite":"tiles/sand.png",
+	"isObstacle":false,
+	"id":2,
+	"minRange":7,
+	"maxRange":8,
+	"useInGeneration":true
+}

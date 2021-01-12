@@ -16,6 +16,17 @@ namespace Sn0wballEngine
             var windowName = Settings.GetSetting<string>("game_name");
 
             window = new RenderWindow(new VideoMode(width, height), windowName);
+            window.SetFramerateLimit(60);
+        }
+
+        public static void Clear()
+        {
+            window.Clear();
+        }
+
+        public static void Present()
+        {
+            window.Display();
         }
 
         public static bool IsOpen()

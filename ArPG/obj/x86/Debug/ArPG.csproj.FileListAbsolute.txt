@@ -1,0 +1,15 @@
+/home/alex/Projects/Sn0wballEngine/ArPG/bin/Debug/ArPG.exe.config
+/home/alex/Projects/Sn0wballEngine/ArPG/bin/Debug/ArPG.exe
+/home/alex/Projects/Sn0wballEngine/ArPG/bin/Debug/ArPG.pdb
+/home/alex/Projects/Sn0wballEngine/ArPG/bin/Debug/Fast Bitmap.dll
+/home/alex/Projects/Sn0wballEngine/ArPG/bin/Debug/Newtonsoft.Json.dll
+/home/alex/Projects/Sn0wballEngine/ArPG/bin/Debug/Sn0wballEngine.dll
+/home/alex/Projects/Sn0wballEngine/ArPG/bin/Debug/Sn0wballEngine.pdb
+/home/alex/Projects/Sn0wballEngine/ArPG/bin/Debug/Newtonsoft.Json.xml
+/home/alex/Projects/Sn0wballEngine/ArPG/obj/x86/Debug/ArPG.exe.config
+/home/alex/Projects/Sn0wballEngine/ArPG/obj/x86/Debug/ArPG.csproj.CoreCompileInputs.cache
+/home/alex/Projects/Sn0wballEngine/ArPG/obj/x86/Debug/ArPG.csproj.CopyComplete
+/home/alex/Projects/Sn0wballEngine/ArPG/obj/x86/Debug/ArPG.exe
+/home/alex/Projects/Sn0wballEngine/ArPG/obj/x86/Debug/ArPG.pdb
+/home/alex/Projects/Sn0wballEngine/ArPG/bin/Debug/SFML.Window.dll
+/home/alex/Projects/Sn0wballEngine/ArPG/obj/x86/Debug/ArPG.csprojAssemblyReference.cache
