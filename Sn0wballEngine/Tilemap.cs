@@ -5,12 +5,11 @@ namespace Sn0wballEngine
 {
     public class Tilemap : Component
     {
-        public int[,] tiles;
+        public int[,] tiles { get; set; }
 
         public int width, height;
-        public static Tileset tileset;
 
-        public int test { get; set; }
+        public static Tileset tileset;
 
         public void Init(int width, int height)
         {

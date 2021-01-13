@@ -9,6 +9,9 @@ namespace Sn0wballEngine
     {
         [JsonIgnore]
         public Entity entity;
+
+        [JsonIgnore]
+        public bool started = false;//for serialization reasons :3
         public virtual void Start() { }
         public virtual void Update() { }
         public virtual void Render() { }

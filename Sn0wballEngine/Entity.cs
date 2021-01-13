@@ -9,7 +9,6 @@ namespace Sn0wballEngine
     {
         public List<Component> components { get; set; } = new List<Component>();
 
-
         [JsonIgnore]
         public int id;
         public string name { get; set; } = "unnamed entity";
@@ -42,6 +41,20 @@ namespace Sn0wballEngine
             return component as T;
         }
 
+        public bool HasComponent<T>() where T : Component
+        {
+            foreach (var component in components)
+            {
+                if (component.GetType().Equals(typeof(T)))
+                {
+                    return true;
+
+                }
+
+            }
+            return false;
+        }
+
         public void AddComponent(Component component)
         {
             component.entity = this;
@@ -49,6 +62,8 @@ namespace Sn0wballEngine
             component.Start();
         }
 
+
+        
         
 
         public T GetComponent<T>() where T : Component
@@ -64,22 +79,17 @@ namespace Sn0wballEngine
             return null;
         }
 
-        public void LoadFromFile()
-        {
-            foreach(var component in components)
-            {
-                component.entity = this;
-                component.Start();
-
-            }
-        }
-
-
-        //loads an entity and instantiates it
+        
+       
         public static Entity LoadFromPrefab(string filename)
         {
             var entity = Serialization.DeserializeObject<Entity>(filename);
-            entity.LoadFromFile();
+            foreach(var component in entity.components)
+            {
+                component.entity = entity;
+                component.Start();
+                component.started = true;
+            }
             return entity;
             
         }

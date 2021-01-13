@@ -61,7 +61,7 @@ namespace ArPG
             return id;
         }
 
-        public static Tilemap Generate(int width, int height)
+        public static Tilemap Generate()
         {
 
             var settings = Settings.GetSetting<WorldConfig>("worldconf");

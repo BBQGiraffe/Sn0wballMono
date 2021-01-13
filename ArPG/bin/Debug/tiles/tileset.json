@@ -1,0 +1,37 @@
+{
+  "$type": "Sn0wballEngine.Tileset, Sn0wballEngine",
+  "width": 0,
+  "height": 0,
+  "tiles": {
+    "$type": "System.Collections.Generic.List`1[[Sn0wballEngine.Tile, Sn0wballEngine]], mscorlib",
+    "$values": [
+      {
+        "$type": "Sn0wballEngine.Tile, Sn0wballEngine",
+        "sprite": "tiles/grass.png",
+        "isObstacle": false,
+        "id": 0,
+        "minRange": 0,
+        "maxRange": 0,
+        "useInGeneration": false
+      },
+      {
+        "$type": "Sn0wballEngine.Tile, Sn0wballEngine",
+        "sprite": "tiles/sand.png",
+        "isObstacle": false,
+        "id": 2,
+        "minRange": 7,
+        "maxRange": 8,
+        "useInGeneration": true
+      },
+      {
+        "$type": "Sn0wballEngine.Tile, Sn0wballEngine",
+        "sprite": "tiles/water.png",
+        "isObstacle": true,
+        "id": 1,
+        "minRange": 0,
+        "maxRange": 6,
+        "useInGeneration": true
+      }
+    ]
+  }
+}

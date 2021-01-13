@@ -20,21 +20,24 @@ namespace Sn0wballEngine
         }
 
 
-        public static void Spawn(Entity entity)
+        public static Entity CreateEntity()
         {
-            entity.AddComponent<TransformComponent>();
+            var entity = new Entity();
             entities.Add(entity);
+
+            return entity;
         }
 
-        public static void LoadGameObjectDefs()
+        public static Entity CreateEntity(string prefabFile)
         {
-            string[] files = System.IO.Directory.GetDirectories("gameobjects");
+            var entity = Entity.LoadFromPrefab(prefabFile);
+            entities.Add(entity);
+
+            return entity;
             
-            foreach(var dir in files)
-            {
-                
-            }
         }
+
+        
 
         public static void Render()
         {

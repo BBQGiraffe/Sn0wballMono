@@ -7,7 +7,7 @@
         "$type": "Sn0wballEngine.TransformComponent, Sn0wballEngine",
         "position": {
           "$type": "Sn0wballEngine.SNVector2f, Sn0wballEngine",
-          "x": 0.0,
+          "x": 100.0,
           "y": 0.0
         }
       },

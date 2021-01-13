@@ -12,7 +12,7 @@ namespace Sn0wballEngine
 
         public override void Start()
         {
-            Console.WriteLine("im going to shoot myself");
+            
         }
 
         public override void Update()
