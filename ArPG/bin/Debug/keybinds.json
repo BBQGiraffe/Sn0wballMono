@@ -1,0 +1,51 @@
+{
+  "$type": "System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[Sn0wballEngine.KeyboardKey, Sn0wballEngine]], mscorlib",
+  "A": {
+    "$type": "Sn0wballEngine.KeyboardKey, Sn0wballEngine",
+    "keycode": 0,
+    "axis": "horizontal",
+    "value": -1.0
+  },
+  "D": {
+    "$type": "Sn0wballEngine.KeyboardKey, Sn0wballEngine",
+    "keycode": 3,
+    "axis": "horizontal",
+    "value": 1.0
+  },
+  "S": {
+    "$type": "Sn0wballEngine.KeyboardKey, Sn0wballEngine",
+    "keycode": 18,
+    "axis": "vertical",
+    "value": 1.0
+  },
+  "W": {
+    "$type": "Sn0wballEngine.KeyboardKey, Sn0wballEngine",
+    "keycode": 22,
+    "axis": "vertical",
+    "value": -1.0
+  },
+  "Left": {
+    "$type": "Sn0wballEngine.KeyboardKey, Sn0wballEngine",
+    "keycode": 71,
+    "axis": "horizontal",
+    "value": -1.0
+  },
+  "Right": {
+    "$type": "Sn0wballEngine.KeyboardKey, Sn0wballEngine",
+    "keycode": 72,
+    "axis": "horizontal",
+    "value": 1.0
+  },
+  "Up": {
+    "$type": "Sn0wballEngine.KeyboardKey, Sn0wballEngine",
+    "keycode": 73,
+    "axis": "vertical",
+    "value": -1.0
+  },
+  "Down": {
+    "$type": "Sn0wballEngine.KeyboardKey, Sn0wballEngine",
+    "keycode": 74,
+    "axis": "vertical",
+    "value": 1.0
+  },
+}

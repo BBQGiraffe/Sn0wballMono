@@ -41,6 +41,12 @@ namespace Sn0wballEngine
             return component as T;
         }
 
+        public void AddComponent(Type type)
+        {
+            var component = Activator.CreateInstance(type) as Component;
+            AddComponent(component);
+        }
+
         public bool HasComponent<T>() where T : Component
         {
             foreach (var component in components)

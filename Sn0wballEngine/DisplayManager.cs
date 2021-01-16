@@ -8,7 +8,7 @@ namespace Sn0wballEngine
     public class DisplayManager
     {
         public static RenderWindow window;
-
+        public static SNVector2f WindowSize;
         public static void Init(uint width, uint height)
         {
             Settings.SetSetting("window_width", width);
@@ -17,6 +17,7 @@ namespace Sn0wballEngine
 
             window = new RenderWindow(new VideoMode(width, height), windowName);
             window.SetFramerateLimit(60);
+            WindowSize = new SNVector2f(width, height);
         }
 
         public static void Clear()

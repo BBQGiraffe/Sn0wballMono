@@ -6,6 +6,7 @@ namespace ArPG
         public float NoiseFrequency { get; set;}
         public int WorldWidth { get; set; }
         public int WorldHeight { get; set; }
+        public int NoiseIterations { get; set; }
 
     }
 }

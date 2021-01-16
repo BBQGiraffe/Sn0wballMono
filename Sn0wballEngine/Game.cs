@@ -8,13 +8,25 @@ namespace Sn0wballEngine
         public static List<Entity> entities = new List<Entity>();
         static Clock deltaClock = new Clock();
 
+        public static bool paused = false;
+
+
         public static void Update() {
             Time.deltaTime = deltaClock.Restart().AsSeconds();
             SceneManager.Update();
-            foreach (var entity in entities)
+            if (!paused)
             {
-                entity.Update();
+                lock (entities)
+                {
+                    foreach (var entity in entities)
+                    {
+
+                        entity.Update();
+                    }
+                }
             }
+
+
 
             DisplayManager.HandleInput();
         }
@@ -23,29 +35,61 @@ namespace Sn0wballEngine
         public static Entity CreateEntity()
         {
             var entity = new Entity();
-            entities.Add(entity);
+            entity.id = entities.Count;
+            lock (entities)
+            {
+                entities.Add(entity);
+            }
+
 
             return entity;
         }
 
+        
+
         public static Entity CreateEntity(string prefabFile)
         {
             var entity = Entity.LoadFromPrefab(prefabFile);
-            entities.Add(entity);
+
+
+            lock (entities) {
+                entities.Add(entity);
+            }
+
 
             return entity;
             
         }
 
-        
+
+        public static Entity Instantiate(Entity entity)
+        {
+            var entityB = CreateEntity();
+            entityB.name = entity.name;
+            foreach(var component in entity.components)
+            {
+                var type = component.GetType();
+                entityB.AddComponent(type);
+            }
+
+            
+            
+            return entityB;
+        }
+
 
         public static void Render()
         {
             DisplayManager.Clear();
-            foreach(var entity in entities)
+
+            lock (entities)
             {
-                entity.Render();
+                foreach (var entity in entities)
+                {
+                    entity.Render();
+                }
             }
+
             RenderUI();
             DisplayManager.Present();
         }

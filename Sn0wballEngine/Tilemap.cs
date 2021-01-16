@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using SFML.Graphics;
 
 namespace Sn0wballEngine
 {
@@ -20,32 +21,24 @@ namespace Sn0wballEngine
             {
                 for (int y = 0; y < width; y++)
                 {
-                    tiles[x, y] = -1;
+                    tiles[x, y] = 1;
                 }
             }
         }
 
-        public Tilemap()
-        {
 
-        }
+
 
 
         public override void Render()
         {
-            for (int x = 0; x < width; x++)
-            {
-                for (int y = 0; y < width; y++)
-                {
-                    if(tiles[x,y] == -1)
-                    {
-                        continue;
-                    }
-                    var sprite = ResourceManager.RequestSprite(tileset.tiles[tiles[x, y]].sprite);
-                    sprite.Position = new SFML.System.Vector2f(x * 8, y * 8);
-                    DisplayManager.window.Draw(sprite);
-                }
-            }
+            var chunkpos = Camera.transform.position / 32;
+
+            var chunkX = (int)chunkpos.x / 32;
+            var chunkY = (int)chunkpos.y / 32;
+
+
+
         }
     }
 }

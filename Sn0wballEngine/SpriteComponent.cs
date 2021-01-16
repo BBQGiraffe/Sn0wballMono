@@ -18,7 +18,7 @@ namespace Sn0wballEngine
         public override void Render()
         {
             var sprite_ = ResourceManager.RequestSprite(sprite);
-            sprite_.Position = new SFML.System.Vector2f(transform.position.x, transform.position.x);
+            sprite_.Position = new SFML.System.Vector2f(transform.position.x - (Camera.transform.position.x - DisplayManager.WindowSize.x/2), transform.position.y - (Camera.transform.position.y-DisplayManager.WindowSize.y/2));
             DisplayManager.window.Draw(sprite_);
         }
     }

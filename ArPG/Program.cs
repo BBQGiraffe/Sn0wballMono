@@ -27,12 +27,10 @@ namespace ArPG
 
 
 
-            SceneManager.LoadScene(new EditorScene());
+            SceneManager.LoadScene(new PrefabEditor());
 
             Input.LoadKeys();
-
-            //WorldGenerator.DumpBitmap(tilemap);
-           
+                       
             while (DisplayManager.IsOpen())
             {
                 Game.Update();

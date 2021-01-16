@@ -1,5 +1,6 @@
 {
-	"NoiseFrequency":0.07,
+	"NoiseFrequency":0.04,
 	"WorldWidth":128,
-	"WorldHeight":128
+	"WorldHeight":128,
+	"NoiseIterations":500,
 }

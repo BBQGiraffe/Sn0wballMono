@@ -10,18 +10,9 @@
         "sprite": "tiles/grass.png",
         "isObstacle": false,
         "id": 0,
-        "minRange": 0,
-        "maxRange": 0,
+        "minRange": 18,
+        "maxRange": 20,
         "useInGeneration": false
-      },
-      {
-        "$type": "Sn0wballEngine.Tile, Sn0wballEngine",
-        "sprite": "tiles/sand.png",
-        "isObstacle": false,
-        "id": 2,
-        "minRange": 7,
-        "maxRange": 8,
-        "useInGeneration": true
       },
       {
         "$type": "Sn0wballEngine.Tile, Sn0wballEngine",
@@ -29,7 +20,7 @@
         "isObstacle": true,
         "id": 1,
         "minRange": 0,
-        "maxRange": 6,
+        "maxRange": 17,
         "useInGeneration": true
       }
     ]

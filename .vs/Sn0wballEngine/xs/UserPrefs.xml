@@ -1,0 +1,29 @@
+﻿<Properties StartupConfiguration="{1F0C9F6B-A953-45D3-B84B-564174C6C213}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Sn0wballEngine/TextBox.cs">
+    <Files>
+      <File FileName="ArPG/PrefabEditor.cs" Line="69" Column="40" />
+      <File FileName="Sn0wballEngine/Component.cs" Line="1" Column="1" />
+      <File FileName="Sn0wballEngine/InputBox.cs" Line="65" Column="40" />
+      <File FileName="Sn0wballEngine/TextBox.cs" Line="12" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="Sn0wballEngine" expanded="True">
+            <Node name="ArPG" expanded="True" />
+            <Node name="Sn0wballEngine" expanded="True">
+              <Node name="TextBox.cs" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.ArPG PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

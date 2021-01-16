@@ -1,0 +1,137 @@
+{
+  "$type": "Sn0wballEngine.Entity, Sn0wballEngine",
+  "components": {
+    "$type": "System.Collections.Generic.List`1[[Sn0wballEngine.Component, Sn0wballEngine]], mscorlib",
+    "$values": [
+      {
+        "$type": "Sn0wballEngine.TransformComponent, Sn0wballEngine",
+        "position": {
+          "$type": "Sn0wballEngine.SNVector2f, Sn0wballEngine",
+          "x": 0.0,
+          "y": 0.0
+        },
+        "velocity": {
+          "$type": "Sn0wballEngine.SNVector2f, Sn0wballEngine",
+          "x": 0.0,
+          "y": 0.0
+        }
+      },
+      {
+        "$type": "Sn0wballEngine.TransformComponent, Sn0wballEngine",
+        "position": {
+          "$type": "Sn0wballEngine.SNVector2f, Sn0wballEngine",
+          "x": 0.0,
+          "y": 0.0
+        },
+        "velocity": {
+          "$type": "Sn0wballEngine.SNVector2f, Sn0wballEngine",
+          "x": 0.0,
+          "y": 0.0
+        }
+      },
+      {
+        "$type": "Sn0wballEngine.SpriteComponent, Sn0wballEngine",
+        "sprite": "player/player_side.png"
+      },
+      {
+        "$type": "ArPG.PlayerBehaviour, ArPG",
+        "Health": 0,
+        "speed": 0
+      },
+      {
+        "$type": "ArPG.PlayerBehaviour, ArPG",
+        "Health": 0,
+        "speed": 0
+      },
+      {
+        "$type": "Sn0wballEngine.SpriteComponent, Sn0wballEngine",
+        "sprite": "test/zooi.png"
+      },
+      {
+        "$type": "Sn0wballEngine.SpriteComponent, Sn0wballEngine",
+        "sprite": "test/zooi.png"
+      },
+      {
+        "$type": "ArPG.PlayerBehaviour, ArPG",
+        "Health": 0,
+        "speed": 0
+      },
+      {
+        "$type": "ArPG.PlayerBehaviour, ArPG",
+        "Health": 0,
+        "speed": 0
+      },
+      {
+        "$type": "ArPG.PlayerBehaviour, ArPG",
+        "Health": 0,
+        "speed": 0
+      },
+      {
+        "$type": "ArPG.PlayerBehaviour, ArPG",
+        "Health": 0,
+        "speed": 0
+      },
+      {
+        "$type": "ArPG.PlayerBehaviour, ArPG",
+        "Health": 0,
+        "speed": 0
+      },
+      {
+        "$type": "ArPG.PlayerBehaviour, ArPG",
+        "Health": 0,
+        "speed": 0
+      },
+      {
+        "$type": "ArPG.PlayerBehaviour, ArPG",
+        "Health": 0,
+        "speed": 0
+      },
+      {
+        "$type": "ArPG.PlayerBehaviour, ArPG",
+        "Health": 0,
+        "speed": 0
+      },
+      {
+        "$type": "ArPG.PlayerBehaviour, ArPG",
+        "Health": 0,
+        "speed": 0
+      },
+      {
+        "$type": "ArPG.PlayerBehaviour, ArPG",
+        "Health": 0,
+        "speed": 0
+      },
+      {
+        "$type": "ArPG.PlayerBehaviour, ArPG",
+        "Health": 0,
+        "speed": 0
+      },
+      {
+        "$type": "ArPG.PlayerBehaviour, ArPG",
+        "Health": 0,
+        "speed": 0
+      },
+      {
+        "$type": "ArPG.PlayerBehaviour, ArPG",
+        "Health": 0,
+        "speed": 0
+      },
+      {
+        "$type": "ArPG.PlayerBehaviour, ArPG",
+        "Health": 0,
+        "speed": 0
+      },
+      {
+        "$type": "ArPG.PlayerBehaviour, ArPG",
+        "Health": 0,
+        "speed": 0
+      },
+      {
+        "$type": "ArPG.PlayerBehaviour, ArPG",
+        "Health": 0,
+        "speed": 0
+      }
+    ]
+  },
+  "name": "unnamed entity"
+}

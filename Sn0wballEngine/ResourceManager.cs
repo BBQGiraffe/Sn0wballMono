@@ -14,13 +14,18 @@ namespace Sn0wballEngine
 
         public static Sprite RequestSprite(string name)
         {
-            if (resources.ContainsKey(name))
+            lock (resources)
             {
-                return GetResource<Sprite>(name);
+                if (resources.ContainsKey(name))
+                {
+                    return GetResource<Sprite>(name);
+                }
+                Sprite sprite = new Sprite(new Texture("art/sprites/" + name));
+                resources.Add(name, sprite);
+                return sprite;
             }
-            Sprite sprite = new Sprite(new Texture("art/sprites/" + name));
-            resources.Add(name, sprite);
-            return sprite;
+
+
         }
     }
 }
