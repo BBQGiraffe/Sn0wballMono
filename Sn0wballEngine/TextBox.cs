@@ -5,7 +5,7 @@ namespace Sn0wballEngine
     public class TextBox : Widget
     {
         private Text textbox;
-        private RectangleShape background;
+        private RectangleShape background = new RectangleShape();
         public SNColor backgroundColor { get; set; } = new SNColor();
         private string text;
         private int width, height;
@@ -22,10 +22,10 @@ namespace Sn0wballEngine
             width = (int)textbox.GetLocalBounds().Width;
             height = (int)textbox.GetLocalBounds().Height;
 
-            background = new RectangleShape();
             background.FillColor = new Color(50, 50, 50);
 
-            
+            var bounds = new SNVector2f(width, height);
+            background.Size = new SFML.System.Vector2f(bounds.x + bounds.x / 2, bounds.y + bounds.y * 2);
         }
 
         public override void SetBackgroundColor(SNColor color)
@@ -36,6 +36,8 @@ namespace Sn0wballEngine
         public TextBox()
         {
             //SetText("EXAMPLE TEXT", "editor_font", SNColor.White());
+            background.Size = new SFML.System.Vector2f(50, 50);
+            background.FillColor = new Color(50, 50, 50);
         }
 
 
@@ -77,7 +79,7 @@ namespace Sn0wballEngine
 
             textbox.Position = new SFML.System.Vector2f(position.x + bounds.x / 4, position.y + bounds.y / 2);
             background.Position = new SFML.System.Vector2f(position.x, position.y);
-            background.Size = new SFML.System.Vector2f(bounds.x + bounds.x / 2, bounds.y + bounds.y * 2);
+            
 
             DisplayManager.window.Draw(background);
             DisplayManager.window.Draw(textbox);

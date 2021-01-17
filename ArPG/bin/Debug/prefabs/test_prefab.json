@@ -15,17 +15,8 @@
           "x": 0.0,
           "y": 0.0
         }
-      },
-      {
-        "$type": "Sn0wballEngine.SpriteComponent, Sn0wballEngine",
-        "sprite": "player/player_side.png"
-      },
-      {
-        "$type": "ArPG.PlayerBehaviour, ArPG",
-        "Health": 0,
-        "speed": 0
       }
     ]
   },
-  "name": "unnamed entity"
+  "name": "sex amchine\b\bmachine"
 }

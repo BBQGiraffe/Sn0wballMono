@@ -9,27 +9,37 @@ namespace Sn0wballEngine
         bool selected = false;
 
 
-        SFML.Window.Event Event;
 
+
+
+        float enterTimer = 0, enterTime = .3f;
         public override void Draw()
         {
-
+            enterTimer += Time.deltaTime;
 
             if (Clicked())
             {
                 selected = true;
             }
 
-            if(Input.LeftClick() && !Hovering())
+            if (Input.LeftClick() && !Hovering())
             {
                 selected = false;
             }
 
             if (selected)
             {
+                if (Input.IsKeyDown("Return"))
+                {
+                    if (enterTimer >= enterTime)
+                    {
+                        text += "\n";
+                        enterTimer = 0;
 
+                    }
+
+                }
             }
-            textBox.SetText(text, "editor_font", SNColor.White());
             textBox.position = position;
             textBox.Draw();
 
@@ -42,23 +52,28 @@ namespace Sn0wballEngine
         public InputBox()
         {
             DisplayManager.window.TextEntered += Window_TextEntered;
+            textBox.SetText("Entity Name", "editor_font", SNColor.White());
         }
 
         void Window_TextEntered(object sender, TextEventArgs e)
         {
             if (selected)
             {
-                Console.WriteLine("shit");
                 text += e.Unicode.ToString();
                 textBox.SetText(text, "editor_font", SNColor.White());
             }
 
+
         }
 
+        public string GetText()
+        {
+            return text;    
+        }
 
         float inputTime = .1f, inputTimer = 0f;
 
-        string text = "bingus";
+        string text = "";
 
         public override SNVector2f GetBounds()
         {

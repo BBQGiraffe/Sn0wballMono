@@ -12,6 +12,8 @@ namespace ArPG
         List<Type> components = new List<Type>();
         public override void Start()
         {
+            ScriptManager.RunGameScripts();
+
             entity = Game.CreateEntity();
             entity.AddComponent<TransformComponent>();
             SNGui.Init();
@@ -65,9 +67,13 @@ namespace ArPG
             addedComponents.AddWidget(textbox2);
             SNGui.AddWidget(componentProperties);
 
+
+            entityName = new InputBox();
             SNGui.AddWidget(entityName);
             entityName.position.x = 100;
             entityName.position.y = 200;
+
+           
 
         }
         WidgetWindow componentProperties = new WidgetWindow();
@@ -76,7 +82,7 @@ namespace ArPG
         public TextBox addComponent = new TextBox();
         public TextBox savePrefab = new TextBox();
 
-        InputBox entityName = new InputBox();
+        InputBox entityName;
 
         public override void Update()
         {
@@ -119,6 +125,8 @@ namespace ArPG
                     }
                 }
             }
+
+            entity.name = entityName.GetText();
 
             if (savePrefab.Clicked())
             {
