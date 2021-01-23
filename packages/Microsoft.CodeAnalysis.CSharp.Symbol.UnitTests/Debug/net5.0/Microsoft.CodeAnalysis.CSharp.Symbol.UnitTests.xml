@@ -1,0 +1,1620 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.CodeAnalysis.CSharp.Symbol.UnitTests</name>
+    </assembly>
+    <members>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.CompilationAPITests.PreviousSubmissionWithError">
+            <summary>
+            Previous submission has to have no errors.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.CSharpCompilationOptionsTests.TestHiddenProperty``1(System.Func{Microsoft.CodeAnalysis.CompilationOptions,``0,Microsoft.CodeAnalysis.CompilationOptions},System.Func{Microsoft.CodeAnalysis.CompilationOptions,``0},``0)">
+            <summary>
+            Using an instance of <see cref="T:Microsoft.CodeAnalysis.CSharp.CSharpCompilationOptions"/>, tests a property in <see cref="T:Microsoft.CodeAnalysis.CompilationOptions"/> , even it is hidden by <see cref="T:Microsoft.CodeAnalysis.CSharp.CSharpCompilationOptions"/>.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.CSharpCompilationOptionsTests.TestFieldsForEqualsAndGetHashCode">
+            <summary>
+            If this test fails, please update the <see cref="M:Microsoft.CodeAnalysis.CSharp.CSharpCompilationOptions.GetHashCode"/>
+            and <see cref="M:Microsoft.CodeAnalysis.CSharp.CSharpCompilationOptions.Equals(Microsoft.CodeAnalysis.CSharp.CSharpCompilationOptions)"/> methods to
+            make sure they are doing the right thing with your new field and then update the baseline
+            here.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.GetSemanticInfoTests.ConstructedTypeWithConstructedErrorTypeArgument">
+            <summary>
+            Constructed types from the same generic error
+            type should compare equal.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.GetSemanticInfoTests.ConversionTestHelper(Microsoft.CodeAnalysis.SemanticModel,Microsoft.CodeAnalysis.CSharp.Syntax.ExpressionSyntax,Microsoft.CodeAnalysis.CSharp.ConversionKind,Microsoft.CodeAnalysis.CSharp.ConversionKind)">
+            <summary>
+            
+            </summary>
+            <param name="semanticModel"></param>
+            <param name="expr"></param>
+            <param name="ept1">expr -> TypeInParent</param>
+            <param name="ept2">Type(expr) -> TypeInParent</param>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.GetSemanticInfoTests.VarInitializedWithStaticType">
+            Test that binding a local declared with var binds the same way when localSymbol.Type is called before BindVariableDeclaration.
+            Assert occurs if the two do not compute the same type.
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.GetSemanticInfoTests.NameConflictDuringLambdaBinding1">
+            <summary>
+            This test reproduces the issue we were seeing in DevDiv #13366: LocalSymbol.SetType was asserting
+            because it was set to IEnumerable&lt;int&gt; before binding the declaration of x but to an error
+            type after binding the declaration of x.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.GetSemanticInfoTests.NameConflictDuringLambdaBinding2">
+            <summary>
+            This test reverses the order of statement binding from NameConflictDuringLambdaBinding2 to confirm that
+            the results are the same.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.ReferenceManagerTests.DuplicateAssemblyReferences_EquivalentStrongNames_Metadata">
+            <summary>
+            Two metadata files with the same strong identity referenced twice, with embedInteropTypes=true and embedInteropTypes=false.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.ReferenceManagerTests.DuplicateAssemblyReferences_EquivalentStrongNames_Compilations">
+            <summary>
+            Two compilations with the same strong identity referenced twice, with embedInteropTypes=true and embedInteropTypes=false.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.ReferenceManagerTests.CS1703ERR_DuplicateImport">
+            <summary>
+            Two Framework identities with unified versions.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.ReferenceManagerTests.WinMd_SameSimpleNames_SameVersions">
+            <summary>
+            Although the CLR considers all WinRT references equivalent the Dev11 C# and VB compilers still 
+            compare their identities as if they were regular managed dlls.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.ReferenceManagerTests.WinMd_DifferentSimpleNames">
+            <summary>
+            Although the CLR considers all WinRT references equivalent the Dev11 C# and VB compilers still 
+            compare their identities as if they were regular managed dlls.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.ReferenceManagerTests.WinMd_SameSimpleNames_DifferentVersions">
+            <summary>
+            Although the CLR considers all WinRT references equivalent the Dev11 C# and VB compilers still 
+            compare their identities as if they were regular managed dlls.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.ReferenceManagerTests.MetadataReferencesDifferInCultureOnly">
+            <summary>
+            We replicate the Dev11 behavior here but is there any real world scenario for this?
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.ReferenceManagerTests.MissingAssemblyResolution_MissingDueToResolutionMismatch">
+            <summary>
+            Ignore assemblies returned by the resolver that don't match the reference identity.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.ReferenceManagerTests.MissingAssemblyResolution_BindingToForExplicitReference1">
+            <summary>
+            Don't try to resolve AssemblyRefs that already match explicitly specified definition.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.ReferenceManagerTests.MissingAssemblyResolution_BindingToExplicitReference_WorseVersion">
+            <summary>
+            Don't try to resolve AssemblyRefs that already match explicitly specified definition.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.ReferenceManagerTests.MissingAssemblyResolution_BindingToExplicitReference_BetterVersion">
+            <summary>
+            Don't try to resolve AssemblyRefs that already match explicitly specified definition.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.SemanticModelTests.TestLookupSymbolsTypeParameterConstraintCycles">
+            <summary>
+            Cycles should be broken at the first cycle encountered by
+            traversing the constraints in declaration order. It should not depend
+            on the order the symbols are queried from the binding API.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.SemanticModelTests.TestLookupSymbolsGenericExtensionMethods">
+            <summary>
+            LookupSymbols should return partially constructed
+            methods for generic extension methods.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.SemanticModelGetSemanticInfoTests.IncompleteExtensionOverloadedDifferentScopes">
+            <summary>
+            Overloads from different scopes should
+            be included in method group.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.SemanticModelGetSemanticInfoTests.IncompleteEmptyAttributeSyntax02">
+            <summary>
+            Same as above but with a token after the incomplete
+            attribute so the attribute is not at the end of file.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.SemanticModelGetSemanticInfoTests.ImplementsIEquatable">
+            <summary>
+            SymbolInfo and TypeInfo should implement IEquatable&lt;T&gt;.
+            </summary>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.CSharp.UnitTests.DeclarationTests.CountedSyntaxTree">
+            <remarks>
+            When using this type, make sure to pass an explicit CompilationOptions to CreateCompilation, as the check
+            to see whether the syntax tree has top-level statements will increment the counter.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.CrefTests.TypeVersusConstructor1">
+            <summary>
+            Comment on constructor type.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.CrefTests.TypeVersusConstructor2">
+            <summary>
+            Comment on unrelated type.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.CrefTests.TypeVersusConstructor3">
+            <summary>
+            Comment on nested type of constructor type (same behavior as unrelated type).
+            </summary>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.CSharp.UnitTests.DocumentationCommentCompilerTests.DocumentationCommentAdder">
+            <summary>
+            Insert a numbered documentation comment as leading trivia on every token.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.DocumentationCommentCompilerTests.IncludeErrorDashDashInName">
+            <summary>
+            "--" is not valid within an XML comment.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.SymbolDisplayTests.TestInterfaceMembers">
+            <summary>
+            "public" and "abstract" should not be included for interface members.
+            </summary>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.AccessorOverriddenOrHiddenMembersTests">
+            <summary>
+            Test MethodSymbol.OverriddenOrHiddenMembers and PropertySymbol.OverriddenOrHiddenMembers.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.AnonymousTypesSymbolTests.GetHashCodeInitialValue(System.String[])">
+            <summary>
+            This method duplicates the generation logic for initial value used 
+            in anonymous type's GetHashCode function
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.AnonymousTypesSymbolTests.NoStdLibNoEmitToStringForAnonymousType">
+            <summary>
+            Bug#15914: Breaking Changes
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.ConversionTests.TestConversionsWithCustomModifiers">
+            <summary>
+            ClassifyConversions should ignore custom modifiers: converting between a type and the same type
+            with different custom modifiers should be an identity conversion.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.CovariantReturnTests.VerifyAssignments(Microsoft.CodeAnalysis.CSharp.CSharpCompilation,System.Int32)">
+            <summary>
+            Verify that all assignments in the compilation's source have the same type and converted type.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.DefaultInterfaceImplementationTests.Constructors_12">
+            <summary>
+            Make sure runtime handles cycles in static constructors.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.EnumTests.GenerateEnum(System.Int32,System.Func{System.Int32,System.Int32,System.String})">
+            <summary>
+            Generate "enum E { M0 = ..., M1 = ..., ..., Mn = ... }".
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.ExtensionMethodTests.InvalidExtensionMethods">
+            <summary>
+            IsExtensionMethod should be false for
+            invalid extension methods.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.ExtensionMethodTests.CandidateSearch">
+            <summary>
+            Continue search for extension method candidates in certain
+            cases where nearer candidates are not applicable.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.ExtensionMethodTests.EndSearchIfAmbiguous">
+            <summary>
+            End search for extension method candidates
+            if current method group is ambiguous.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.ExtensionMethodTests.InvalidUseOfExtensionMethodGroup">
+            <summary>
+            Extension methods should be resolved correctly even
+            in cases where a method group is not allowed.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.ExtensionMethodTests.InaccessibleInstanceMember">
+            <summary>
+            Inaccessible instance member and
+            extension method of same name.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.ExtensionMethodTests.InaccessibleTooManyArgs">
+            <summary>
+            Method arguments should be evaluated,
+            even if too many.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.ExtensionMethodTests.AmbiguousMethodDifferentClassesSameNamespace">
+            <summary>
+            Should not favor method from one class over another in same
+            namespace, even if one method is defined in caller's class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.ExtensionMethodTests.AmbiguousConsumerWithExtensionMethodDelegateArg">
+            <summary>
+            Extension method delegates in different scopes make
+            consumer (an overloaded method invocation) ambiguous.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.ExtensionMethodTests.InnerNamespacesBeforeOuter">
+            <summary>
+            Prefer methods on classes on inner namespaces.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.ExtensionMethodTests.BoxingConversionOfDelegateReceiver01">
+            <summary>
+            A value type should be boxed when used as a reference type receiver to an
+            extension method. Note: Dev10 reports an error in such cases ("No overload for
+            'C.F(object)' matches delegate 'System.Action'") even though these cases are valid.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.ExtensionMethodTests.BoxingConversionOfDelegateReceiver02">
+            <summary>
+            Similar to the test above, but using instances of type
+            parameters for the delegate receiver.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.ExtensionMethodTests.AssemblyMightContainExtensionMethodsReset">
+            <summary>
+            AssemblySymbol.MightContainExtensionMethods should be reset after
+            emit, after all types within the assembly have been inspected, if there
+            are no types with extension methods.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.ExtensionMethodTests.ExtensionMethod_ValidateExtensionAttribute">
+            <summary>
+            Roslyn bug 7782: NullRef in PeWriter.DebuggerShouldHideMethod
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.ExtensionMethodTests.BoxValueTypeReceiverIfNecessary">
+            <summary>
+            Box value type receiver if passed as reference type.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.ExtensionMethodTests.InstanceMethodAndInaccessibleExtensionMethod_Diagnostics">
+            <summary>
+            Dev11 reports error for inaccessible extension method in addition to an
+            error for the instance method that was used for binding. The inaccessible
+            error may be helpful for the user or for "quick fix" in particular.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.ExtensionMethodTests.NonStaticClasses">
+            <summary>
+            Dev11 allows referencing extension methods defined on
+            non-static classes, generic classes, structs, and delegates.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.ExtensionMethodTests.Bug602893_2">
+            <summary>
+            As test above but with all classes defined in the same compilation.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.ExtensionMethodTests.AmbiguousMethodsHideOuterScope">
+            <summary>
+            Ambiguous methods should hide methods in outer scopes.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.GenericConstraintConversionTests.ImplicitInterfaceAndBaseTypeConversions01">
+            <summary>
+            6.1.10, bullet 1
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.GenericConstraintConversionTests.ImplicitConversionEffectiveInterfaceSet">
+            <summary>
+            6.1.10, bullet 2
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.GenericConstraintConversionTests.ImplicitConversionToTypeParameter">
+            <summary>
+            6.1.10, bullet 3
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.GenericConstraintConversionTests.ImplicitConversionFromNull">
+            <summary>
+            6.1.10, bullet 4
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.GenericConstraintConversionTests.ImplicitReferenceConversionToInterface">
+            <summary>
+            6.1.10, bullet 5
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.GenericConstraintConversionTests.ImplicitInterfaceVarianceConversions01">
+            <summary>
+            6.1.10, bullet 6
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.GenericConstraintConversionTests.ExplicitBaseClassConversions">
+            <summary>
+            6.2.7, bullet 1
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.GenericConstraintConversionTests.ExplicitConversionFromInterface">
+            <summary>
+            6.2.7, bullet 2
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.GenericConstraintConversionTests.ExplicitConversionToInterface">
+            <summary>
+            6.2.7, bullet 3
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.GenericConstraintConversionTests.ExplicitConversionToTypeParameter">
+            <summary>
+            6.2.7, bullet 4
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.GenericConstraintConversionTests.EmitImplicitConversions">
+            <summary>
+            6.1.10
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.GenericConstraintConversionTests.EmitExplicitConversions">
+            <summary>
+            6.2.7
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.GenericConstraintConversionTests.UserDefinedConversionsBaseToFromDerived">
+            <summary>
+            Dev10 does not report errors for implicit or explicit conversions between
+            base and derived types if one of those types is a type parameter.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.GenericConstraintTests.PartialClassOverriddenMethods">
+            <summary>
+            SourceMemberMethodSymbol binds parameters and type parameters
+            of partial methods early - in the constructor. Ensure constraints for
+            overridden methods are handled in these cases.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.GenericConstraintTests.ImplicitImplementation">
+            <summary>
+            Implicit implementations must specify constraints.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.GenericConstraintTests.ExplicitImplementation">
+            <summary>
+            Explicit implementations do not specify constraints.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.GenericConstraintTests.ExplicitImplementationInterfaceConstraintViolations">
+            <summary>
+            Dev10 reports constraint violations at every reference to an
+            interface type, including in explicit member declarations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.GenericConstraintTests.ExplicitImplementationInterfaceConstraintViolationsOnContainer">
+            <summary>
+            Similar to ExplicitImplementationInterfaceConstraintViolations but
+            where the constraint violation involves a reference to the containing type.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.GenericConstraintTests.ExplicitImplementationNoSuchMethod">
+            <summary>
+            Ensure generic methods are handled in an explicit
+            implementation where the interface method does not exist.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.GenericConstraintTests.BasesInterfacesParametersAndReturnTypes">
+            <summary>
+            Constraints on base types, interfaces, and method parameters
+            and return types are all checked outside of BindType to avoid
+            cycles. Verify that constraints are checked in those cases.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.GenericConstraintTests.PartialMethodWithArgumentConstraint">
+            <summary>
+            Partial method signatures are bound eagerly, not lazily.
+            (See SourceMemberMethodSymbol..ctor.) Ensure constraints
+            on parameters and return types are checked in those cases.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.GenericConstraintTests.AliasConstraintErrors01">
+            <summary>
+            Constraint errors in aliases are reported at the alias declaration,
+            and errors are reported regardless of whether the alias is used.
+            This is a breaking change from Dev10 which reports constraint errors
+            in aliases at the point the alias is used, not at the alias declaration,
+            and does not report constraint errors on unused aliases.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.GenericConstraintTests.AliasConstraintErrors02">
+            <summary>
+            More constraint errors in aliases.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.GenericConstraintTests.MethodSignatureConstraints">
+            <summary>
+            Constraints in method signatures are not checked
+            at the time types in the signature are bound.
+            Ensure the constraints are checked.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.GenericConstraintTests.ForceComplete">
+            <summary>
+            Ensure constraint diagnostics are generated. Specifically,
+            ensure ForceComplete resolves constraints completely.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.GenericConstraintTests.NewTWithBadArguments">
+            <summary>
+            Should bind type parameter constructor arguments
+            even though no arguments are expected.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.GenericConstraintTests.Members">
+            <summary>
+            Invoke methods and properties on constrained generic types.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.GenericConstraintTests.Fields">
+            <summary>
+            Access fields on constrained generic types.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.GenericConstraintTests.Events">
+            <summary>
+            Access events on constrained generic types.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.GenericConstraintTests.ConflictingConstraints02">
+            <summary>
+            No error for conflicting constraint on virtual method
+            in derived class unless the method is overridden.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.GenericConstraintTests.OverriddenMethodWithObjectConstraint">
+            <summary>
+            The constraint type can be dropped from the overridden
+            method if the type is object. Spec. 13.4.3.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.GenericConstraintTests.CS0425ERR_ImplBadConstraints_BaseFromSource">
+            <summary>
+            Report ERR_ImplBadConstraints on the base class that
+            implements the interface methods with incorrect constraints,
+            even when the base class does not implement the interface.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.GenericConstraintTests.CS0425ERR_ImplBadConstraints_BaseFromMetadata">
+            <summary>
+            Same as CS0425ERR_ImplBadConstraints_BaseFromSource
+            but with base class defined in metadata.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.GenericConstraintTests.DuplicateConstraintDifferencesOnPartialDeclarations">
+            <summary>
+            Should not report constraint differences across partial declarations
+            if the only differences are duplicated constraints.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.GenericConstraintTests.EffectiveBaseClass03">
+            <summary>
+            Should not be able to access members on constraint
+            type if type is a struct (since effective base class
+            should be nearest reference type in type hierarchy).
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.GenericConstraintTests.EffectiveBaseClass04">
+            <summary>
+            Should not be able to access protected
+            members on constraint type.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.GenericConstraintTests.EffectiveInterfaceSet02">
+            <summary>
+            Explicit interface implementations on class constraints
+            should not be included in member lookup.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.GenericConstraintTests.EffectiveInterfaceSet03">
+            <summary>
+            Class constraint members should hide
+            interface constraint members.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.GenericConstraintTests.EffectiveInterfaceSet04">
+            <summary>
+            Method type inference should consider all
+            interfaces reachable from the type parameter.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.GenericConstraintTests.InvalidConstraintsFromMetadata">
+            <summary>
+            Handle constraints from metadata that
+            would be invalid from source.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.GenericConstraintTests.UseSiteErrorCircularConstraints">
+            <summary>
+            Use-site errors should be reported when a type or
+            method from PE with a circular constraint is used.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.GenericConstraintTests.UseSiteErrorMissingConstraintType">
+            <summary>
+            Use-site errors should not be reported for a type or
+            method from PE with a missing constraint type in
+            addition to any conversion error satisfying constraints.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.GenericConstraintTests.UseSiteErrorMissingConstraintTypeAndCircularConstraint">
+            <summary>
+            If a type parameter from metadata has multiple errors
+            including a missing constraint type (a use-site error on
+            the constraint type), the missing constraint type should
+            be reported as the use-site error for the type parameter.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.GenericConstraintTests.UnrecognizedTypeInVariantInterfaceConstraint">
+            <summary>
+            Similar to above but with unrecognized type
+            rather than missing type, and all in source.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.GenericConstraintTests.InterfaceImplementationMismatchNewMethodMetadata">
+            <summary>
+            Same as above but with implementing class from metadata.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.GenericConstraintTests.ModOptsInConstraintsAreIgnored">
+            <summary>
+            Constraints with modopts are treated as unsupported types.
+            (The native compiler imports constraints with modopts but
+            generates invalid types when implementing or overriding
+            generic methods with such constraints.)
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.GenericConstraintTests.InconsistentConstraintsAreNotSupported">
+            <summary>
+            Constraints on the nested type must match
+            constraints from the containing types.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.GenericConstraintTests.CheckTypeParameterContainingSymbols(Microsoft.CodeAnalysis.CSharp.Symbols.MethodSymbol,Microsoft.CodeAnalysis.CSharp.Symbols.TypeSymbol,System.Int32)">
+            <summary>
+            Verify any type parameter symbols within the type
+            have the given containing method symbol.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.GenericConstraintTests.DuplicateConstraintTypeViolations">
+            <summary>
+            Type argument violating duplicate constraint types
+            should result in a single error, not multiple.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.GenericConstraintTests.ObjectAndValueTypeMetadataConstraints">
+            <summary>
+            Redundant System.Object constraints should be removed
+            and '.ctor' and System.ValueType constraints should be
+            removed if 'valuetype' is specified. By contrast, redundant
+            'class' constraints should not be removed if explicit class
+            constraint is specified.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.GenericConstraintTests.OverridingObjectAndValueTypeMethodMetadataConstraints">
+            <summary>
+            Overriding methods with implicit and explicit
+            System.Object and System.ValueType constraints.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.GenericConstraintTests.ObjectConstraintTypes">
+            <summary>
+            Object constraints should be dropped from TypeParameterSymbol.ConstraintTypes
+            on import and type substitution.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.GenericConstraintTests.EmittedObjectConstraint">
+            <summary>
+            Object constraint should not be emitted
+            for compatibility with Dev10.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.GenericConstraintTests.MembersOfBaseTypeConstraintViolationOnDerived">
+            <summary>
+            Constraint failures on derived type when referencing members of
+            base type. Dev11 does not report errors on such constraint failures
+            for base type, interfaces, or method signatures.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.GenericConstraintTests.HasPublicParameterlessConstructorCycle01">
+            <summary>
+            Cycle with field types with new() constraint.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.GenericConstraintTests.HasPublicParameterlessConstructorCycle02">
+            <summary>
+            Cycle with event types with new() constraint.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.GenericConstraintTests.HasPublicParameterlessConstructorCycle03">
+            <summary>
+            Cycle with field-like event type with new() constraint
+            where field type is determined by an initializer.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.GenericConstraintTests.HasPublicParameterlessConstructorCycle04">
+            <summary>
+            Cycle with event type with new() constraint where
+            the event is an explicit implementation.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.GenericConstraintTests.HasPublicParameterlessConstructorCycle05">
+            <summary>
+            Cycle with property types with new() constraint.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.GenericConstraintTests.HasPublicParameterlessConstructorCycle06">
+            <summary>
+            Cycle with property types with new() constraint where the types
+            are parameter types and properties are explicit implementations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.IndexedPropertyTests.CanBeReferencedByName">
+            <summary>
+            Allow calling indexed property accessors
+            directly, for legacy code.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.IndexedPropertyTests.CanBeReferencedByName_InvalidName">
+            <summary>
+            CanBeReferencedByName should return false if
+            the accessor name is not a valid identifier.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.IndexedPropertyTests.ComImport">
+            <summary>
+            Indexed properties are only supported from [ComImport] types.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.IndexedPropertyTests.PropertyGroup">
+            <summary>
+            Cases where a PropertyGroup must be converted to a PropertyAccess.
+            (resulting from an indexed property expression with no args).
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.IndexedPropertyTests.OverloadResolution">
+            <summary>
+            Overload resolution should be supported for indexed properties,
+            even though COM does not support overloads.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.IndexedPropertyTests.InterfaceImplementation">
+            <summary>
+            Should support implementing and overriding indexed properties
+            from C# if the accessors are implemented/overridden directly.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.IndexedPropertyTests.Hiding">
+            <summary>
+            "new" required to hide indexed property accessors, although
+            property from base class can still be invoked using property syntax.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.IndexerTests.ImplicitlyImplementingIndexersWithDifferentNames_SameInterface">
+            <summary>
+            Metadata type has two indexers with the same signature but different names.
+            Both are implicitly implemented by a single source indexer.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.IndexerTests.AmbiguousExplicitIndexerImplementation">
+            <summary>
+            Metadata type has two indexers with the same signature but different names.
+            Both are explicitly implemented by a single source indexer, resulting in an
+            ambiguity error.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.IndexerTests.ExplicitInterfaceImplementationIndexers">
+            <summary>
+            The Name and IsIndexer bits of explicitly implemented interface indexers do not roundtrip.
+            This is unfortunate, but less so that having something declared with an IndexerDeclarationSyntax
+            return false for IsIndexer.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.IndexerTests.IndexerWithRefParameter_Access">
+            <summary>
+            Indexers cannot have ref params in source, but they can in metadata.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.IndexerTests.IndexerWithRefParameter_CallAccessor">
+            <summary>
+            Indexers cannot have ref params in source, but they can in metadata.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.IndexerTests.IndexerWithRefParameter_Override">
+            <summary>
+            Indexers cannot have ref params in source, but they can in metadata.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.IndexerTests.IndexerWithRefParameter_ImplicitlyImplement">
+            <summary>
+            Indexers cannot have ref params in source, but they can in metadata.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.IndexerTests.IndexerWithRefParameter_ExplicitlyImplement">
+            <summary>
+            Indexers cannot have ref params in source, but they can in metadata.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.InterfaceImplementationTests.TestObviousNulls">
+            <summary>
+            Test the pre-checks performed by TypeSymbol.FindImplementationForInterfaceMember to
+            short-circuit interface mapping.  Should be the same for methods, properties, and
+            events since it never gets to the interface mapping code.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.InterfaceImplementationTests.TestExplicitMethodImplementation">
+            <summary>
+            1) Explicit implementation beats implicit implementation.
+            2) Explicit implementation of a declared interface's base interface.
+            3) Explicit implementation of a hidden interface method.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.InterfaceImplementationTests.TestExplicitIndexerImplementation">
+            <summary>
+            1) Explicit implementation beats implicit implementation.
+            2) Explicit implementation of a declared interface's base interface.
+            3) Explicit implementation of a hidden interface method.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.InterfaceImplementationTests.TestImplicitMethodImplementation">
+            <summary>
+            1) Implicit implementation of a declared interface.
+            2) Implicit implementation of a declared interface's base interface.
+            3) Implicit implementation of more than one interface method.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.InterfaceImplementationTests.TestImplicitIndexerImplementation">
+            <summary>
+            1) Implicit implementation of a declared interface.
+            2) Implicit implementation of a declared interface's base interface.
+            3) Implicit implementation of more than one interface indexer.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.InterfaceImplementationTests.TestImplicitMethodImplementationMismatches">
+            <summary>
+            Tests classes that nearly, but do not actually implement interface methods.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.InterfaceImplementationTests.TestExplicitMethodImplementationInBase">
+            <summary>
+            Class implements interface method via explicit implementation in base class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.InterfaceImplementationTests.TestImplicitMethodImplementationInBase">
+            <summary>
+            Class implements interface method via implicit implementation in base class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.InterfaceImplementationTests.TestImplicitMethodImplementationViaBase">
+            <summary>
+            Class implements interface method via implicit implementation in base class (which does not implement the interface).
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.InterfaceImplementationTests.TestImplicitIndexerImplementationViaBase">
+            <summary>
+            Class implements interface indexer via implicit implementation in base class (which does not implement the interface).
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.InterfaceImplementationTests.TestExplicitMethodImplementationRemapping">
+            <summary>
+            Test remapping of an explicitly implemented interface.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.InterfaceImplementationTests.TestImplicitMethodImplementationRemapping">
+            <summary>
+            Test remapping of an implicitly implemented interface.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.InterfaceImplementationTests.TestImplicitMethodImplementationRemapping2">
+            <summary>
+            Test remapping of an implicitly implemented interface in a longer chain of types.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.InterfaceImplementationTests.TestExplicitMethodImplementationOnNonDeclaringType">
+            <summary>
+            In metadata, it is possible for a type to explicitly implement a method of an interface
+            declared by its base type (even if it does not declare the interface itself).
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.InterfaceImplementationTests.TestCustomModifierImplicitImplementation">
+            <summary>
+            Layout:
+            D : C : B : A
+            All have virtual Method1 and Method2 with the same signatures (modulo custom modifiers)
+            D has 2 custom modifiers
+            C has 1 custom modifier
+            B has 2 custom modifiers, but not the same as D
+            A has 1 custom modifier for Method1, but not the same as C, and 0 custom modifiers for Method2
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.InterfaceImplementationTests.TestSourceMetadataImplicitImplementation1">
+            <summary>
+            I -> M(ref int)
+            B -> M(out int)
+            D : B, I
+            
+            I source, B source, D source
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.InterfaceImplementationTests.TestSourceMetadataImplicitImplementation3">
+            <summary>
+            I -> M(ref int)
+            B -> M(out int)
+            D : B, I
+            
+            I source, B metadata, D source
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.InterfaceImplementationTests.TestSourceMetadataImplicitImplementation5">
+            <summary>
+            I -> M(ref int)
+            B -> M(out int)
+            D : B, I
+            
+            I metadata, B source, D source
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.InterfaceImplementationTests.TestSourceMetadataImplicitImplementation7">
+            <summary>
+            I -> M(ref int)
+            B -> M(out int)
+            D : B, I
+            
+            I metadata, B metadata, D source
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.InterfaceImplementationTests.TestSourceMetadataImplicitImplementation8">
+            <summary>
+            I -> M(ref int)
+            B -> M(out int)
+            D : B, I
+            
+            I source, B source, D source
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.InterfaceImplementationTests.TestCSharpClrDisagreement_NonOverride">
+            <summary>
+            In this case, C# thinks B.M implements I.M for C, but the CLR thinks A.M does.  To make sure that we get the
+            desired behavior, we have to insert an explicit bridge method.
+            (See SourceNamedTypeSymbol.IsOverrideOfPossibleImplementationUnderRuntimeRules.)
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.InterfaceImplementationTests.TestCSharpClrDisagreement_Override">
+            <summary>
+            In this case, C# thinks B.M implements I.M for C, but the CLR thinks A.M does.  However,
+            B.M overrides A.M, so there's no problem (distinguish from TestCSharpClrDisagreement_NonOverride).
+            (See SourceNamedTypeSymbol.IsOverrideOfPossibleImplementationUnderRuntimeRules.)
+            </summary>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.InterfaceOverriddenOrHiddenMembersTests">
+            <summary>
+            Test interface member hiding.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.InterfaceOverriddenOrHiddenMembersTests.TestDiamond_Method_1">
+            <summary>
+            For this series of tests, we're going to use a fixed type hierarchy and a single member signature "void M()".
+            We will start with the signature in all interfaces, and then remove it from various subsets.
+            
+                 ITop
+               /      \
+            ILeft    IRight
+               \      /
+               IBottom
+            
+            All have method.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.InterfaceOverriddenOrHiddenMembersTests.TestDiamond_Method_2">
+            <summary>
+            All have method but IRight.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.InterfaceOverriddenOrHiddenMembersTests.TestDiamond_Method_3">
+            <summary>
+            All have method but ILeft and IRight.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.InterfaceOverriddenOrHiddenMembersTests.TestDiamond_Method_4">
+            <summary>
+            All have method but ITop.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.InterfaceOverriddenOrHiddenMembersTests.TestDiamond_Method_5">
+            <summary>
+            All have method but ITop and IRight.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.InterfaceOverriddenOrHiddenMembersTests.TestDiamond_Overload_1">
+            <summary>
+            These tests are the same as the TestDiamond_Method tests except that, instead of removing the method
+            from some interfaces, we'll change its parameter list in those interfaces.
+            
+                 ITop
+               /      \
+            ILeft    IRight
+               \      /
+               IBottom
+            
+            All have unmodified method.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.InterfaceOverriddenOrHiddenMembersTests.TestDiamond_Overload_2">
+            <summary>
+            All have unmodified method but IRight.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.InterfaceOverriddenOrHiddenMembersTests.TestDiamond_Overload_3">
+            <summary>
+            All have unmodified method but ILeft and IRight.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.InterfaceOverriddenOrHiddenMembersTests.TestDiamond_Overload_4">
+            <summary>
+            All have unmodified method but ITop.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.InterfaceOverriddenOrHiddenMembersTests.TestDiamond_Overload_5">
+            <summary>
+            All have unmodified method but ITop and IRight.
+            Unlike the other TestDiamond_Overload tests, this one reports different diagnostics than its TestDiamond_Method counterpart.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.InterfaceOverriddenOrHiddenMembersTests.TestDiamond_Arity_1">
+            <summary>
+            These tests are the same as the TestDiamond_Method tests except that, instead of removing the method
+            from some interfaces, we'll change its type parameter list in those interfaces.
+            
+                 ITop
+               /      \
+            ILeft    IRight
+               \      /
+               IBottom
+            
+            All have unmodified method.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.InterfaceOverriddenOrHiddenMembersTests.TestDiamond_Arity_2">
+            <summary>
+            All have unmodified method but IRight.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.InterfaceOverriddenOrHiddenMembersTests.TestDiamond_Arity_3">
+            <summary>
+            All have unmodified method but ILeft and IRight.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.InterfaceOverriddenOrHiddenMembersTests.TestDiamond_Arity_4">
+            <summary>
+            All have unmodified method but ITop.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.InterfaceOverriddenOrHiddenMembersTests.TestDiamond_Arity_5">
+            <summary>
+            All have unmodified method but ITop and IRight.
+            Unlike the other TestDiamond_Overload tests, this one reports different diagnostics than its TestDiamond_Method counterpart.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.InterfaceOverriddenOrHiddenMembersTests.TestDiamond_Kind_1">
+            <summary>
+            These tests are the same as the TestDiamond_Method tests except that, instead of removing the method
+            from some interfaces, we'll change its member kind (to Property) in those interfaces.
+            
+                 ITop
+               /      \
+            ILeft    IRight
+               \      /
+               IBottom
+            
+            All have unmodified method.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.InterfaceOverriddenOrHiddenMembersTests.TestDiamond_Kind_2">
+            <summary>
+            All have unmodified method but IRight.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.InterfaceOverriddenOrHiddenMembersTests.TestDiamond_Kind_3">
+            <summary>
+            All have unmodified method but ILeft and IRight.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.InterfaceOverriddenOrHiddenMembersTests.TestDiamond_Kind_4">
+            <summary>
+            All have unmodified method but ITop.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.InterfaceOverriddenOrHiddenMembersTests.TestDiamond_Kind_5">
+            <summary>
+            All have unmodified method but ITop and IRight.
+            Unlike the other TestDiamond_Overload tests, this one reports different diagnostics than its TestDiamond_Method counterpart.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.Metadata.PE.LoadCustomModifiers.CustomModifierCount(Microsoft.CodeAnalysis.CSharp.Symbols.FieldSymbol)">
+            <summary>
+            Count the number of custom modifiers in/on the type
+            of the specified field.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.Metadata.PE.LoadingAttributes.TestInteropAttributesInterface">
+            Did not Skip the test - will remove the explicit cast (from IMethodSymbol to MethodSymbol) once this bug is fixed
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.Metadata.PE.LoadingEvents.TestExplicitImplementationDefRefDef">
+            <summary>
+            A type def explicitly implements an interface, also a type def, but only
+            indirectly, via a type ref.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.Metadata.PE.LoadingEvents.TestTypeParameterPositions">
+            <summary>
+            In metadata, nested types implicitly share all type parameters of their containing types.
+            This results in some extra computations when mapping a type parameter position to a type
+            parameter symbol.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.Metadata.PE.LoadingIndexers.LoadAccessorPropertySignatureMismatch">
+            <summary>
+            The accessor and the property have signatures.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.Metadata.PE.LoadingIndexers.LoadBogusParameterNames">
+            <remarks>
+            Only testing parameter count mismatch.  There isn't specific handling for other
+            types of bogus properties - just setter param name if setter available and getter
+            param name if getter available (i.e. same as success case).
+            </remarks>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.Metadata.PE.LoadingMethods.TestExplicitImplementationDefRefDef">
+            <summary>
+            A type def explicitly implements an interface, also a type def, but only
+            indirectly, via a type ref.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.Metadata.PE.LoadingMethods.TestExplicitImplementationOfClassMethod">
+            <summary>
+            IL type explicitly overrides a class (vs interface) method.  
+            ExplicitInterfaceImplementations should be empty.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.Metadata.PE.LoadingMethods.TestExplicitImplementationOfUnrelatedInterfaceMethod">
+            <summary>
+            IL type explicitly overrides an interface method on an unrelated interface.
+            ExplicitInterfaceImplementations should be empty.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.Metadata.PE.LoadingMethods.TestExplicitImplementationOfUnrelatedGenericInterfaceMethod">
+            <summary>
+            IL type explicitly overrides an interface method on an unrelated generic interface.
+            ExplicitInterfaceImplementations should be empty.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.Metadata.PE.LoadingMethods.TestTypeParameterPositions">
+            <summary>
+            In metadata, nested types implicitly share all type parameters of their containing types.
+            This results in some extra computations when mapping a type parameter position to a type
+            parameter symbol.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.Metadata.PE.LoadingProperties.TestExplicitImplementationDefRefDef">
+            <summary>
+            A type def explicitly implements an interface, also a type def, but only
+            indirectly, via a type ref.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.Metadata.PE.LoadingProperties.TestTypeParameterPositions">
+            <summary>
+            In metadata, nested types implicitly share all type parameters of their containing types.
+            This results in some extra computations when mapping a type parameter position to a type
+            parameter symbol.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.Metadata.PE.LoadingProperties.TestExplicitImplementationMultipleAndPartial">
+            <summary>
+            Interface has 1{g;s}, 2{g;s}, 3{g;s}, 4{g}, 5{s}
+            Class has 1{g;s}, 2{g;s}
+            Class 1g implements Interface 1g, 2g, 4g
+            Class 1s implements Interface 1s, 3s, 5s
+            Class 2g implements Interface 2s
+            Class 2s implements Interface 3g
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.Metadata.PE.TypeForwarders.Diamond">
+            <summary>
+            pe1 -> pe3; pe2 -> pe3
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.Metadata.PE.TypeForwarders.Cycle1">
+            <summary>
+            pe1 -> pe2 -> pe1
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.Metadata.PE.TypeForwarders.Cycle2">
+            <summary>
+            pe1 -> pe2 -> pe3 -> pe1
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.Metadata.PE.TypeForwarders.Cycle3">
+            <summary>
+            pe1 -> pe2 -> pe1; pe3 -> pe4
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.Metadata.PE.TypeForwarders.ERR_CycleInTypeForwarder">
+            <summary>
+            pe1 -> pe2 -> pe1; pe3 depends upon the cyclic type.
+            </summary>
+            <remarks>
+            Only produced when the infinitely forwarded type is consumed via a metadata symbol
+            (i.e. not if it appears in the signature of a source member).
+            </remarks>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.Metadata.PE.TypeForwarders.SpecialTypeCycle">
+            <summary>
+            pe1 -> pe2 -> pe1
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.Metadata.PE.TypeForwarders.Generic">
+            <summary>
+            pe1 -> pe2.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.Metadata.PE.TypeForwarders.Nested">
+            <summary>
+            pe1 -> pe2.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.Metadata.PE.TypeForwarders.CheckForwarderEmit(System.String,System.String,System.String[])">
+            <summary>
+            Verify type forwarders in metadata symbols for compiled sources and in ExportedTypes metadata table.
+            </summary>
+            <param name="source1">Assembly actually containing types.</param>
+            <param name="source2">Assembly that forwards types.</param>
+            <param name="forwardedTypeFullNames">Forwarded type names should be in metadata format (Namespace.Outer`Arity+Inner`Arity).</param>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.Metadata.PE.TypeForwarders.AliasToTypeForwarder">
+            <summary>
+            Aliases to forwarded types are not supported currently.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.Metadata.PE.TypeForwarders.AliasToGenericTypeForwarder">
+            <summary>
+            Aliases to forwarded types are not supported currently.
+            </summary>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.OverriddenOrHiddenMembersTests">
+            <summary>
+            Test MethodSymbol.OverriddenOrHiddenMembers and PropertySymbol.OverriddenOrHiddenMembers.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.OverriddenOrHiddenMembersTests.TestCustomModifierOverride">
+            <summary>
+            Layout:
+            E : D : C : B : A
+            All have virtual Method1 and Method2 with the same signatures (modulo custom modifiers)
+            E, from source, has no custom modifiers
+            D has 2 custom modifiers
+            C has 1 custom modifier
+            B has 2 custom modifiers, but not the same as D
+            A has 1 custom modifier for Method1, but not the same as C, and 0 custom modifiers for Method2
+            </summary>
+            <remarks>
+            ACASEY: When I initially wrote this test, I had the order of the tie-breakers wrong because I missed
+            an exit condition in CSemanticChecker::FindSymHiddenByMethPropAgg.  Preferring more-derived types is
+            a more important tie-breaker than preferring fewer custom modifiers.  Unfortunately, the correct rules
+            make this test less comprehensive - no tie breaking occurs in practice, since we stop searching after
+            finding candidates in D.  I updated the test, rather than deleting it, as a record of the correct
+            behavior in this apparently complicated scenario.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.OverriddenOrHiddenMembersTests.TestCustomModifierTieBreak1">
+            <summary>
+            Choose candidate with fewer custom modifiers.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.OverriddenOrHiddenMembersTests.TestCustomModifierTieBreak2">
+            <summary>
+            Choose "first" candidate if custom modifier counts match.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.OverriddenOrHiddenMembersTests.CS0736ERR_CloseUnimplementedInterfaceMemberStatic_BaseFromMetadata">
+            <summary>
+            CS0736ERR_CloseUnimplementedInterfaceMemberStatic should
+            be reported, even if the close match is defined in metadata.
+            </summary>
+        </member>
+        <member name="F:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.Retargeting.NoPia.s_sourcePia1">
+            <summary>
+            Translation of Roslyn\Main\Open\Compilers\Test\Resources\Core\SymbolsTests\NoPia\Pia1.vb
+            Disassembly of Roslyn\Main\Open\Compilers\Test\Resources\Core\SymbolsTests\NoPia\Pia1.dll
+            </summary>
+        </member>
+        <member name="F:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.Retargeting.NoPia.s_sourceLocalTypes1_IL">
+            <summary>
+            Disassembly of Roslyn\Main\Open\Compilers\Test\Resources\Core\SymbolsTests\NoPia\LocalTypes1.dll
+            </summary>
+        </member>
+        <member name="F:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.Retargeting.NoPia.s_sourceLocalTypes1">
+            <summary>
+            Translation of Roslyn\Main\Open\Compilers\Test\Resources\Core\SymbolsTests\NoPia\LocalTypes1.vb
+            </summary>
+        </member>
+        <member name="F:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.Retargeting.NoPia.s_sourceLocalTypes2_IL">
+            <summary>
+            Disassembly of Roslyn\Main\Open\Compilers\Test\Resources\Core\SymbolsTests\NoPia\LocalTypes2.dll
+            </summary>
+        </member>
+        <member name="F:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.Retargeting.NoPia.s_sourceLocalTypes2">
+            <summary>
+            Translation of Roslyn\Main\Open\Compilers\Test\Resources\Core\SymbolsTests\NoPia\LocalTypes2.vb
+            </summary>
+        </member>
+        <member name="F:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.Retargeting.NoPia.s_sourceLocalTypes3_IL">
+            <summary>
+            Disassembly of Roslyn\Main\Open\Compilers\Test\Resources\Core\SymbolsTests\NoPia\LocalTypes3.dll
+            </summary>
+        </member>
+        <member name="F:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.Retargeting.NoPia.s_sourceLocalTypes3">
+            <summary>
+            Translation of Roslyn\Main\Open\Compilers\Test\Resources\Core\SymbolsTests\NoPia\LocalTypes3.vb
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.Source.DeclaringSyntaxNodeTests.PreserveLocationOrderOnReplaceSyntaxTree">
+            <summary>
+            Symbol location order should be preserved when trees
+            are replaced in the compilation.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.Source.EventTests.InterfaceRaiseAccessor">
+            <summary>
+            Even though the raise accessor is part of the event in metadata, it
+            is just another method in C#.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.Source.PropertyTests.MethodsAndAccessorsSame">
+            <summary>
+            Properties should refer to methods
+            in the type members collection.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.Source.PropertyTests.CallMethodsDirectly">
+            <summary>
+            Calling bogus methods directly should be allowed.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.Source.PropertyTests.FamilyAssembly">
+            <summary>
+            Support mixes of family and assembly.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.Source.PropertyTests.SignaturesDifferByModOptsOnly">
+            <summary>
+            Properties where the property and accessor signatures differ by
+            modopt only should be supported (as in the native compiler).
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.Source.PropertyTests.WinRtPropertySet">
+            <summary>
+            When the output type is .winmdobj properties should emit put_Property methods instead
+            of set_Property methods.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Symbols.Source.PropertyTests.WinRtPropertyAccessorNameConflict">
+            <summary>
+            Accessor type names that conflict should cause the appropriate diagnostic
+            (i.e., set_ for dll, put_ for winmdobj)
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.ContainerTests.ClassWithNestedTypesAndMembersWithSameName">
+            Container with nested types and non-type members with the same name
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.BaseClassTests.BaseTypeEvaluationOrder">
+            <summary>
+            The base type of a nested type should not change depending on
+            whether or not the base type of the containing type has been
+            evaluated.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.CompletionTests.TestNextCompletionPart">
+            <summary>
+            We used to have a problem where Symbol.NextIncompletePart read from
+            Symbol.incompleteParts twice, rather than copying the field value
+            into the temp.  If the value changed in between the reads, NextIncompletePart
+            would return more than one part, which caused a deadlock in
+            SourceNamedTypeSymbol.ForceComplete.  This test sometimes, but not always,
+            failed before the fix was applied.  Now it documents the former problem
+            and gives us some level of confidence in the fix.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.CompletionTests.TestHasAtMostOneBitSet">
+            <summary>
+            This test demonstrates the correctness of <see cref="M:Microsoft.CodeAnalysis.CSharp.Symbols.SymbolCompletionState.HasAtMostOneBitSet(System.Int32)"/>.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.CompletionTests.HasAtMostOneBitSetSafe(System.SByte)">
+            <summary>
+            This is the simple implementation of the sbyte version of <see cref="M:Microsoft.CodeAnalysis.CSharp.Symbols.SymbolCompletionState.HasAtMostOneBitSet(System.Int32)"/>.
+            Hopefully, it is obviously correct.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.CompletionTests.HasAtMostOneBitSetFast(System.SByte)">
+            <summary>
+            This is the sbyte version of <see cref="M:Microsoft.CodeAnalysis.CSharp.Symbols.SymbolCompletionState.HasAtMostOneBitSet(System.Int32)"/>.
+            It can be exhaustively tested more quickly than the full version.
+            </summary>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.CSharp.UnitTests.CustomModifierCopyTests">
+            <summary>
+            Test that when metadata methods with custom modifiers in their signatures are overridden
+            or explicitly implemented, the custom modifiers are copied to the corresponding source
+            method.  Secondarily, test that generated bridge methods have appropriate custom modifiers
+            in implicit implementation cases.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.CustomModifierCopyTests.TestSingleInterfaceImplementation">
+            <summary>
+            Test implementing a single interface with custom modifiers.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.CustomModifierCopyTests.TestMultipleInterfaceImplementation">
+            <summary>
+            Test implementing multiple (identical) interfaces with custom modifiers.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.CustomModifierCopyTests.TestSingleOverride">
+            <summary>
+            Test a direct override of a metadata method with custom modifiers.
+            Also confirm that a source method without custom modifiers can hide
+            a metadata method with custom modifiers (in the sense that "new" is
+            required) but does not copy the custom modifiers.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.CustomModifierCopyTests.TestRepeatedOverride">
+            <summary>
+            Test overriding a source method that overrides a metadata method with
+            custom modifiers.  The custom modifiers should propagate to the second
+            override as well.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.CustomModifierCopyTests.TestMethodOverrideCombinations">
+            <summary>
+            Test copying custom modifiers in/on parameters/return types.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.CustomModifierCopyTests.TestPropertyOverrideCombinations">
+            <summary>
+            Test copying custom modifiers in/on property types.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.CustomModifierCopyTests.CheckMethodCustomModifiers(Microsoft.CodeAnalysis.CSharp.Symbols.MethodSymbol,System.Boolean,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            Helper method specifically for TestMethodOverrideCombinations and TestPropertyOverrideCombinations.
+            </summary>
+            <param name="method">Must have array return type (or void) and single array parameter (or none).</param>
+            <param name="inReturnType">True if a custom modifier is expected on the return type array element type.</param>
+            <param name="onReturnType">True if a custom modifier is expected on the return type.</param>
+            <param name="inParameterType">True if a custom modifier is expected on the parameter type array element type.</param>
+            <param name="onParameterType">True if a custom modifier is expected on the parameter type.</param>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.CustomModifierCopyTests.CheckPropertyCustomModifiers(Microsoft.CodeAnalysis.CSharp.Symbols.PropertySymbol,System.Boolean,System.Boolean)">
+            <summary>
+            Helper method specifically for TestPropertyOverrideCombinations.
+            </summary>
+            <param name="property">Must have array type.</param>
+            <param name="inType">True if a custom modifier is expected on the return type array element type.</param>
+            <param name="onType">True if a custom modifier is expected on the return type.</param>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.CustomModifierCopyTests.CheckCustomModifier(System.Boolean,System.Collections.Immutable.ImmutableArray{Microsoft.CodeAnalysis.CustomModifier})">
+            <summary>
+            True - assert that the list contains a single const modifier.
+            False - assert that the list is empty.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.CustomModifierCopyTests.TestImplicitImplementationInBase">
+            <summary>
+            Test the case of a source type extending a metadata type that could implicitly
+            implement a metadata interface with custom modifiers.  If the source type does
+            not implement an interface method, the base method fills in and a bridge method
+            is synthesized in the source type.  If the source type does implement an interface
+            method, no bridge method is synthesized.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.CustomModifierCopyTests.TestCopyMultipleCustomModifiers">
+            <summary>
+            Test copying more than one custom modifier on the same element
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.CustomModifierCopyTests.TestParamsKeyword">
+            <summary>
+            The params keyword is inherited from the overridden method in the same way as
+            a custom modifier.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.CustomModifierCopyTests.TestIndexerExplicitInterfaceImplementation">
+            <summary>
+            Test implementing a single interface with custom modifiers.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.CustomModifierCopyTests.TestIndexerImplicitInterfaceImplementation">
+            <summary>
+            Test implementing a single interface with custom modifiers.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.CustomModifierCopyTests.TestOverrideIndexer">
+            <summary>
+            Test overriding a base type indexer with custom modifiers.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.CustomModifierCopyTests.TestParamsKeywordOnIndexer">
+            <summary>
+            The params keyword is inherited from the overridden indexer in the same way as
+            a custom modifier.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.FieldTests.RTSpecialName">
+            <summary>
+            Fields named "value__" should be marked rtspecialname.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Declarations.SourcePlusMetadataTests.MissingReturnType">
+            <summary>
+            C {}
+            B { C GetC(); }
+            A { void Main() { object o = B.GetC() }   - needs a references to C, but only has B
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.TypeMapTests.DeepConstruct(Microsoft.CodeAnalysis.CSharp.Symbols.NamedTypeSymbol,System.Collections.Immutable.ImmutableArray{Microsoft.CodeAnalysis.CSharp.Symbols.TypeSymbol})">
+            <summary>
+            Returns a constructed type given the type it is constructed from and type arguments for its enclosing types and itself.
+            </summary>
+            <param name="typeArguments">the type arguments that will replace the type parameters, starting with those for enclosing types</param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.CompilationErrorTests.CS0011ERR_CantImportBase01">
+            <summary>
+            This error is specific to netmodule scenarios
+            We used to give error CS0011: The base class or interface 'A' in assembly 'xxx' referenced by type 'B' could not be resolved
+            In Roslyn we do not know the context in which the lookup was occurring, so we give a new, more generic message.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.CompilationErrorTests.CS0081ERR_TypeParamMustBeIdentifier01">
+            <summary>
+            Currently parser error 1001, 1003.  Is that good enough?
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.CompilationErrorTests.CS0081ERR_TypeParamMustBeIdentifier01WithCSharp6">
+            <summary>
+            Currently parser error 1001, 1003.  Is that good enough?
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.CompilationErrorTests.CS0111ERR_MemberAlreadyExists05">
+            <summary>
+            Method signature comparison should ignore constraints.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.CompilationErrorTests.CS0118ERR_BadSKknown01">
+            <summary>
+            Some?
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.CompilationErrorTests.CS0146ERR_CircularBase01">
+            <summary>
+            Roslyn has 3 extra CS0146, Neal said it's per spec
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.CompilationErrorTests.CS0268ERR_ImportedCircularBase01">
+            <summary>
+            Class1.dll: error CS0268: Imported type 'C1' is invalid. It contains a circular base type dependency.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.CompilationErrorTests.CS0305ERR_BadArity01">
+            <summary>
+            Some?
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.CompilationErrorTests.CS0306ERR_BadTypeArgument02">
+            <summary>
+            Bad type arguments for aliases should be reported at the
+            alias declaration rather than at the use. (Note: This differs
+            from Dev10 which reports errors at the use, with no errors
+            reported if there are no uses of the alias.)
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.CompilationErrorTests.CS0433ERR_SameFullNameAggAgg01">
+            <summary>
+            Import - same name class from lib1 and lib2
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.CompilationErrorTests.CS0434ERR_SameFullNameNsAgg01">
+            <summary>
+            import - lib1: namespace A { namespace B { .class C {}.. }} 
+                 vs. lib2: Namespace A { class B { class C{} }    }} - use C
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.CompilationErrorTests.CS0518ERR_PredefinedTypeNotFound01">
+            <summary>
+            Some - /nostdlib - no mscorlib
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.CompilationErrorTests.CS0529ERR_CycleInInterfaceInheritance01">
+            <summary>
+            Extra errors - expected
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.CompilationErrorTests.CS0542ERR_MemberNameSameAsType06">
+            <summary>
+            Derived class with same name as base class
+            property accessor metadata name.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.CompilationErrorTests.CS0542ERR_MemberNameSameAsType07">
+            <summary>
+            Derived class with same name as base class
+            event accessor metadata name.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.CompilationErrorTests.CS7042ERR_DllImportOnGenericMethod">
+            <summary>
+            Dev10 doesn't report this error, but emits invalid metadata.
+            When the containing type is being loaded TypeLoadException is thrown by the CLR.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.CompilationErrorTests.CS0668ERR_InconsistentIndexerNames03">
+            <summary>
+            Same as 02, but with an explicit interface implementation between each pair.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.CompilationErrorTests.CS1067ERR_PartialWrongTypeParamsVariance01">
+            <summary>
+            variance
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.CompilationErrorTests.CS0105WRN_DuplicateUsing01">
+            <summary>
+            current error 104
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.CompilationErrorTests.CS0435WRN_SameFullNameThisNsAgg01">
+            <summary>
+            import - Lib:  class A     { class B {} } 
+                 vs. curr: Namespace A { class B {} } - use B
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.CompilationErrorTests.CS0436WRN_SameFullNameThisAggAgg01">
+            <summary>
+            import - Lib: class A  {}  vs. curr: class A {  }
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.CompilationErrorTests.CS0437WRN_SameFullNameThisAggNs01">
+            <summary>
+            import- Lib: namespace A { class B{} }  vs. curr: class A { class B {} }
+            </summary>
+        </member>
+    </members>
+</doc>

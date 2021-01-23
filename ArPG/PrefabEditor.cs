@@ -12,7 +12,7 @@ namespace ArPG
         List<Type> components = new List<Type>();
         public override void Start()
         {
-            ScriptManager.RunGameScripts();
+            //ScriptManager.RunGameScripts();
 
             entity = Game.CreateEntity();
             entity.AddComponent<TransformComponent>();

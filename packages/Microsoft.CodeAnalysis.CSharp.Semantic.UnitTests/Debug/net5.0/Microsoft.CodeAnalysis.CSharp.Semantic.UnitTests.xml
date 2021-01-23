@@ -1,0 +1,761 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.CodeAnalysis.CSharp.Semantic.UnitTests</name>
+    </assembly>
+    <members>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.FlowTestBase.CompileAndAnalyzeMultipleControlFlowStatements(System.String,System.Int32,System.Int32)">
+            <summary>
+            for multiple separated statements or expressions - can be nested
+            </summary>
+            <param name="program"></param>
+            <param name="treeindex">syntax tree index</param>
+            <param name="which">-1: all</param>
+            <returns></returns>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.CSharp.UnitTests.PatternsVsRegions">
+            <summary>
+            Region analysis tests involving pattern-matching constructs.
+            </summary>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.CSharp.UnitTests.RegionAnalysisTests">
+            <summary>
+            Tests for the region analysis APIs.
+            </summary>
+            <remarks>
+            Please add your tests to other files if possible:
+                * FlowDiagnosticTests.cs - all tests on Diagnostics
+                * IterationJumpYieldStatementTests.cs - while, do, for, foreach, break, continue, goto, iterator (yield break, yield return)
+                * TryLockUsingStatementTests.cs - try-catch-finally, lock, &amp; using statement
+                * PatternsVsRegions.cs - region analysis tests for pattern matching
+            </remarks>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Semantics.BindingAsyncTasklikeMoreTests.AdditionalConstraintMissingFromStateMachine_AsyncTaskMethodBuilder">
+            <summary>
+            Avoid checking constraints in generic methods in actual AsyncTaskMethodBuilder
+            to avoid breaking change.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Semantics.BindingAsyncTasklikeMoreTests.Start_AdditionalConstraintMissingFromStateMachine">
+            <summary>
+            Verify constraints at the call-site for generic methods of async method build.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Semantics.BindingAsyncTasklikeMoreTests.AwaitOnCompleted_AdditionalConstraintMissingFromAwaiter">
+            <summary>
+            Verify constraints at the call-site for generic methods of async method build.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Semantics.BindingAsyncTasklikeMoreTests.AwaitUnsafeOnCompleted_AdditionalConstraintMissingFromAwaiter">
+            <summary>
+            Verify constraints at the call-site for generic methods of async method build.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Semantics.BindingAwaitTests.AwaiterImplementsICriticalNotifyCompletion_Constraint">
+            <summary>
+            Should call ICriticalNotifyCompletion.UnsafeOnCompleted
+            if the awaiter type implements ICriticalNotifyCompletion.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Semantics.BindingTests.InaccessibleMethodInvalidDelegateUse">
+            <summary>
+            Should report inaccessible method, even when using
+            method as a delegate in an invalid context.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Semantics.BindingTests.InvalidUseOfMethodGroup">
+            <summary>
+            Methods should be resolved correctly even
+            in cases where a method group is not allowed.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Semantics.BindingTests.NonMethodsWithArgs">
+            <summary>
+            Report errors for invocation expressions for non-invocable expressions,
+            and bind arguments even though invocation expression was invalid.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Semantics.BindingTests.ChooseOneMethodIfEquallyInvalid">
+            <summary>
+            Choose one method if overloaded methods are
+            equally invalid.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Semantics.BindingTests.ParameterErrorsDefaultPartialMethodStaticType">
+            <summary>
+            Handle a mix of parameter errors for default values,
+            partial methods, and static parameter type.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Semantics.BindingTests.ErrorTypeConst">
+            <summary>
+            Error types should be allowed as constant types.
+            </summary>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.CSharp.UnitTests.Semantics.FuzzTests">
+            <summary>
+            Tests for problems discovered feeding the compiler random trash.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Semantics.NativeIntegerTests.TypeDefinitions_FromMetadata">
+            <summary>
+            System.IntPtr and System.UIntPtr definitions from metadata.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Semantics.NativeIntegerTests.TypeDefinitions_FromSource">
+            <summary>
+            System.IntPtr and System.UIntPtr definitions from source.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Semantics.NativeIntegerTests.StaticMembers(System.Boolean)">
+            <summary>
+            Static members Zero, Size, Add(), Subtract() are explicitly excluded from nint and nuint.
+            Other static members are implicitly included on nint and nuint.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Semantics.NativeIntegerTests.InstanceMembers(System.Boolean)">
+            <summary>
+            Instance members ToInt32(), ToInt64(), ToPointer() are explicitly excluded from nint and nuint.
+            Other instance members are implicitly included on nint and nuint.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Semantics.NativeIntegerTests.ConstructorsAndOperators(System.Boolean)">
+            <summary>
+            Instance members ToInt32(), ToInt64(), ToPointer() are explicitly excluded from nint and nuint.
+            Other instance members are implicitly included on nint and nuint.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Semantics.NativeIntegerTests.OverriddenMembers(System.Boolean)">
+            <summary>
+            Overrides from IntPtr and UIntPtr are implicitly included on nint and nuint.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Semantics.NativeIntegerTests.SizeOf_01">
+            <summary>
+            sizeof(IntPtr) and sizeof(nint) require compiling with /unsafe.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Semantics.NativeIntegerTests.Dynamic">
+            <summary>
+            Dynamic binding uses underlying type.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Semantics.NativeIntegerTests.BuiltInOperators">
+            <summary>
+            Verify there is the number of built in operators for { nint, nuint, nint?, nuint? }
+            for each operator kind.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Semantics.NativeIntegerTests.AttributeValue_01">
+            <summary>
+            Native integers cannot be used as attribute values.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Semantics.NativeIntegerTests.AttributeValue_02">
+            <summary>
+            Native integers cannot be used as attribute values.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Semantics.NullableReferenceTypesTests.VerifyOutVar(Microsoft.CodeAnalysis.CSharp.CSharpCompilation,System.String)">
+            <summary>
+            Check the inferred type of var from the semantic model, which currently means from initial binding.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Semantics.NullableReferenceTypesTests.VerifyVarLocal(Microsoft.CodeAnalysis.CSharp.CSharpCompilation,System.String)">
+            <summary>
+            Check the inferred type of var from the semantic model, which currently means from initial binding.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Semantics.NullableReferenceTypesTests.Lambda_19">
+            <summary>
+            To track nullability of captured variables inside and outside a lambda,
+            the lambda should be considered executed at the location the lambda
+            is converted to a delegate.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Semantics.NullableReferenceTypesTests.LocalFunction_01">
+            <summary>
+            Inferred nullability of captured variables should be tracked across
+            local function invocations, as if the local function was inlined.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Semantics.NullableReferenceTypesTests.LocalFunction_NoCallers">
+            <summary>
+            Should report warnings within unused local functions.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Semantics.NullableReferenceTypesTests.ParameterDefaultValue_FromMetadata">
+            <summary>
+            Default value for non-nullable parameter
+            should not result in a warning at the call site.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Semantics.NullableReferenceTypesTests.AssignmentWarningsDistinctForLocalsAndParameters">
+            <summary>
+            Assignment warnings for local and parameters should be distinct from
+            fields and properties because the former may be warnings from legacy
+            method bodies and it should be possible to disable those warnings separately.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Semantics.NullableReferenceTypesTests.ExplicitCast">
+            <summary>
+            Explicit cast does not cast away top-level nullability.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Semantics.NullableReferenceTypesTests.InheritNullabilityMaxDepth_01">
+            <summary>
+            Nullability of variable members is tracked up to a fixed depth.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Semantics.NullableReferenceTypesTests.InheritNullabilityMaxDepth_02">
+            <summary>
+            Nullability of variable members is tracked up to a fixed depth.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Semantics.NullableReferenceTypesTests.InheritNullabilityMaxDepth_03">
+            <summary>
+            Nullability of variable members is tracked up to a fixed depth.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Semantics.DefaultLiteralTests.ComparisonWithGenericType_VariousConstraints">
+            <summary>
+            <seealso cref="M:Microsoft.CodeAnalysis.CSharp.BuiltInOperators.IsValidObjectEquality(Microsoft.CodeAnalysis.CSharp.Conversions,Microsoft.CodeAnalysis.CSharp.Symbols.TypeSymbol,System.Boolean,System.Boolean,Microsoft.CodeAnalysis.CSharp.Symbols.TypeSymbol,System.Boolean,System.Boolean,System.Collections.Generic.HashSet{Microsoft.CodeAnalysis.DiagnosticInfo}@)"/>
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.AmbiguousOverrideTests.TestAmbiguousPropertiesWithCustomModifiers">
+            <summary>
+            Dev10 gives errors if all properties contain modopt, but no error for methods (pick the one with least modopt)
+            </summary>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.CSharp.UnitTests.AwaitExpressionTests">
+            <summary>
+            Tests related to binding (but not lowering) await expressions.
+            </summary>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.CSharp.UnitTests.BetterCandidates">
+            <summary>
+            Tests for improved overload candidate selection.
+            See also https://github.com/dotnet/csharplang/issues/98.
+            </summary>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.CSharp.UnitTests.ColorColorTests">
+            <summary>
+            Test our handling of the Color Color problem (spec section 7.6.4.1).
+            </summary>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.CSharp.UnitTests.ConditionalOperatorTests">
+            <summary>
+            Test binding of the conditional (aka ternary) operator.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.ConditionalOperatorTests.TestSameType">
+            <summary>
+            Both branches have the same type, so no conversion is necessary.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.ConditionalOperatorTests.TestOneConversion">
+            <summary>
+            Both branches have types and exactly one expression is convertible to the type of the other.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.ConditionalOperatorTests.TestAmbiguousPreferWider">
+            <summary>
+            Both branches have types and both expression are convertible to the type of the other.
+            The wider type is preferred.
+            </summary>
+            <remarks>
+            Cases where both conversions are possible and neither is preferred as the
+            wider of the two are possible only in the presence of user-defined implicit
+            conversions.  Such cases are tested separately.  
+            See SemanticErrorTests.CS0172ERR_AmbigQM.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.ConditionalOperatorTests.TestNoConversion">
+            <summary>
+            Both branches have types but neither expression is convertible to the type
+            of the other.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.ConditionalOperatorTests.TestOneUntypedSuccess">
+            <summary>
+            Exactly one branch has a type and the other expression is convertible to that type.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.ConditionalOperatorTests.TestOneUntypedFailure">
+            <summary>
+            Exactly one branch has a type but the other expression is not convertible to that type.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.ConstantTests.TestConstantFoldingDecimalOperations01">
+            <summary>
+            Breaking change from the native compiler for
+            certain constant expressions involving +0m and -0m.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.ConstantTests.TestConstantFoldingDecimalOperations02">
+            <summary>
+            Breaking change from the native compiler for
+            certain constant expressions involving +0m and -0m.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.SyntaxBinderTests.BinaryOperators_EasyOut">
+            <summary>
+            Verify operators returned from BinaryOperatorEasyOut match
+            the operators found from overload resolution.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.SyntaxBinderTests.UserDefinedShortCircuitingOperators_TrueAndFalseOnBaseType">
+            <summary>
+            Operators &amp;&amp; and || are supported when operators
+            &amp; and | are defined on the same type or a derived type
+            from operators true and false only. This matches Dev12.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.SyntaxBinderTests.UserDefinedShortCircuitingOperators_TrueAndFalseOnDerivedType">
+            <summary>
+            Operators &amp;&amp; and || are supported when operators
+            &amp; and | are defined on the same type or a derived type
+            from operators true and false only. This matches Dev12.
+            </summary>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.CSharp.UnitTests.ForEachTests">
+            <summary>
+            Tests related to binding (but not lowering) foreach loops.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.ForEachTests.TestErrorExplicitIEnumerableTOnTypeParameter">
+            <summary>
+            Type parameter with constraints containing
+            IEnumerable&lt;T&gt; with explicit implementations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.ForEachTests.TestErrorImplicitIEnumerableTOnTypeParameter">
+            <summary>
+            Type parameter with constraints containing
+            IEnumerable&lt;T&gt; with implicit implementations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.ForEachTests.TestErrorEnumerablePatternOnTypeParameter">
+            <summary>
+            Type parameter with constraints
+            using enumerable pattern.
+            </summary>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.CSharp.UnitTests.InheritanceBindingTests">
+            <summary>
+            Areas: interface mapping, virtual/abstract/override methods,
+            virtual properties, sealed members, new members, accessibility
+            of inherited methods, etc.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.InheritanceBindingTests.TestChangeIndexerParameters1">
+            <summary>
+            Based on Method1 in TestChangeMethodParameters.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.InheritanceBindingTests.TestChangeIndexerParameters2">
+            <summary>
+            Based on Method2 in TestChangeMethodParameters.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.InheritanceBindingTests.TestChangeIndexerParameters3">
+            <summary>
+            Based on Method3 in TestChangeMethodParameters.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.InheritanceBindingTests.TestChangeIndexerParameters4">
+            <summary>
+            Based on Method4 in TestChangeMethodParameters.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.InheritanceBindingTests.TestChangeIndexerParameters5">
+            <summary>
+            Based on Method5 in TestChangeMethodParameters.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.InheritanceBindingTests.TestChangeIndexerParameters6">
+            <summary>
+            Based on Method6 in TestChangeMethodParameters.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.InheritanceBindingTests.TestChangeIndexerParameters7">
+            <summary>
+            Based on Method7 in TestChangeMethodParameters.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.InheritanceBindingTests.TestChangeIndexerParameters8">
+            <summary>
+            Based on Method8 in TestChangeMethodParameters.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.InheritanceBindingTests.TestChangeIndexerParameters9">
+            <summary>
+            Based on Method9 in TestChangeMethodParameters.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.LocalFunctionTests.StaticWithTypeParameterReferences">
+            <summary>
+            Can reference type parameters from enclosing scope.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.LocalFunctionTests.NameOf_ShadowedVariable">
+            <summary>
+            nameof(x) should bind to shadowing symbol.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.LocalFunctionTests.NameOf_ShadowedTypeParameter">
+            <summary>
+            nameof(T) should bind to shadowing symbol.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.LocalFunctionTests.TypeOf_ShadowedTypeParameter">
+            <summary>
+            typeof(T) should bind to nearest type.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.LocalFunctionTests.SizeOf_ShadowedTypeParameter">
+            <summary>
+            sizeof(T) should bind to nearest type.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.LocalFunctionTests.EmittedAsStatic_03">
+            <summary>
+            Local function in generic method is emitted as a generic
+            method even if no references to type parameters.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.LocalFunctionTests.EmitCallInstruction">
+            <summary>
+            Emit 'call' rather than 'callvirt' for local functions regardless of whether
+            the local function is static.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.LocalFunctionTests.UnderscoreInOuterScope">
+            <summary>
+            '_' should bind to '_' symbol in outer scope even in static local function.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.LocalFunctionTests.VarInOuterScope">
+            <summary>
+            'var' should bind to 'var' symbol in outer scope even in static local function.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.LocalFunctionTests.AwaitWithinAsyncOuterScope_02">
+            <summary>
+            'await' should be a contextual keyword in the same way,
+            regardless of whether local function is static.
+            </summary>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.CSharp.UnitTests.LockTests">
+            <summary>
+            Tests related to binding (but not lowering) lock statements.
+            </summary>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.CSharp.UnitTests.LookupPositionTests">
+            <summary>
+            These tests step through source text character-by-character,
+            checking the results of LookupSymbols at each position.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.LookupPositionTests.TestLookupNames(System.String,System.String[][])">
+            <summary>
+            Given a program, calls LookupNames at each character position and verifies the results.
+            
+            The input program is broken into regions using backticks, which will be removed before
+            compilation.  The first region runs from the beginning of the string (inclusive) to the
+            first backtick (exclusive).  The second region runs from the first backtick (exclusive)
+            to the second backtick (exclusive).  The last region runs from the last backtick
+            (exclusive) to one character past the end of the string (i.e. EOF) (inclusive).
+            
+            For each region of the program, a list of expected names must be provided.  This method
+            will assert if any region contains different names than expected.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.LookupPositionTests.GetModelAndKeyPositions(System.String,System.Int32[]@)">
+            <summary>
+            Strip the backticks out of "markedText" and record their positions.
+            Return a SemanticModel for the compiled text.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.LookupPositionTests.CheckSymbols(Microsoft.CodeAnalysis.SemanticModel,System.Int32,System.Int32,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Assert that the result of LookupNames(position) matches the list of expected names.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.LookupPositionTests.Combine(System.Action{System.Collections.Generic.Stack{System.String[]}}[])">
+            <summary>
+            NB first func is applied first, not last.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.GetSemanticInfoTests.LookupProtectedInBase">
+            <summary>
+            Verify that there's a way to look up only the members of the base type that are visible
+            from the current type.
+            </summary>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.CSharp.UnitTests.ObjectAndCollectionInitializerTests">
+            <summary>
+            Tests related to binding object and collection initializer expressions.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.OverloadResolutionTests.NormalizeTaskTypes_MissingWellKnownTypes">
+            <summary>
+            Normalize should have no effect if System.Threading.Tasks.Task
+            and System.Threading.Tasks.Task&lt;T&gt; are not available.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.OverloadResolutionTests.InapplicableExtensionMethods_1">
+            <summary>
+            Inapplicable extension methods with bad arguments, with overloads where
+            the instance argument can be converted to 'this' before overloads where the
+            instance argument cannot be converted. Overload resolution should choose
+            a method with convertible 'this', as with the native compiler.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.OverloadResolutionTests.InapplicableExtensionMethods_2">
+            <summary>
+            Inapplicable extension methods with bad arguments, with overloads where
+            the instance argument can be converted to 'this' after overloads where the
+            instance argument cannot be converted. Overload resolution should choose
+            a method where non-convertible 'this', as with the native compiler.
+            </summary>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.CSharp.UnitTests.PatternMatchingTests2.RemoveAliasQualifiers">
+            <summary>
+            Helper class to remove alias qualifications.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.PatternMatchingTests3.RelationalFuzz_01(System.Int32,System.Int32,System.Char,System.String)">
+            <summary>
+            A test intended to stress the machinery in lowering used to build the balanced tree of tests.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.ScriptSemanticsTests.LookupSymbols">
+            <summary>
+            LookupSymbols should not include the submission class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.ScriptSemanticsTests.Submissions_ExecutionOrder3">
+            <summary>
+            Previous submission has to have no errors.
+            </summary>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.CSharp.UnitTests.SemanticErrorTests">
+            <summary>
+            this place is dedicated to binding related error tests
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.SemanticErrorTests.CS0019ERR_BadBinaryOps14">
+            <summary>
+            Conversion errors for Null Coalescing operator(??)
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.SemanticErrorTests.CS0131ERR_AssgLvalueExpected03">
+            <summary>
+            Breaking change from Dev10. CS0131 is now reported for all value
+            types, not just struct types. Specifically, CS0131 is now reported
+            for type parameters constrained to "struct". (See also CS1612.)
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.SemanticErrorTests.CS0310ERR_NewConstraintNotSatisfied04">
+            <summary>
+            Constraint errors within aliases.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.SemanticErrorTests.CS0310ERR_NewConstraintNotSatisfied05">
+            <summary>
+            Constructors with optional and params args
+            should not be considered parameterless.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.SemanticErrorTests.CS0571ERR_CantCallSpecialMethod03">
+            <summary>
+            No errors should be reported if method with
+            accessor name is defined in different class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.SemanticErrorTests.StaticUsedBeforeDeclaration">
+            <summary>
+            No errors using statics before declaration.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.SemanticErrorTests.CS1612ERR_ReturnNotLValue02">
+            <summary>
+            Breaking change from Dev10. CS1612 is now reported for all value
+            types, not just struct types. Specifically, CS1612 is now reported
+            for type parameters constrained to "struct". (See also CS0131.)
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.SemanticErrorTests.CS1961ERR_UnexpectedVariance_Contexts">
+            <summary>
+            Test the different contexts in which CS1961 can be seen.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.SemanticErrorTests.CS1961ERR_UnexpectedVariance_OutputUnsafe">
+            <summary>
+            Test all of the contexts that require output safety.
+            Note: some also require input safety.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.SemanticErrorTests.CS1961ERR_UnexpectedVariance_InputUnsafe">
+            <summary>
+            Test all of the contexts that require input safety.
+            Note: some also require output safety.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.SemanticErrorTests.CS1961ERR_UnexpectedVariance_BaseInterfaces">
+            <summary>
+            Test output-safety checks on base interfaces.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.SemanticErrorTests.CS1961ERR_UnexpectedVariance_Generics">
+            <summary>
+            Test all type parameter/type argument combinations.
+                                     | Type Arg Covariant   | Type Arg Contravariant | Type Arg Invariant
+            -------------------------+----------------------+------------------------+--------------------
+            Type Param Covariant     | Covariant            | Contravariant          | Invariant
+            Type Param Contravariant | Contravariant        | Covariant              | Invariant
+            Type Param Invariant     | Error                | Error                  | Invariant
+            </summary>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.CSharp.UnitTests.SpanStackSafetyTests">
+            <summary>
+            this place is dedicated to binding related error tests
+            </summary>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.CSharp.UnitTests.SwitchTests">
+            <summary>
+            Tests related to binding switch statement.
+            </summary>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.CSharp.UnitTests.TargetTypedConditionalOperatorTests">
+            <summary>
+            Test binding of the target-typed conditional (aka ternary) operator.
+            </summary>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.CSharp.UnitTests.TryCatchTests">
+            <summary>
+            Tests related to binding (but not lowering) try/catch statements.
+            </summary>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.CSharp.UnitTests.UnsafeTests">
+            <summary>
+            Tests related to binding (but not lowering) lock statements.
+            </summary>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.CSharp.UnitTests.UseSiteErrorTests">
+            <summary>
+            Tests related to use site errors.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.UseSiteErrorTests.UnsafeAttributes_NoErrors">
+            <summary>
+            Simple test to verify that the infrastructure for the other UnsafeAttributes_* tests works correctly.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.UseSiteErrorTests.UnsafeAttributes_MissingUnverifiableCodeAttribute">
+            <summary>
+            If the attribute type is missing, just skip emitting the attributes.
+            No diagnostics.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.UseSiteErrorTests.UnsafeAttributes_MissingSecurityPermissionAttribute">
+            <summary>
+            If the attribute type is missing, just skip emitting the attributes.
+            No diagnostics.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.UseSiteErrorTests.UnsafeAttributes_MissingSecurityAction">
+            <summary>
+            If the enum type is missing, just skip emitting the attributes.
+            No diagnostics.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.UseSiteErrorTests.UnsafeAttributes_MissingUnverifiableCodeAttributeCtorMissing">
+            <summary>
+            If the attribute constructor is missing, report a use site error.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.UseSiteErrorTests.UnsafeAttributes_SecurityPermissionAttributeCtorMissing">
+            <summary>
+            If the attribute constructor is missing, report a use site error.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.UseSiteErrorTests.UnsafeAttributes_SecurityPermissionAttributePropertyMissing">
+            <summary>
+            If the attribute property is missing, report a use site error.
+            </summary>
+        </member>
+        <member name="F:Microsoft.CodeAnalysis.CSharp.UnitTests.UseSiteErrorTests.unsafeAttributeSystemTypes">
+            <summary>
+            Trivial definitions of special types that will be required for testing use site errors in
+            the attributes emitted for unsafe assemblies.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.UseSiteErrorTests.CompileUnsafeAttributesAndCheckDiagnostics(System.String,System.Boolean,Microsoft.CodeAnalysis.Test.Utilities.DiagnosticDescription[])">
+            <summary>
+            Compile without corlib, and then verify semantic diagnostics, emit-metadata diagnostics, and emit diagnostics.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.UseSiteErrorTests.CompileWithMissingReference(System.String)">
+            <summary>
+            First, compile the provided source with all assemblies and confirm that there are no errors.
+            Then, compile the provided source again without the unavailable assembly and return the result.
+            </summary>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.CSharp.UnitTests.UsingStatementTests">
+            <summary>
+            Tests related to binding (but not lowering) using statements (not directives).
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.UsingStatementTests.MultipleResourceCreatedInsideUsing">
+            <bug id="10509" project="Roslyn"/>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.VarianceTests.TestInterfaceAssignment">
+            <summary>
+            Test generic interface assignment with type parameter variance.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.VarianceTests.TestDelegateAssignment">
+            <summary>
+            Test generic interface assignment with type parameter variance.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.VarianceTests.TestVarianceConversionCycle">
+            <remarks>Based on LambdaTests.TestLambdaErrors03</remarks>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.VarianceTests.TestVarianceConversionInfiniteExpansion01">
+            <remarks>http://blogs.msdn.com/b/ericlippert/archive/2008/05/07/covariance-and-contravariance-part-twelve-to-infinity-but-not-beyond.aspx</remarks>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.VarianceTests.TestVarianceConversionInfiniteExpansion02">
+            <remarks>http://blogs.msdn.com/b/ericlippert/archive/2008/05/07/covariance-and-contravariance-part-twelve-to-infinity-but-not-beyond.aspx</remarks>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.VarianceTests.ErrorLocations">
+            <summary>
+            Report errors on type parameter use
+            rather than declaration.
+            </summary>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.CSharp.UnitTests.WarningVersionTests">
+            <summary>
+            Tests that exercise warnings that are under control of the compiler option <see cref="P:Microsoft.CodeAnalysis.CompilationOptions.WarningLevel"/>
+            for values >= 5.
+            </summary>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.CSharp.UnitTests.ValueSetTests">
+            <summary>
+            Test some internal implementation data structures used in <see cref="T:Microsoft.CodeAnalysis.CSharp.DecisionDagBuilder"/>.
+            </summary>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.CSharp.Semantic.UnitTests.Semantics.ExpressionBodiedMemberTests">
+            <summary>
+            Contains tests for expression-bodied members in the semantic model.
+            </summary>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.CSharp.Semantic.UnitTests.Semantics.UsingDeclarationTests">
+            <summary>
+            Tests related to binding (but not lowering) using declarations (i.e. using var x = ...).
+            </summary>
+        </member>
+    </members>
+</doc>

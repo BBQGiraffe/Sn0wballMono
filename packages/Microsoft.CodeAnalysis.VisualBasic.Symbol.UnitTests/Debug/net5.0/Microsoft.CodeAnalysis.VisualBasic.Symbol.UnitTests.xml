@@ -1,0 +1,422 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+Microsoft.CodeAnalysis.VisualBasic.Symbol.UnitTests
+</name>
+</assembly>
+<members>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.DocCommentTests.IncludeErrorDashDashInName">
+ <summary>
+ "--" is not valid within an XML comment.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.Symbols.Metadata.PE.HasUnsupportedMetadata.ResolutionScopeNilRef">
+ <summary>
+ Throw a (handled) BadImageFormatException from MetadataDecoder
+ for a TypeRef resolution scope with Nil reference.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.Symbols.Metadata.PE.LoadingCustomAttributes.TestInteropAttributesInterface">
+ Did not Skip the test - will remove the explicit cast (from IMethodSymbol to MethodSymbol) once this bug is fixed
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.Symbols.Metadata.PE.LoadingMethods.TestExplicitImplementationOfUnrelatedGenericInterfaceMethod">
+ <summary>
+ IL type explicitly overrides an interface method on an unrelated generic interface.
+ ExplicitInterfaceImplementations should be empty.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.Symbols.Metadata.PE.LoadingMethods.TestTypeParameterPositions">
+ <summary>
+ In metadata, nested types implicitly share all type parameters of their containing types.
+ This results in some extra computations when mapping a type parameter position to a type
+ parameter symbol.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.Symbols.Metadata.PE.TypeForwarders.Diamond">
+ <summary>
+ pe1 -> pe3; pe2 -> pe3
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.Symbols.Metadata.PE.TypeForwarders.Cycle1">
+ <summary>
+ pe1 -> pe2 -> pe1
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.Symbols.Metadata.PE.TypeForwarders.Cycle2">
+ <summary>
+ pe1 -> pe2 -> pe3 -> pe1
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.Symbols.Metadata.PE.TypeForwarders.Cycle3">
+ <summary>
+ pe1 -> pe2 -> pe1; pe3 -> pe4
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.Symbols.Metadata.PE.TypeForwarders.ERR_TypeFwdCycle2">
+ <summary>
+ pe1 -> pe2 -> pe1; pe3 depends upon the cyclic type.
+ </summary>
+ <remarks>
+ Only produced when the infinitely forwarded type is consumed via a metadata symbol
+ </remarks>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.Symbols.Metadata.PE.TypeForwarders.SpecialTypeCycle">
+ <summary>
+ pe1 -> pe2 -> pe1
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.Symbols.Metadata.PE.TypeForwarders.Generic">
+ <summary>
+ pe1 -> pe2.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.Symbols.Metadata.PE.TypeForwarders.Nested">
+ <summary>
+ pe1 -> pe2.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.Symbols.Metadata.WinMdEventTest.WinMdEvent">
+ <summary>
+ Verify that WinRT events compile into the IL that we 
+ would expect.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.Symbols.Metadata.WinMdEventTest.WinMdEventLambda">
+ <summary>
+ Verify that WinRT events compile into the IL that we 
+ would expect.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.Symbols.Metadata.WinMdTypeTests.WinMdEnum">
+ <summary>
+ Verify that value__ in enums in WinRt are marked as public.
+ By default value__ is actually private and must be changed
+ by the compiler.
+ 
+ We check the enum Windows.UI.Xaml.Controls.Primitives.
+  ComponentResourceLocation
+ </summary>
+</member>
+<member name="F:Microsoft.CodeAnalysis.VisualBasic.UnitTests.Symbols.Retargeting.NoPia.s_sourcePia1">
+ <summary>
+ Roslyn\Main\Open\Compilers\Test\Resources\Core\SymbolsTests\NoPia\Pia1.vb
+ </summary>
+</member>
+<member name="F:Microsoft.CodeAnalysis.VisualBasic.UnitTests.Symbols.Retargeting.NoPia.s_sourceLocalTypes1_IL">
+ <summary>
+ Disassembly of Roslyn\Main\Open\Compilers\Test\Resources\Core\SymbolsTests\NoPia\LocalTypes1.dll
+ </summary>
+</member>
+<member name="F:Microsoft.CodeAnalysis.VisualBasic.UnitTests.Symbols.Retargeting.NoPia.s_sourceLocalTypes1">
+ <summary>
+ Roslyn\Main\Open\Compilers\Test\Resources\Core\SymbolsTests\NoPia\LocalTypes1.vb
+ </summary>
+</member>
+<member name="F:Microsoft.CodeAnalysis.VisualBasic.UnitTests.Symbols.Retargeting.NoPia.s_sourceLocalTypes2_IL">
+ <summary>
+ Disassembly of Roslyn\Main\Open\Compilers\Test\Resources\Core\SymbolsTests\NoPia\LocalTypes2.dll
+ </summary>
+</member>
+<member name="F:Microsoft.CodeAnalysis.VisualBasic.UnitTests.Symbols.Retargeting.NoPia.s_sourceLocalTypes2">
+ <summary>
+ Roslyn\Main\Open\Compilers\Test\Resources\Core\SymbolsTests\NoPia\LocalTypes2.vb
+ </summary>
+</member>
+<member name="F:Microsoft.CodeAnalysis.VisualBasic.UnitTests.Symbols.Retargeting.NoPia.s_sourceLocalTypes3_IL">
+ <summary>
+ Disassembly of Roslyn\Main\Open\Compilers\Test\Resources\Core\SymbolsTests\NoPia\LocalTypes3.dll
+ </summary>
+</member>
+<member name="F:Microsoft.CodeAnalysis.VisualBasic.UnitTests.Symbols.Retargeting.NoPia.s_sourceLocalTypes3">
+ <summary>
+ Roslyn\Main\Open\Compilers\Test\Resources\Core\SymbolsTests\NoPia\LocalTypes3.vb
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.GenericConstraintTests.ModOptsInConstraintsAreIgnored">
+ <summary>
+ Constraints with modopts are treated as unsupported types.
+ (The native compiler imports constraints with modopts but
+ generates invalid types when implementing or overriding
+ generic methods with such constraints.)
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.GenericConstraintTests.InconsistentConstraintsAreNotSupported">
+ <summary>
+ Constraints on the nested type must match
+ constraints from the containing types.
+ Note: Dev11 checks constraint flags only.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.GenericConstraintTests.ConstraintsAreCheckedAlongHierarchy">
+ <summary>
+ Behavior differs from C#. VB does not check constraints
+ along the inheritance hierarchy.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.GenericConstraintTests.ExtensionMethodOnArrayInterface">
+ <summary>
+ Invoke an extension method with an instance of a type parameter U
+ where U is a T and T is an array, and where the extension method
+ instance parameter type is an interface implemented by the array or
+ System.Array. Dev11 fails to resolve the extension method, although
+ this appears to be a bug in Dev11. Roslyn resolves the extension method.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.GenericConstraintTests.MembersOfBaseTypeConstraintViolationOnDerived">
+ <summary>
+ Constraint failures on derived type when referencing members of base type.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.GenericConstraintTests.HasPublicParameterlessConstructorCycle01">
+ <summary>
+ Cycle with field types with New constraint.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.GenericConstraintTests.HasPublicParameterlessConstructorCycle02">
+ <summary>
+ Cycle with event types with New constraint.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.GenericConstraintTests.HasPublicParameterlessConstructorCycle03">
+ <summary>
+ Cycle with property types with New constraint.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.GenericConstraintTests.HasPublicParameterlessConstructorCycle04">
+ <summary>
+ Cycle with property types with New constraint where the types
+ are parameter types and properties are explicit implementations.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.GenericConstraintTests.PropertySignatureDuplicateErrors">
+ <summary>
+ Avoid redundant errors from accessors when the
+ same errors are reported from property signature.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.GenericConstraintTests.Bug578752">
+ <summary>
+ Dev11 fails to resolve extension method E(Object) for o.E()
+ when the type of o is a type parameter with certain
+ constraints. Roslyn handles such cases correctly.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.BaseClassTests.BaseTypeEvaluationOrder">
+ <summary>
+ The base type of a nested type should not change depending on
+ whether or not the base type of the containing type has been
+ evaluated.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.EnumTests.EnumMemberWithNonConstInitializationAndSelfDependency">
+ bug 8151
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.EnumTests.GenerateEnum(System.Int32,System.Func{System.Int32,System.Int32,System.String})">
+ <summary>
+ Generate:
+ <code>
+ Enum E
+     M0 = ...
+     M1 = ...
+     ...
+     Mn = ...
+ End Enum
+ </code>
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.EventSymbolTests.CustomEventTypeDuplicateErrors">
+ <summary>
+ Avoid redundant errors from handlers when
+ a custom event type has errors.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.FieldTests.RTSpecialName">
+ <summary>
+ Fields named "value__" should be marked rtspecialname.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.OperatorsTests.UserDefinedShortCircuitingOperators_IsTrueAndIsFalseOnBaseType">
+ <summary>
+ Operators AndAlso and OrElse require that operators
+ And, Or, IsTrue, and IsFalse are defined on the same type.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.OperatorsTests.UserDefinedShortCircuitingOperators_IsTrueAndIsFalseOnDerivedType">
+ <summary>
+ Operators AndAlso and OrElse require that operators
+ And, Or, IsTrue, and IsFalse are defined on the same type.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.PropertyTests.DefaultMemberAttribute_Errors">
+ <summary>
+ Should only generate DefaultMemberAttribute if not specified explicitly.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.PropertyTests.DefaultMemberAttribute">
+ <summary>
+ Should only generate DefaultMemberAttribute if not specified explicitly.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.PropertyTests.DefaultPropertyOfParameterlessDefaultPropertyReturnType01">
+ <summary>
+ If the default property is parameterless (supported for
+ types from metadata), bind the argument list to the
+ default property of the return type instead.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.PropertyTests.DefaultPropertyOfParameterlessDefaultPropertyReturnType02">
+ <summary>
+ WriteOnly default parameterless property.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.PropertyTests.DefaultPropertyOfParameterlessElementAtOrDefault01">
+ <summary>
+ Default member from ElementAtOrDefault.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.PropertyTests.DefaultPropertyOfParameterlessElementAtOrDefault02">
+ <summary>
+ Default member from ElementAtOrDefault.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.PropertyTests.DefaultPropertyOfParameterlessElementAtOrDefault03">
+ <summary>
+ ElementAtOrDefault returning System.Array.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.PropertyTests.DefaultPropertyOfParameterlessElementAtOrDefault04">
+ <summary>
+ ElementAtOrDefault property. (ElementAtOrDefault field
+ not supported - see #576814.)
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.PropertyTests.DefaultPropertyOfParameterlessDelegate">
+ <summary>
+ Parentheses required for call to delegate.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.PropertyTests.MethodsAndAccessorsSame">
+ <summary>
+ Properties should refer to methods
+ in the type members collection.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.PropertyTests.CanReadPropertyWithMultipleAndNestedModOpts">
+ <summary>
+ Nested modopt is invalid and results in a use-site error
+ in Roslyn. The native compiler ignores modopts completely.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.PropertyTests.CanReadPropertyWithModReqsNestedWithinModOpts">
+ <summary>
+ Nested modreq within modopt is invalid and results in a use-site error
+ in Roslyn. The native compiler ignores modopts completely.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.PropertyTests.CallMethodsDirectly">
+ <summary>
+ Calling bogus methods directly should not be allowed.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.PropertyTests.DifferentSignatures_AccessorsConsistent">
+ <summary>
+ Consistent accessor signatures but different
+ from property signature.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.PropertyTests.DifferentSignatures_AccessorsDifferent">
+ <summary>
+ Different accessor signatures and different accessor and
+ property signatures. (Both are supported by Dev11, but
+ Roslyn requires accessors to have consistent signatures.)
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.PropertyTests.DifferentSignatures_ObjectInitializersAndAttributes">
+ <summary>
+ Properties used in object initializers and attributes.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.PropertyTests.DifferentSignatures_OverloadResolution">
+ <summary>
+ Overload resolution prefers supported properties over unsupported
+ properties. Since we're marking properties with inconsistent signatures
+ as unsupported, this can lead to different overload resolution than Dev11.
+ </summary>
+ <remarks></remarks>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.PropertyTests.DifferentSignatures_ParameterCount">
+ <summary>
+ Accessors with different parameter count than property.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.PropertyTests.DifferentAccessorSignatures_NamedArguments_2">
+ <summary>
+ Named arguments that differ by case.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.PropertyTests.DifferentAccessorSignatures_ByRef">
+ <summary>
+ ByRef must be consistent between accessor parameters.
+ Note: Dev11 does not require this.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.PropertyTests.DifferentAccessorSignatures_ParamArray">
+ <summary>
+ ParamArray must be consistent between accessor parameters.
+ Note: Dev11 does not require this.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.PropertyTests.DifferentAccessorSignatures_OptionCompare">
+ <summary>
+ OptionCompare must be consistent between accessor parameters.
+ Note: Dev11 does not require this.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.PropertyTests.DifferentSignatures_PropertyType">
+ <summary>
+ Signatures where the property value type
+ does not match the getter return type.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.PropertyTests.DifferentSignatures_PropertyType_2">
+ <summary>
+ Signatures where the property value type
+ does not match the setter value type.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.PropertyTests.DifferentSignatures_PropertyType_3">
+ <summary>
+ Signatures where the property value type does not
+ match the accessors, used in compound assignment.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.PropertyTests.DifferentSignatures_PropertyType_4">
+ <summary>
+ Getter return type is used for type inference.
+ Note: Dev11 uses the property type rather than getter.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.PropertyTests.WinRtPropertySet">
+ <summary>
+ When the output type is .winmdobj properties should emit put_Property methods instead
+ of set_Property methods.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.PropertyTests.WinRtPropertyAccessorNameConflict">
+ <summary>
+ Accessor type names that conflict should cause the appropriate diagnostic
+ (i.e., set_ for dll, put_ for winmdobj)
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.SourceSymbolTests.PreserveLocationOrderOnReplaceSyntaxTree">
+ <summary>
+ Symbol location order should be preserved when trees
+ are replaced in the compilation.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.SymbolErrorTests.AssertHasExactlyOneParamArrayAttribute(Microsoft.CodeAnalysis.VisualBasic.Symbols.ModuleSymbol,Microsoft.CodeAnalysis.VisualBasic.Symbols.ParameterSymbol)">
+ <remarks>Only use with PEModuleSymbol and PEParameterSymbol</remarks>
+</member>
+</members>
+</doc>

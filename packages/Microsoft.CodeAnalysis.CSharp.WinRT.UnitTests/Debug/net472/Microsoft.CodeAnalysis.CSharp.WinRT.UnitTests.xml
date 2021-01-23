@@ -1,0 +1,87 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.CodeAnalysis.CSharp.WinRT.UnitTests</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.CodeAnalysis.CSharp.UnitTests.CodeGen.WinMdEventTests">
+            <summary>
+            Test code generated for Windows Runtime events.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.CodeGen.WinMdEventTests.FieldLikeEventSerialization">
+            <summary>
+            Dev11 had bugs in this area (e.g. 281866, 298564), but Roslyn shouldn't be affected.
+            </summary>
+            <remarks>
+            I'm assuming this is why the final dev11 impl uses GetOrCreateEventRegistrationTokenTable.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.WinMdEventTests.WinMdEventTest">
+            <summary>
+            Make sure that consuming a WinRT type event produces the expected
+            IL output.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.WinMdEventTests.WinMdEventTestLocalGeneration">
+            <summary>
+            Make sure that consuming a WinRT type event produces a local when required.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.WinMdEventTests.VerifySignatures">
+            <summary>
+            Test to make sure that Windows.UI.Xaml.Application.Suspending is considered
+            by the compiler to be a regular-looking event even though it is a WinRT event
+            and returns an EventRegistrationToken.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.WinMdMetadataTests.FunctionSignatureForwarded">
+            <summary>
+            Make sure that the members of a function are forwarded to their appropriate types.
+            We do this by checking that the first parameter of
+            Windows.UI.Text.ITextRange.SetPoint(Point p...) gets forwarded to the 
+            System.Runtime.WindowsRuntime assembly.
+            </summary> 
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.WinMdMetadataTests.DelegateConstructorMarkedPublic">
+            <summary>
+            Make sure that a delegate defined in Windows.winmd has a public constructor
+            (by default, all delegates in Windows.winmd have a private constructor).
+            </summary> 
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.WinMdMetadataTests.TypeForwardingRenaming">
+            <summary>
+            Verify that Windows.Foundation.Uri forwards successfully
+            to System.Uri
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.WinMdMetadataTests.WinMdTypesDefPrivate">
+            <summary>
+            Verify that WinMd types are marked as private so that the
+            C# developer cannot instantiate them.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.WinMdMetadataTests.WinMdColorType">
+            <summary>
+            Verify that Windows.UI.Colors.Black is forwarded to the
+            System.Runtime.WindowsRuntime.dll assembly.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.WinMdMetadataTests.WinMdColorTest">
+            <summary>
+            Ensure that a simple program that uses projected types can compile
+            and run.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.WinMdMetadataTests.IReferenceToINullableType">
+            <summary>
+            Test that the metadata adapter correctly projects IReference to INullable
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.WinMdMetadataTests.WinMdIReferenceINullableTest">
+            <summary>
+            Test that a program projects IReference to INullable.
+            </summary>
+        </member>
+    </members>
+</doc>

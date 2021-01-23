@@ -1,0 +1,374 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.CodeAnalysis.CSharp.Syntax.UnitTests</name>
+    </assembly>
+    <members>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.DiagnosticTest.Resources">
+            <summary>
+            Ensure string resources are included.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.DiagnosticTest.NoDuplicates">
+            <summary>
+            ErrorCode should not have duplicates.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.DiagnosticTest.PragmaWarning_SomeKeywordsAreNotAllowedAsErrorCodes">
+            <remarks>
+            See <see cref="M:Microsoft.CodeAnalysis.CSharp.SyntaxFacts.IsPreprocessorContextualKeyword(Microsoft.CodeAnalysis.CSharp.SyntaxKind)"/>.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.DiagnosticTest.InvalidTypeArgumentList">
+            <summary>
+            Test that invalid type argument lists produce clean error messages
+            with minimal noise
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.DiagnosticTest.PossibleBadNegCast">
+            <summary>
+               Tests if CS0075 - "To cast a negative value, you must enclose the value in parentheses" is correctly emitted.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.DiagnosticTest.PossibleBadNegCastFixed">
+            <summary>
+               Tests if fixing CS0075 - "To cast a negative value, you must enclose the value in parentheses" works. (fixed version of <see cref="M:Microsoft.CodeAnalysis.CSharp.UnitTests.DiagnosticTest.PossibleBadNegCast"/>).
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.DiagnosticTest.PossibleBadNegCastNotEmitted">
+            <summary>
+               Tests if CS0075 - "To cast a negative value, you must enclose the value in parentheses" is only emitted if the left side is (would be) a cast expression.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.DiagnosticTest.PossibleBadNegCastDynamic">
+            <summary>
+               Tests if CS0075 - "To cast a negative value, you must enclose the value in parentheses" is also emitted for dynamic casts.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.DiagnosticTest.PossibleBadNegCastDynamicWithLocal">
+            <summary>
+               Tests if CS0075 - "To cast a negative value, you must enclose the value in parentheses" is also emitted for dynamic casts when a local variable called 'dynamic' is defined.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.DiagnosticTest.PossibleBadNegCastDynamicWithMethod">
+            <summary>
+               Tests if CS0075 - "To cast a negative value, you must enclose the value in parentheses" is also emitted for dynamic casts when a method called 'dynamic' is defined.
+            </summary>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.CSharp.UnitTests.IncrementalParsing.GrammarAmbiguities">
+            <summary>
+            A set of tests designed to verify that incremental parsing does the right thing when dealing
+            with grammatical ambiguities of the form F(G&lt;A, B &gt;(7)) to make sure that changing the
+            token after the &gt; correctly deals with transforming between a method invocation and a
+            pair of comparison expressions. (section 7.6.4.2 of the spec, and
+            LanguageParser.ScanTypeArgumentList).
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.DocumentationCommentLexerTestBase.AssertTokens(System.String,Microsoft.CodeAnalysis.CSharp.UnitTests.DocumentationCommentLexerTestBase.TokenDescription[])">
+            <summary>
+            Lexes the given text into a sequence of tokens and asserts that the actual
+            tokens match the expected tokens.
+            </summary>
+            <remarks>
+            Prints a baseline on failure.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.DocumentationCommentLexerTestBase.ToExpectedTokenString(Microsoft.CodeAnalysis.CSharp.Syntax.InternalSyntax.SyntaxToken)">
+            <summary>
+            Basic cleverness for cutting down the verbosity of expected token baselines
+            (i.e. don't output a parameter if the default is correct).
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.DocumentationCommentLexerTestBase.Token(Microsoft.CodeAnalysis.CSharp.SyntaxKind,System.String,System.String,Microsoft.CodeAnalysis.CSharp.SyntaxKind)">
+            <summary>
+            Convenience method for constructing TokenDescriptions.  If the text fields can be populated based
+            on the SyntaxKind, then they will be.
+            </summary>
+            <param name="kind">Mandatory.</param>
+            <param name="text">Defaults to Syntax.GetText of (contextual) kind.</param>
+            <param name="valueText">Defaults to the computed value of text.</param>
+            <param name="contextualKind">Defaults to None.</param>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.DocumentationCommentLexerTestBase.GetTokens(System.String)">
+            <summary>
+            Wrap the text in enough context to make the lexer happy and return a sequence of tokens.
+            </summary>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.CSharp.UnitTests.LexicalErrorTests">
+            <summary>
+            this place is dedicated to lexical related error tests
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.LexicalTests.TestDebuggerAliasIdentifiers">
+            <summary>
+            Earlier identifier syntax "[0-9]+#" not supported.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.PreprocessorTests.VerifyMembers(Microsoft.CodeAnalysis.CSharp.Syntax.CompilationUnitSyntax,Microsoft.CodeAnalysis.CSharp.UnitTests.MemberInfo[])">
+            <summary>
+            Not sure if this is good idea
+            </summary>
+            <param name="memberInfo"></param>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.PreprocessorTests.NullableEnableKeyword">
+            <summary>
+            "enable" should be a keyword within the directive only.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.XmlDocCommentTests.VerifyDiagnostics(Microsoft.CodeAnalysis.CSharp.CSharpSyntaxNode,System.Collections.Generic.List{Microsoft.CodeAnalysis.CSharp.UnitTests.XmlDocCommentTests.TestError})">
+            <summary>
+            Verifies that the errors on the given CSharpSyntaxNode match the expected error codes and types
+            </summary>
+            <param name="node">The node that has errors</param>
+            <param name="errors">The list of expected errors</param>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.XmlDocCommentTests.VerifyXmlElement(Microsoft.CodeAnalysis.CSharp.Syntax.XmlElementSyntax,System.String,System.String)">
+            <summary>
+            Verify if a given XmlElement is correct
+            </summary>
+            <param name="xmlElement">The XmlElement object to validate</param>
+            <param name="tagName">The name of the tag the XML element should have</param>
+            <param name="innerText">The text inside the XmlElement</param>
+            
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.XmlDocCommentTests.GetXmlElementText(Microsoft.CodeAnalysis.CSharp.Syntax.XmlElementSyntax)">
+            <summary>
+            Gets the string representation for a XmlElementText
+            </summary>
+            <param name="xmlElement"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.XmlDocCommentTests.VerifyXmlElement(Microsoft.CodeAnalysis.CSharp.Syntax.XmlEmptyElementSyntax,System.String)">
+            <summary>
+            Verifies an empty XmlElement
+            </summary>
+            <param name="xmlElement">The XmlElement object to validate</param>
+            <param name="tagName">The name of the tag the XML element should have</param>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.XmlDocCommentTests.VerifyXmlAttributes(Microsoft.CodeAnalysis.SyntaxList{Microsoft.CodeAnalysis.CSharp.Syntax.XmlAttributeSyntax},System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Verify if the attributes for a given XML node match the expected ones
+            </summary>
+            <param name="xmlAttributes">The list of attributes to verify</param>
+            <param name="attributes">The dictionary contains the key-value pair for the expected attribute values</param>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.CSharp.UnitTests.XmlDocCommentTests.TestError">
+            <summary>
+            This class is used to represent the expected errors
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Parsing.CSharpParseOptionsTests.TestFieldsForEqualsAndGetHashCode">
+            <summary>
+            If this test fails, please update the <see cref="M:Microsoft.CodeAnalysis.CSharp.CSharpParseOptions.GetHashCode"/>
+            and <see cref="M:Microsoft.CodeAnalysis.CSharp.CSharpParseOptions.Equals(Microsoft.CodeAnalysis.CSharp.CSharpParseOptions)"/> methods to
+            make sure they are doing the right thing with your new field and then update the baseline
+            here.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.ParsingTests.UsingTree(System.String,Microsoft.CodeAnalysis.CSharp.CSharpParseOptions)">
+            <summary>
+            Parses given string and initializes a depth-first preorder enumerator.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.ParsingTests.UsingNode(System.String)">
+            <summary>
+            Parses given string and initializes a depth-first preorder enumerator.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.ParsingTests.UsingNode(Microsoft.CodeAnalysis.CSharp.CSharpSyntaxNode)">
+            <summary>
+            Initializes a depth-first preorder enumerator for the given node.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.ParsingTests.N(Microsoft.CodeAnalysis.CSharp.SyntaxKind,System.String)">
+            <summary>
+            Moves the enumerator and asserts that the current node is of the given kind.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.ParsingTests.M(Microsoft.CodeAnalysis.CSharp.SyntaxKind)">
+            <summary>
+            Moves the enumerator and asserts that the current node is of the given kind
+            and is missing.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.ParsingTests.EOF">
+            <summary>
+            Asserts that the enumerator does not have any more nodes.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.ScriptParsingTests.PointerDeclaration">
+            bug="3784" project = "Roslyn"
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.ScriptParsingTests.PartialMethodDefinition">
+            bug="3778" project = "Roslyn"
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.ScriptParsingTests.UsingNewModifierWithPartialMethodDefinition">
+            bug="3780" project = "Roslyn"
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.ScriptParsingTests.Ternary_MethodDecl_GenericAmbiguity1">
+            <summary>
+            Prefer method declaration over an expression.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.ScriptParsingTests.Ternary_Expression_GenericAmbiguity1">
+            <summary>
+            Trailing colon turns a method declaration into an expression.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.ScriptParsingTests.Ternary_WithQuery_Expression4">
+            <summary>
+            Assume that "from" usually doesn't bind to a type and is rather a start of a query.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.ScriptParsingTests.GlobalStatementSeparators_Comma1">
+            <summary>
+            Comma after a global statement is ignored and a new global statement is parsed.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.ScriptParsingTests.ClassDeclaration">
+            bug="3782" project = "Roslyn"
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.ScriptParsingTests.InterfaceDeclaration">
+            bug="3783" project = "Roslyn"
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.CSharp.UnitTests.SyntaxRewriterTests">
+            <summary>
+            Test SyntaxRewriter and InternalSyntax.SyntaxRewriter.
+            </summary>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.CSharp.UnitTests.SyntaxRewriterTests.GreenRewriter">
+            <summary>
+            This Rewriter exposes delegates for the methods that would normally be overridden.
+            </summary>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.CSharp.UnitTests.SyntaxRewriterTests.RedRewriter">
+            <summary>
+            This Rewriter exposes delegates for the methods that would normally be overridden.
+            </summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.CSharp.UnitTests.Resources.InvalidExternAlias01">
+            <summary>extern alias libAlias=other_library.dll;
+            class myClass
+            {
+            }</summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.CSharp.UnitTests.Resources.LongWithoutStmts_cs">
+            <summary>using System;
+            using System.Collections.Generic;
+            using System.Linq;
+            using System.Text;
+            namespace ConsoleApplication1
+            {
+                class Program
+                {
+                    static void Main(string[] args)
+                    {
+                    }
+                }
+            }
+            public class Class_1_L0
+            {
+                //Sub [No Params ...</summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.CSharp.UnitTests.Resources.LongWithStmts_cs">
+            <summary>using System;
+            using System.Collections.Generic;
+            using System.Linq;
+            using System.Text;
+            
+            namespace ConsoleApplication1
+            {
+                class Program
+                {
+                    static void Main(string[] args)
+                    {
+                    }
+                }
+            }
+            
+            
+                    public class Class_1_L0
+                    {
+              ...</summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.CSharp.UnitTests.Resources.OptionalFloat">
+            <summary>// &lt;Area&gt;Declaration of Methods with Optional Parameters&lt;/Area&gt;
+            // &lt;Title&gt;Declaration of Optional Params&lt;/Title&gt;
+            // &lt;Description&gt;Simple Declaration of a method with optional parameters. cast of an int to long&lt;/Description&gt;
+            // &lt;Expects status=success&gt;&lt;/Expe ...</summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.CSharp.UnitTests.Resources.OptionalParamsArray">
+            <summary>// &lt;Area&gt;Declaration of Methods with Optional Parameters&lt;/Area&gt;
+            // &lt;Title&gt;Declaration of Optional Params&lt;/Title&gt;
+            // &lt;Description&gt;Simple Declaration of a method with optional parameters
+            // Params can't be defaulted&lt;/Description&gt;
+            // &lt;RelatedBugs&gt;Dev10:477862 ...</summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.CSharp.UnitTests.Resources.PartialAliasedName">
+            <summary>class Test : N1.I1
+                {
+                    int global::N</summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.CSharp.UnitTests.Resources.PartialInKeyword">
+            <summary>class C
+            {
+            public static int Main()
+            {
+            switch(str)
+            { 
+            default:
+            List&lt;in</summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.CSharp.UnitTests.Resources.PartialNewAttributeArray">
+            <summary>StringText oldText = new StringText(@"using System;
+            
+            class AAttribute : Attribute {
+              public AAttribute(object o) { }
+            }
+            
+            [A(new string[] is { """);
+                        var startTree = SyntaxTree.Parse(oldText);
+                        var roundTrip = startTree.Root.ToString() ...</summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.CSharp.UnitTests.Resources.PartialPreprocessorExpression">
+            <summary>#define TEST 
+            #define TEST2
+            class Test
+            {
+            static int Main() 
+            {
+            int x = 1;
+            
+            #if TEST3
+            x++;
+            #elif TEST2 &amp;</summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.CSharp.UnitTests.Resources.PartialSwitchBlock">
+            <summary>using System;
+            public class Test
+            {
+            public static int Main(string [] args)
+            {
+            switch (false) {
+            case true:
+            break;
+            default false:</summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.CSharp.UnitTests.Resources.PartialUnicodeIdentifier">
+            <summary>#define A
+            using System;
+            class Program
+            {
+            static int Main()
+            {
+            int x = 0;
+            #if A == A\</summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.SyntaxDifferences.GetRebuiltNodes(Microsoft.CodeAnalysis.SyntaxTree,Microsoft.CodeAnalysis.SyntaxTree)">
+            <summary>
+            Returns the nodes in the new tree that do not share the same underlying 
+            representation in the old tree. These may be entirely new nodes or rebuilt nodes.
+            </summary>
+        </member>
+    </members>
+</doc>

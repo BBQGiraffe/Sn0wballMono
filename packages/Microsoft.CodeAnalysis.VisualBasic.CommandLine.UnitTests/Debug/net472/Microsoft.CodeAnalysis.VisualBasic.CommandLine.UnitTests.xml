@@ -1,0 +1,24 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+Microsoft.CodeAnalysis.VisualBasic.CommandLine.UnitTests
+</name>
+</assembly>
+<members>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.CommandLine.UnitTests.TouchedFileLoggingTests.BuildTouchedFiles(Microsoft.CodeAnalysis.VisualBasic.VisualBasicCompiler,System.String,System.Collections.Generic.List{System.String}@,System.Collections.Generic.List{System.String}@)">
+ <summary>
+ Builds the expected base of touched files.
+ Adds a hook for temporary file creation as well,
+ so this method must be called before the execution of
+ Vbc.Run.
+ </summary>
+ <param name="cmd"></param>
+</member>
+<member name="M:MiscTests.OverflowCheck">
+ <summary>
+ Sanity check to help ensure our code base was compiled without overflow checking.
+ </summary>
+</member>
+</members>
+</doc>

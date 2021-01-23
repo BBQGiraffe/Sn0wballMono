@@ -1,0 +1,246 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+Microsoft.CodeAnalysis.VisualBasic.Syntax.UnitTests
+</name>
+</assembly>
+<members>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.Microsoft.CodeAnalysis.VisualBasic.UnitTests.GeneratedTests.TestParsedSyntaxTreeToString">
+ Bug 7983
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.Microsoft.CodeAnalysis.VisualBasic.UnitTests.GeneratedTests.Bug_10283">
+ Bug 10283
+</member>
+<member name="T:Microsoft.CodeAnalysis.VisualBasic.UnitTests.Microsoft.CodeAnalysis.VisualBasic.UnitTests.SyntaxRewriterTests.GreenRewriter">
+ <summary>
+ This Rewriter exposes delegates for the methods that would normally be overridden.
+ </summary>
+</member>
+<member name="T:Microsoft.CodeAnalysis.VisualBasic.UnitTests.Microsoft.CodeAnalysis.VisualBasic.UnitTests.SyntaxRewriterTests.RedRewriter">
+ <summary>
+ This Rewriter exposes delegates for the methods that would normally be overridden.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.IncrementalParser.MultiLineIf_2">
+ <summary>
+ Changes before a multi-line If should
+ not affect reuse of the If nodes.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.IncrementalParser.MultiLineIf_3">
+ <summary>
+ Changes sufficiently far after a multi-line If
+ should not affect reuse of the If nodes.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.IPEndBlockStatements.InsertEndFunctionAtFileEnd">
+ <summary>
+ Test1a - Inserts End Function at various places in code
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.IPEndBlockStatements.RemoveEndFunctionFileEnd">
+ <summary>
+ Test1b - Removes End Function at various places in code
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.IPEndBlockStatements.InsertEndSubFileEnd">
+ <summary>
+ Test2b - Removes End Sub at various places in code
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.IPEndBlockStatements.RemoveEndSubFileEnd">
+ <summary>
+ Test2b - Removes End Sub at various places in code
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.IPEndBlockStatements.RemoveEndSubFileMid">
+ <summary>
+ Test2b - Removes End Sub at various places in code
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.IPEndBlockStatements.RemoveEndSubFileStatLambda">
+ <summary>
+ Test2b - Removes End Sub at various places in code
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.IPEndBlockStatements.InsertEndIfFileEnd">
+ <summary>
+ Test3a - Inserts End If at various places in code
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.IPEndBlockStatements.InsertEndIfFileMid">
+ <summary>
+ Test3a - Inserts End If at various places in code
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.IPEndBlockStatements.InsertEndIfStatLambda">
+ <summary>
+ Test3a - Inserts End If at various places in code
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.IPEndBlockStatements.RemoveEndIfFileEnd">
+ <summary>
+ Test3b - Removes End IF at various places in code
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.IPEndBlockStatements.RemoveEndIfFileMid">
+ <summary>
+ Test3b - Removes End IF at various places in code
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.IPEndBlockStatements.RemoveEndIfStatLambda">
+ <summary>
+ Test3b - Removes End IF at various places in code
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.IPEndBlockStatements.InsertEndSelectFileEnd">
+ <summary>
+ Test4a - Inserts End Select at various places in code
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.IPEndBlockStatements.InsertEndSelectFileMid">
+ <summary>
+ Test4a - Inserts End Select at various places in code
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.IPEndBlockStatements.RemoveEndSelectFileEnd">
+ <summary>
+ Test4b - Removes End Select at various places in code
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.IPEndBlockStatements.RemoveEndSelectFileMid">
+ <summary>
+ Test4b - Removes End Select at various places in code
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.IPEndBlockStatements.InsertEndUsingFileEnd">
+ <summary>
+ Test5a - Inserts End Using at various places in code
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.IPEndBlockStatements.InsertEndUsingFileMid">
+ <summary>
+ Test5a - Inserts End Using at various places in code
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.IPEndBlockStatements.InsertEndUsingFileMidReplace">
+ <summary>
+ Test5a - Inserts End Using at various places in code
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.IPEndBlockStatements.RemoveEndUsingFileEnd">
+ <summary>
+ Test5b - Removes End Using at various places in code
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.IPEndBlockStatements.RemoveEndUsingFileMid">
+ <summary>
+ Test5b - Removes End Using at various places in code
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.Attributes.EmptyAttributesList">
+ <summary>
+ &lt;&gt; should be treated as an empty attributes list.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.ParseErrorTests.BC30999_XML">
+ <summary>
+ Underscores in XML should not be interpreted
+ as continuation characters.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.ParseExpressionTest.ParseEmptyLambdaWithLabelSyntax">
+ Lambda with a label
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.ParseExpressionTest.MissingOptionalExpressionEndingSingleLineStatement">
+ <summary>
+ Allow missing optional expression at end of statement
+ within single-line expression/statement.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.ParserRegressionTests.ParseAttributeOnIdentifierFollowedByColonInEnum">
+ <summary>
+ An identifier followed by a colon in an Enum block is only
+ treated as a label if there are no attributes. If there are
+ attributes, the identifier is considered an Enum member.
+ This matches the native compiler.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.ParseStatements.ParseEmptyStatementFollowingColon">
+ <summary>
+ EmptyStatement following colon.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.ParseStatements.ParseTriviaFollowingColon_1">
+ <summary>
+ Trivia up to and including the last colon on the line
+ should be associated with the preceding token.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.ParseStatements.LineContinuationTrivia">
+ <summary>
+ Line continuation trivia should include the underscore only.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.ParseStatements.ConsecutiveColonsTrivia">
+ <summary>
+ Each colon should be a separate trivia node.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.ParseStatements.SelectOrEndSelect">
+ <summary>
+ See reference to Dev10#708061 for ambiguity regarding
+ "End Select" in single-line lambda.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.ParseStatements.MultipleColons">
+ <summary>
+ Consecutive colons are handled differently by the
+ scanner if the colons are on the same line vs.
+ separate lines with line continuations.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.ParseStatements.CommentAtStartOfStatementNotFirstOnLine">
+ <summary>
+ Scanner needs to handle comment trivia at the start of a statement,
+ even when the statement is not the first on the line.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.ParseStatements.ErrorInStatementFollowingInvalidLabel">
+ <summary>
+ Should parse (and report errors in) a statement
+ following a label even if the label is invalid.
+ Currently, any statement on the same line as
+ the invalid label is ignored.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.ParseXml.Bug575780_EmbeddedExpression">
+ <summary>
+ As above but with lambda inside embedded expression.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.ParseXml.NoRemInXmlNames">
+ <summary>
+ Tests that the REM keyword cannot be neither left nor right part of a qualified XML name.
+ But FULLWIDTH COLON (U+FF1A) should never be parsed as a qualified XML name separator, so REM can follow it.
+ Also, the second colon should never be parsed as a qualified XML name separator.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.VisualBasicParseOptionsTests.TestFieldsForEqualsAndGetHashCode">
+ <summary>
+ If this test fails, please update the <see cref="M:Microsoft.CodeAnalysis.ParseOptions.GetHashCode" />
+ And <see cref="M:Microsoft.CodeAnalysis.ParseOptions.Equals(System.Object)" /> methods to
+ make sure they are doing the right thing with your New field And then update the baseline
+ here.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.ScannerTests.Scanner_EmptyToken">
+ <summary>
+ EmptyToken is generated by the Scanner in a single-line
+ If or lambda with an empty statement to avoid generating
+ a statement terminator with leading or trailing trivia.
+ </summary>
+</member>
+</members>
+</doc>

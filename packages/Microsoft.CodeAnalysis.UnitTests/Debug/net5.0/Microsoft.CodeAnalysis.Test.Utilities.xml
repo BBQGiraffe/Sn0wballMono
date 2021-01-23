@@ -1,0 +1,1069 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.CodeAnalysis.Test.Utilities</name>
+    </assembly>
+    <members>
+        <member name="T:Roslyn.Test.Utilities.AssertEx">
+            <summary>
+            Assert style type to deal with the lack of features in xUnit's Assert type
+            </summary>
+        </member>
+        <member name="M:Roslyn.Test.Utilities.AssertEx.EqualOrDiff(System.String,System.String,System.String)">
+            <summary>
+            Asserts that two strings are equal, and prints a diff between the two if they are not.
+            </summary>
+            <param name="expected">The expected string. This is presented as the "baseline/before" side in the diff.</param>
+            <param name="actual">The actual string. This is presented as the changed or "after" side in the diff.</param>
+            <param name="message">The message to precede the diff, if the values are not equal.</param>
+        </member>
+        <member name="T:Roslyn.Test.Utilities.AssertXml">
+            <summary>
+            There are many ways to compare XML documents.  This class aims to provide functionality somewhere
+            between a straight string comparison and a fully-configurable XML tree comparison.  In particular,
+            given a shallow comparer (i.e. one that does not consider children), it will compare the root elements
+            and, if they are equal, match up children by shallow equality, recursing on each pair.
+            </summary>
+        </member>
+        <member name="M:Roslyn.Test.Utilities.AssertXml.Equal(System.Xml.Linq.XElement,System.Xml.Linq.XElement,System.String,System.String,System.Int32,System.Boolean)">
+            <summary>
+            Compare two XElements.  Assumed to be non-null.
+            </summary>
+        </member>
+        <member name="M:Roslyn.Test.Utilities.AssertXml.GetAssertText(System.String,System.String,System.Xml.Linq.XElement,System.Tuple{System.Xml.Linq.XElement,System.Xml.Linq.XElement},System.String,System.Int32,System.Boolean)">
+            <summary>
+            Helpful diff output message.  Can be printed as either an XML literal (VB) or a string literal (C#).
+            </summary>
+        </member>
+        <member name="M:Roslyn.Test.Utilities.AssertXml.CheckEqual(System.Xml.Linq.XElement,System.Xml.Linq.XElement,System.Collections.Generic.IEqualityComparer{System.Xml.Linq.XElement},System.Tuple{System.Xml.Linq.XElement,System.Xml.Linq.XElement}@)">
+            <summary>
+            Compare the root elements and, if they are equal, match up children by shallow equality, recursing on each pair.
+            </summary>
+            <returns>True if the elements are equal, false otherwise (in which case, firstMismatch will try to indicate a point of disagreement).</returns>
+        </member>
+        <member name="T:Roslyn.Test.Utilities.AssertXml.NameAndAttributeComparer">
+            <summary>
+            Convenience shallow element comparer.  Checks names and attribute name-value pairs (ignoring order).
+            </summary>
+        </member>
+        <member name="T:Roslyn.Test.Utilities.ClrOnlyFactAttribute">
+            <summary>
+            Tests that can only be run on the Desktop CLR.
+            </summary>
+        </member>
+        <member name="T:Roslyn.Test.Utilities.ConditionalSkipReason">
+            <summary>
+            Container for common skip reasons. Secondary benefit allows us to use find all ref to 
+            discover the set of tests affected by a particular scenario.
+            </summary>
+        </member>
+        <member name="F:Roslyn.Test.Utilities.ConditionalSkipReason.TestExecutionNeedsDesktopTypes">
+            <summary>
+            There are certain types which only appear in the desktop runtime and tests which depend on them 
+            can't be run on CoreClr.
+            </summary>
+        </member>
+        <member name="F:Roslyn.Test.Utilities.ConditionalSkipReason.TestExecutionNeedsWindowsTypes">
+            <summary>
+            There are certain types, like PermissionSet, which are only available by default in runtimes that exist
+            on Windows. These types can be added using extra assemblies but that is not done in our unit tests.
+            </summary>
+        </member>
+        <member name="F:Roslyn.Test.Utilities.ConditionalSkipReason.MonoDefaultInterfaceMethods">
+            <summary>
+            Mono issues around Default Interface Methods
+            </summary>
+        </member>
+        <member name="P:Roslyn.Test.Utilities.ConditionalFactAttribute.Skip">
+            <summary>
+            This property exists to prevent users of ConditionalFact from accidentally putting documentation
+            in the Skip property instead of Reason. Putting it into Skip would cause the test to be unconditionally
+            skipped vs. conditionally skipped which is the entire point of this attribute.
+            </summary>
+        </member>
+        <member name="P:Roslyn.Test.Utilities.ConditionalFactAttribute.AlwaysSkip">
+            <summary>
+            Used to unconditionally Skip a test. For the rare occasion when a conditional test needs to be 
+            unconditionally skipped (typically short term for a bug to be fixed).
+            </summary>
+        </member>
+        <member name="P:Roslyn.Test.Utilities.ConditionalTheoryAttribute.Skip">
+            <summary>
+            This property exists to prevent users of ConditionalFact from accidentally putting documentation
+            in the Skip property instead of Reason. Putting it into Skip would cause the test to be unconditionally
+            skipped vs. conditionally skipped which is the entire point of this attribute.
+            </summary>
+        </member>
+        <member name="P:Roslyn.Test.Utilities.ConditionalTheoryAttribute.AlwaysSkip">
+            <summary>
+            Used to unconditionally Skip a test. For the rare occasion when a conditional test needs to be 
+            unconditionally skipped (typically short term for a bug to be fixed).
+            </summary>
+        </member>
+        <member name="T:Roslyn.Test.Utilities.EqualityUtil`1">
+            <summary>
+            Base class which does a lot of the boiler plate work for testing that the equality pattern
+            is properly implemented in objects
+            </summary>
+        </member>
+        <member name="M:Roslyn.Test.Utilities.EqualityUtil`1.ObjectEquals2">
+            <summary>
+            Comparison with Null should be false for reference types
+            </summary>
+        </member>
+        <member name="M:Roslyn.Test.Utilities.EqualityUtil`1.ObjectEquals3">
+            <summary>
+            Passing a value of a different type should just return false
+            </summary>
+        </member>
+        <member name="M:Roslyn.Test.Utilities.EqualityUtil`1.EquatableEquals2">
+            <summary>
+            If T is a reference type, null should return false in all cases
+            </summary>
+        </member>
+        <member name="T:Roslyn.Test.Utilities.UseCultureAttribute">
+            <summary>
+            Apply this attribute to your test method to replace the
+            <see cref="P:System.Threading.Thread.CurrentThread" /> <see cref="P:System.Globalization.CultureInfo.CurrentCulture" /> and
+            <see cref="P:System.Globalization.CultureInfo.CurrentUICulture" /> with another culture.
+            </summary>
+            <remarks>
+            This code was adapted from
+            https://github.com/xunit/samples.xunit/blob/5de2967/UseCulture/UseCultureAttribute.cs.
+            The original code is (c) 2014 Outercurve Foundation and licensed under the Apache License,
+            Version 2.0.
+            </remarks>
+        </member>
+        <member name="M:Roslyn.Test.Utilities.UseCultureAttribute.#ctor(System.String)">
+            <summary>
+            Replaces the culture and UI culture of the current thread with
+            <paramref name="culture" />
+            </summary>
+            <param name="culture">The name of the culture.</param>
+            <remarks>
+            <para>
+            This constructor overload uses <paramref name="culture" /> for both
+            <see cref="P:Roslyn.Test.Utilities.UseCultureAttribute.Culture" /> and <see cref="P:Roslyn.Test.Utilities.UseCultureAttribute.UICulture" />.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:Roslyn.Test.Utilities.UseCultureAttribute.#ctor(System.String,System.String)">
+            <summary>
+            Replaces the culture and UI culture of the current thread with
+            <paramref name="culture" /> and <paramref name="uiCulture" />
+            </summary>
+            <param name="culture">The name of the culture.</param>
+            <param name="uiCulture">The name of the UI culture.</param>
+        </member>
+        <member name="P:Roslyn.Test.Utilities.UseCultureAttribute.Culture">
+            <summary>
+            Gets the culture.
+            </summary>
+        </member>
+        <member name="P:Roslyn.Test.Utilities.UseCultureAttribute.UICulture">
+            <summary>
+            Gets the UI culture.
+            </summary>
+        </member>
+        <member name="M:Roslyn.Test.Utilities.UseCultureAttribute.Before(System.Reflection.MethodInfo)">
+            <summary>
+            Stores the current <see cref="P:System.Globalization.CultureInfo.CurrentCulture" /> and <see cref="P:System.Globalization.CultureInfo.CurrentUICulture" />
+            and replaces them with the new cultures defined in the constructor.
+            </summary>
+            <param name="methodUnderTest">The method under test</param>
+        </member>
+        <member name="M:Roslyn.Test.Utilities.UseCultureAttribute.After(System.Reflection.MethodInfo)">
+            <summary>
+            Restores the original <see cref="P:System.Globalization.CultureInfo.CurrentCulture" /> and
+            <see cref="P:System.Globalization.CultureInfo.CurrentUICulture" />.
+            </summary>
+            <param name="methodUnderTest">The method under test</param>
+        </member>
+        <member name="T:Roslyn.Test.Utilities.WorkItemAttribute">
+            <summary>
+            Used to tag test methods or types which are created for a given WorkItem
+            </summary>
+        </member>
+        <member name="M:Roslyn.Test.Utilities.WorkItemAttribute.#ctor(System.Int32,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Roslyn.Test.Utilities.WorkItemAttribute"/>.
+            </summary>
+            <param name="id">The ID of the issue in the original tracker where the work item was first reported. This
+            could be a GitHub issue or pull request number, or the number of a Microsoft-internal bug.</param>
+            <param name="issueUri">The URI where the work item can be viewed. This is a link to work item
+            <paramref name="id"/> in the original source.</param>
+        </member>
+        <member name="M:Roslyn.Test.Utilities.RuntimeEnvironmentUtilities.EmitReferences(Microsoft.CodeAnalysis.Compilation,System.Collections.Generic.HashSet{System.String},System.Collections.Generic.List{Roslyn.Test.Utilities.ModuleData},Microsoft.CodeAnalysis.DiagnosticBag)">
+            <summary>
+            Emit all of the references which are not directly or indirectly a <see cref="T:Microsoft.CodeAnalysis.Compilation"/> value.
+            </summary>
+        </member>
+        <member name="M:Roslyn.Test.Utilities.RuntimeEnvironmentUtilities.FindReferencedCompilations(Microsoft.CodeAnalysis.Compilation)">
+            <summary>
+            Find all of the <see cref="T:Microsoft.CodeAnalysis.Compilation"/> values reachable from this instance.
+            </summary>
+            <param name="original"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Roslyn.Test.Utilities.DescriptorFactory">
+            <summary>
+            Factory for creating different kinds of <see cref="T:Microsoft.CodeAnalysis.DiagnosticDescriptor"/>s for use in tests.
+            </summary>
+        </member>
+        <member name="M:Roslyn.Test.Utilities.DescriptorFactory.CreateSimpleDescriptor(System.String,System.String[])">
+            <summary>
+            Creates a <see cref="T:Microsoft.CodeAnalysis.DiagnosticDescriptor"/> with specified <see cref="P:Microsoft.CodeAnalysis.DiagnosticDescriptor.Id"/>.
+            </summary>
+            <remarks>
+            Returned <see cref="T:Microsoft.CodeAnalysis.DiagnosticDescriptor"/> has
+            - empty <see cref="P:Microsoft.CodeAnalysis.DiagnosticDescriptor.Title"/> and <see cref="P:Microsoft.CodeAnalysis.DiagnosticDescriptor.Category"/>
+            - <see cref="P:Microsoft.CodeAnalysis.DiagnosticDescriptor.MessageFormat"/> set to <paramref name="id"/>
+            - <see cref="P:Microsoft.CodeAnalysis.DiagnosticDescriptor.DefaultSeverity"/> set to <see cref="F:Microsoft.CodeAnalysis.DiagnosticSeverity.Hidden"/>
+            - <see cref="F:Microsoft.CodeAnalysis.WellKnownDiagnosticTags.NotConfigurable"/> custom tag added in <see cref="P:Microsoft.CodeAnalysis.DiagnosticDescriptor.CustomTags"/>.
+            </remarks>
+            <param name="id">The value for <see cref="P:Microsoft.CodeAnalysis.DiagnosticDescriptor.Id"/>.</param>
+            <param name="additionalCustomTags">Additional custom tags</param>
+            <returns>A <see cref="T:Microsoft.CodeAnalysis.DiagnosticDescriptor"/> with specified <see cref="P:Microsoft.CodeAnalysis.DiagnosticDescriptor.Id"/>.</returns>
+        </member>
+        <member name="T:Roslyn.Test.Utilities.EventWaiter">
+            <summary>
+            This class allows you to wait for a event to fire using signaling.
+            </summary>
+        </member>
+        <member name="M:Roslyn.Test.Utilities.EventWaiter.Wrap``1(System.EventHandler{``0})">
+            <summary>
+            Returns the lambda given with method calls to this class inserted of the form:
+            
+            try
+                execute given lambda.
+                
+            catch
+                capture exception.
+                
+            finally
+                signal async operation has completed.
+            </summary>
+            <typeparam name="T">Type of delegate to return.</typeparam>
+            <param name="input">lambda or delegate expression.</param>
+            <returns>The lambda given with method calls to this class inserted.</returns>
+        </member>
+        <member name="M:Roslyn.Test.Utilities.EventWaiter.WaitForEventToFire(System.TimeSpan)">
+            <summary>
+            Use this method to block the test until the operation enclosed in the Wrap method completes
+            </summary>
+            <param name="timeout"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Roslyn.Test.Utilities.EventWaiter.WaitForEventToFire">
+            <summary>
+            Use this method to block the test until the operation enclosed in the Wrap method completes
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Roslyn.Test.Utilities.EventWaiter.Dispose">
+            <summary>
+            IDisposable Implementation.  Note that this is where we throw our captured exceptions.
+            </summary>
+        </member>
+        <member name="T:Roslyn.Test.Utilities.ProcessResult">
+            <summary>
+            Encapsulates exit code and output/error streams of a process.
+            </summary>
+        </member>
+        <member name="M:Roslyn.Test.Utilities.ProcessUtilities.Run(System.String,System.String,System.String,System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.String}},System.String,System.Boolean)">
+            <summary>
+            Launch a process, wait for it to complete, and return output, error, and exit code.
+            </summary>
+        </member>
+        <member name="M:Roslyn.Test.Utilities.ProcessUtilities.StartProcess(System.String,System.String,System.String)">
+            <summary>
+            Launch a process, and return Process object. The process continues to run asynchronously.
+            You cannot capture the output.
+            </summary>
+        </member>
+        <member name="T:Roslyn.Test.Utilities.MarkupTestFile">
+            <summary>
+            To aid with testing, we define a special type of text file that can encode additional
+            information in it.  This prevents a test writer from having to carry around multiple sources
+            of information that must be reconstituted.  For example, instead of having to keep around the
+            contents of a file *and* and the location of the cursor, the tester can just provide a
+            string with the "$" character in it.  This allows for easy creation of "FIT" tests where all
+            that needs to be provided are strings that encode every bit of state necessary in the string
+            itself.
+            
+            The current set of encoded features we support are: 
+            
+            $$ - The position in the file.  There can be at most one of these.
+            
+            [| ... |] - A span of text in the file.  There can be many of these and they can be nested
+            and/or overlap the $ position.
+            
+            {|Name: ... |} A span of text in the file annotated with an identifier.  There can be many of
+            these, including ones with the same name.
+            
+            Additional encoded features can be added on a case by case basis.
+            </summary>
+        </member>
+        <member name="M:Roslyn.Test.Utilities.ILBuilderVisualizer.GetHandlerSpans(System.Collections.Immutable.ImmutableArray{Microsoft.Cci.ExceptionHandlerRegion})">
+            <summary>
+            Determine the list of spans ordered by handler
+            block start, with outer handlers before inner.
+            </summary>
+        </member>
+        <member name="M:Roslyn.Test.Utilities.ILBuilderVisualizer.ILBuilderToString(Microsoft.CodeAnalysis.CodeGen.ILBuilder,System.Func{Microsoft.Cci.ILocalDefinition,Microsoft.Metadata.Tools.ILVisualizer.LocalInfo},System.Collections.Generic.IReadOnlyDictionary{System.Int32,System.String})">
+            <remarks>
+            Invoked via Reflection from <see cref="T:Microsoft.CodeAnalysis.CodeGen.ILBuilder"/><c>.GetDebuggerDisplay()</c>.
+            </remarks>
+        </member>
+        <member name="M:Roslyn.Test.Utilities.ILValidation.IsStreamFullSigned(System.IO.Stream)">
+            <summary>
+            Validates that the given stream is marked as signed, the signature matches
+            the public key, and the header checksum is correct.
+            </summary>
+        </member>
+        <member name="M:Roslyn.Test.Utilities.MetadataValidation.GetAttributeName(System.Reflection.Metadata.MetadataReader,System.Reflection.Metadata.CustomAttributeHandle)">
+            <summary>
+            Returns the name of the attribute class 
+            </summary>
+        </member>
+        <member name="M:Roslyn.Test.Utilities.MetadataValidation.MarshalAsMetadataValidator(Microsoft.CodeAnalysis.PEAssembly,System.Func{System.String,Microsoft.CodeAnalysis.PEAssembly,System.Byte[]},System.Boolean)">
+            <summary>
+            Used to validate metadata blobs emitted for MarshalAs.
+            </summary>
+        </member>
+        <member name="T:Roslyn.Test.Utilities.PEModuleTestHelpers">
+            <summary>
+            Helpers to test metadata.
+            </summary>
+        </member>
+        <member name="T:Roslyn.Test.Utilities.ObjectReference`1">
+            <summary>
+            A wrapper to hold onto an object that you wish to make assertions about the lifetime of. This type has specific protections
+            to ensure the best possible patterns to avoid "gotchas" with these sorts of tests.
+            </summary>
+        </member>
+        <member name="F:Roslyn.Test.Utilities.ObjectReference`1._strongReferenceRetrievedOutsideScopedCall">
+            <summary>
+            Tracks if <see cref="M:Roslyn.Test.Utilities.ObjectReference`1.GetReference"/> was called, which means it's no longer safe to do lifetime assertions.
+            </summary>
+        </member>
+        <member name="M:Roslyn.Test.Utilities.ObjectReference`1.AssertReleased">
+            <summary>
+            Asserts that the underlying object has been released.
+            </summary>
+        </member>
+        <member name="M:Roslyn.Test.Utilities.ObjectReference`1.AssertHeld">
+            <summary>
+            Asserts that the underlying object is still being held.
+            </summary>
+        </member>
+        <member name="M:Roslyn.Test.Utilities.ObjectReference`1.UseReference(System.Action{`0})">
+            <summary>
+            Provides the underlying strong reference to the given action. This method is marked not be inlined, to ensure that no temporaries are left
+            on the stack that might still root the strong reference. The caller must not "leak" the object out of the given action for any lifetime
+            assertions to be safe.
+            </summary>
+        </member>
+        <member name="M:Roslyn.Test.Utilities.ObjectReference`1.UseReference``1(System.Func{`0,``0})">
+            <summary>
+            Provides the underlying strong reference to the given function. This method is marked not be inlined, to ensure that no temporaries are left
+            on the stack that might still root the strong reference. The caller must not "leak" the object out of the given action for any lifetime
+            assertions to be safe.
+            </summary>
+        </member>
+        <member name="M:Roslyn.Test.Utilities.ObjectReference`1.GetReference">
+            <summary>
+            Fetches the object strongly being held from this. Because the value returned might be cached in a local temporary from
+            the caller of this function, no further calls to <see cref="M:Roslyn.Test.Utilities.ObjectReference`1.AssertHeld"/> or <see cref="M:Roslyn.Test.Utilities.ObjectReference`1.AssertReleased"/> may be called
+            on this object as the test is not valid either way. If you need to operate with the object without invalidating
+            the ability to reference the object, see <see cref="M:Roslyn.Test.Utilities.ObjectReference`1.UseReference(System.Action{`0})"/>.
+            </summary>
+        </member>
+        <member name="P:Roslyn.Test.Utilities.OSVersion.IsWin8">
+            <summary>
+            True when the operating system is at least Windows version 8
+            </summary>
+        </member>
+        <member name="M:Roslyn.Test.Utilities.SigningTestHelpers.InstallKey">
+            <summary>
+            Installs the keys used for testing into the machine cache on Windows.
+            </summary>
+        </member>
+        <member name="F:Roslyn.Test.Utilities.TargetFramework.Empty">
+            <summary>
+            Explicit pick a target framework that has no references
+            </summary>
+        </member>
+        <member name="F:Roslyn.Test.Utilities.TargetFramework.Standard">
+            <summary>
+            Eventually this will be deleted and replaced with NetStandard20. Short term this creates the "standard"
+            API set across desktop and coreclr 
+            </summary>
+        </member>
+        <member name="F:Roslyn.Test.Utilities.TargetFramework.StandardCompat">
+            <summary>
+            This is represents the set of tests which must be mscorlib40 on desktop but full net standard on coreclr.
+            </summary>
+        </member>
+        <member name="F:Roslyn.Test.Utilities.TargetFramework.DefaultVb">
+            <summary>
+            Compat framework for the default set of references many vb compilations get.
+            </summary>
+        </member>
+        <member name="F:Roslyn.Test.Utilities.TargetFramework.Minimal">
+            <summary>
+            Minimal set of required types (<see cref="P:TestReferences.NetFx.Minimal.mincorlib"/>).
+            </summary>
+        </member>
+        <member name="F:Roslyn.Test.Utilities.TargetFramework.MinimalAsync">
+            <summary>
+            Minimal set of required types and Task implementation (<see cref="P:TestReferences.NetFx.Minimal.minasync"/>).
+            </summary>
+        </member>
+        <member name="T:Roslyn.Test.Utilities.TestBase">
+            <summary>
+            Base class for all unit test classes.
+            </summary>
+        </member>
+        <member name="M:Roslyn.Test.Utilities.TestBase.GetOrCreateMetadataReference(Microsoft.CodeAnalysis.MetadataReference@,System.Func{Microsoft.CodeAnalysis.MetadataReference})">
+            <summary>
+            Helper for atomically acquiring and saving a metadata reference. Necessary
+            if the acquired reference will ever be used in object identity comparisons.
+            </summary>
+        </member>
+        <member name="F:Roslyn.Test.Utilities.TestBase.s_winRtRefs">
+            <summary>
+            The array of 7 metadataimagereferences that are required to compile
+            against windows.winmd (including windows.winmd itself).
+            </summary>
+        </member>
+        <member name="F:Roslyn.Test.Utilities.TestBase.s_portableRefsMinimal">
+            <summary>
+            The array of minimal references for portable library (mscorlib.dll and System.Runtime.dll)
+            </summary>
+        </member>
+        <member name="P:Roslyn.Test.Utilities.TestBase.LinqAssemblyRef">
+            <summary>
+            Reference to an assembly that defines LINQ operators.
+            </summary>
+        </member>
+        <member name="P:Roslyn.Test.Utilities.TestBase.ExtensionAssemblyRef">
+            <summary>
+            Reference to an assembly that defines ExtensionAttribute.
+            </summary>
+        </member>
+        <member name="F:Roslyn.Test.Utilities.TestBase.s_mscorlibRef_silverlight">
+            <summary>
+            Reference to an mscorlib silverlight assembly in which the System.Array does not contain the special member LongLength.
+            </summary>
+        </member>
+        <member name="M:Roslyn.Test.Utilities.TestHelpers.AsXmlCommentText(System.String)">
+            <summary>
+            <see cref="P:System.Xml.Linq.XComment.Value"/> is serialized with "--" replaced by "- -"
+            </summary>
+        </member>
+        <member name="F:Microsoft.CodeAnalysis.Test.Utilities.DiffUtil.EditKind.None">
+            <summary>
+            No change.
+            </summary>
+        </member>
+        <member name="F:Microsoft.CodeAnalysis.Test.Utilities.DiffUtil.EditKind.Update">
+            <summary>
+            Node value was updated.
+            </summary>
+        </member>
+        <member name="F:Microsoft.CodeAnalysis.Test.Utilities.DiffUtil.EditKind.Insert">
+            <summary>
+            Node was inserted.
+            </summary>
+        </member>
+        <member name="F:Microsoft.CodeAnalysis.Test.Utilities.DiffUtil.EditKind.Delete">
+            <summary>
+            Node was deleted.
+            </summary>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.Test.Utilities.DiffUtil.LongestCommonSubsequence`1">
+            <summary>
+            Calculates Longest Common Subsequence.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.Test.Utilities.DiffUtil.LongestCommonSubsequence`1.ComputeDistance(`0,System.Int32,`0,System.Int32)">
+            <summary>
+            Returns a distance [0..1] of the specified sequences.
+            The smaller distance the more of their elements match.
+            </summary>
+            <summary>
+            Returns a distance [0..1] of the specified sequences.
+            The smaller distance the more of their elements match.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.Test.Utilities.DiffUtil.LongestCommonSubsequence`1.ComputeCostMatrix(`0,System.Int32,`0,System.Int32)">
+            <summary>
+            Calculates costs of all paths in an edit graph starting from vertex (0,0) and ending in vertex (lengthA, lengthB). 
+            </summary>
+            <remarks>
+            The edit graph for A and B has a vertex at each point in the grid (i,j), i in [0, lengthA] and j in [0, lengthB].
+            
+            The vertices of the edit graph are connected by horizontal, vertical, and diagonal directed edges to form a directed acyclic graph.
+            Horizontal edges connect each vertex to its right neighbor. 
+            Vertical edges connect each vertex to the neighbor below it.
+            Diagonal edges connect vertex (i,j) to vertex (i-1,j-1) if <see cref="M:Microsoft.CodeAnalysis.Test.Utilities.DiffUtil.LongestCommonSubsequence`1.ItemsEqual(`0,System.Int32,`0,System.Int32)"/>(sequenceA[i-1],sequenceB[j-1]) is true.
+            
+            Editing starts with S = []. 
+            Move along horizontal edge (i-1,j)-(i,j) represents the fact that sequenceA[i-1] is not added to S.
+            Move along vertical edge (i,j-1)-(i,j) represents an insert of sequenceB[j-1] to S.
+            Move along diagonal edge (i-1,j-1)-(i,j) represents an addition of sequenceB[j-1] to S via an acceptable 
+            change of sequenceA[i-1] to sequenceB[j-1].
+            
+            In every vertex the cheapest outgoing edge is selected. 
+            The number of diagonal edges on the path from (0,0) to (lengthA, lengthB) is the length of the longest common subsequence.
+            </remarks>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.Test.Utilities.EqualityTesting">
+            <summary>
+            Helpers for testing equality APIs. 
+            Gives us more control than calling Assert.Equals.
+            </summary>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.Test.Utilities.CommonTestBase">
+            <summary>
+            Base class for all language specific tests.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.Test.Utilities.CommonTestBase.ReadFromFile(System.String)">
+            <summary>
+            Reads content of the specified file.
+            </summary>
+            <param name="path">The path to the file.</param>
+            <returns>Read-only binary data read from the file.</returns>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.Test.Utilities.CommonTestBase.Signature(System.String,System.String,System.String)">
+            <summary>
+            Creates instance of SignatureDescription for a specified member
+            </summary>
+            <param name="fullyQualifiedTypeName">
+            Fully qualified type name for member
+            Names must be in format recognized by reflection
+            e.g. MyType{T}.MyNestedType{T, U} => MyType`1+MyNestedType`2
+            </param>
+            <param name="memberName">
+            Name of member on specified type whose signature needs to be verified
+            Names must be in format recognized by reflection
+            e.g. For explicitly implemented member - I1{string}.Method => I1{System.String}.Method
+            </param>
+            <param name="expectedSignature">
+            Baseline string for signature of specified member
+            Skip this argument to get an error message that shows all available signatures for specified member
+            </param>
+            <returns>Instance of SignatureDescription for specified member</returns>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.Test.Utilities.RuntimeUtilities">
+            <summary>
+            Hide all of the runtime specific implementations of types that we need to use when multi-targeting.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.Test.Utilities.RuntimeUtilities.GetAssemblyLocation(System.Type)">
+            <summary>
+            Get the location of the assembly that contains this type
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.Test.Utilities.CompilationVerifier.VerifyTypeIL(System.String,System.String)">
+            <summary>
+            Asserts that the emitted IL for a type is the same as the expected IL.
+            Many core library types are in different assemblies on .Net Framework, and .Net Core.
+            Therefore this test is likely to fail unless you  only run it only only on one of these frameworks,
+            or you run it on both, but provide a different expected output string for each.
+            See <see cref="T:Roslyn.Test.Utilities.ExecutionConditionUtil"/>.
+            </summary>
+            <param name="typeName">The non-fully-qualified name of the type</param>
+            <param name="expected">The expected IL</param>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.Test.Utilities.CompilationVerifier.VerifyILImpl(System.String,System.String,System.Boolean,System.String,System.String,System.Int32,System.Boolean,System.String)">
+            <summary>
+            Visualizes the IL for a given method, and ensures that it matches the expected IL.
+            </summary>
+            <param name="realIL">Controls whether the IL stream contains pseudo-tokens or real tokens.</param>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.Test.Utilities.CompilationVerifier.VerifySynthesizedFields(System.String,System.String[])">
+            <summary>
+            Useful for verifying the expected variables are hoisted for closures, async, and iterator methods.
+            </summary>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.Test.Utilities.BoxingOperationAnalyzer">
+            <summary>Analyzer that looks boxing operations.</summary>
+        </member>
+        <member name="F:Microsoft.CodeAnalysis.Test.Utilities.BoxingOperationAnalyzer.PerformanceCategory">
+            <summary>Diagnostic category "Performance".</summary>
+        </member>
+        <member name="F:Microsoft.CodeAnalysis.Test.Utilities.BoxingOperationAnalyzer.BoxingDescriptor">
+            <summary>The diagnostic descriptor used when boxing is detected.</summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.Test.Utilities.BoxingOperationAnalyzer.SupportedDiagnostics">
+            <summary>Gets the set of supported diagnostic descriptors from this analyzer.</summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.Test.Utilities.BoxingOperationAnalyzer.Report(Microsoft.CodeAnalysis.Diagnostics.OperationAnalysisContext,Microsoft.CodeAnalysis.SyntaxNode)">
+            <summary>Reports a diagnostic warning for a boxing operation.</summary>
+            <param name="context">The context.</param>
+            <param name="boxingExpression">The expression that produces the boxing.</param>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.Test.Utilities.SymbolCouldHaveMoreSpecificTypeAnalyzer">
+            <summary>Analyzer used to identify local variables and fields that could be declared with more specific types.</summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.Test.Utilities.SymbolCouldHaveMoreSpecificTypeAnalyzer.SupportedDiagnostics">
+            <summary>Gets the set of supported diagnostic descriptors from this analyzer.</summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.Test.Utilities.DiagnosticDescription.WithLocation(System.Int32,System.Int32)">
+            <summary>
+            Specialized syntaxPredicate that can be used to verify the start of the squiggled Span
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.Test.Utilities.DiagnosticDescription.WhereSyntax(System.Func{Microsoft.CodeAnalysis.SyntaxNode,System.Boolean})">
+            <summary>
+            Can be used to unambiguously identify Diagnostics that can not be uniquely identified by code, squiggledText and arguments
+            </summary>
+            <param name="syntaxPredicate">The argument to syntaxPredicate will be the nearest SyntaxNode whose Span contains first squiggled character.</param>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.Test.Utilities.EmptyArrayAnalyzer">
+            <summary>Analyzer that looks for empty array allocations and recommends their replacement.</summary>
+        </member>
+        <member name="F:Microsoft.CodeAnalysis.Test.Utilities.EmptyArrayAnalyzer.ArrayTypeName">
+            <summary>The name of the array type.</summary>
+        </member>
+        <member name="F:Microsoft.CodeAnalysis.Test.Utilities.EmptyArrayAnalyzer.ArrayEmptyMethodName">
+            <summary>The name of the Empty method on System.Array.</summary>
+        </member>
+        <member name="F:Microsoft.CodeAnalysis.Test.Utilities.EmptyArrayAnalyzer.UseArrayEmptyDescriptor">
+            <summary>The diagnostic descriptor used when Array.Empty should be used instead of a new array allocation.</summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.Test.Utilities.EmptyArrayAnalyzer.SupportedDiagnostics">
+            <summary>Gets the set of supported diagnostic descriptors from this analyzer.</summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.Test.Utilities.EmptyArrayAnalyzer.Report(Microsoft.CodeAnalysis.Diagnostics.OperationAnalysisContext,Microsoft.CodeAnalysis.SyntaxNode)">
+            <summary>Reports a diagnostic warning for an array creation that should be replaced.</summary>
+            <param name="context">The context.</param>
+            <param name="arrayCreationExpression">The array creation expression to be replaced.</param>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.Test.Utilities.EmptyArrayAnalyzer.RegisterOperationAction(Microsoft.CodeAnalysis.Diagnostics.CompilationStartAnalysisContext)">
+            <summary>Called once at compilation start to register actions in the compilation context.</summary>
+            <param name="context">The analysis context.</param>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.Test.Utilities.FieldCouldBeReadOnlyAnalyzer">
+            <summary>Analyzer used to identify fields that could be declared ReadOnly.</summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.Test.Utilities.FieldCouldBeReadOnlyAnalyzer.SupportedDiagnostics">
+            <summary>Gets the set of supported diagnostic descriptors from this analyzer.</summary>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.Test.Utilities.LocalCouldBeConstAnalyzer">
+            <summary>Analyzer used to identify local variables that could be declared Const.</summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.Test.Utilities.LocalCouldBeConstAnalyzer.SupportedDiagnostics">
+            <summary>Gets the set of supported diagnostic descriptors from this analyzer.</summary>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.Test.Utilities.CappedStringWriter">
+            <summary>
+            Used when capturing output from a running test to prevent runaway
+            output from allocating extreme amounts of memory.
+            </summary>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.Test.Utilities.ImmutableArrayTestExtensions">
+            <summary>
+            The collection of extension methods for the <see cref="T:System.Collections.Immutable.ImmutableArray`1"/> type
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.Test.Utilities.ImmutableArrayTestExtensions.WriteToFile(System.Collections.Immutable.ImmutableArray{System.Byte},System.String)">
+            <summary>
+            Writes read-only array of bytes to the specified file.
+            </summary>
+            <param name="bytes">Data to write to the file.</param>
+            <param name="path">File path.</param>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.Test.Utilities.CSharpInstrumentationChecker">
+             <summary>
+             Helper to check compilations with test instrumentation.
+            
+             Use in three steps:
+             1. Initialize with expectations about methods, what spans they include and which spans were covered.
+                 This is done with calls to Method followed by a call to True or False for each span within a method.
+             2. Use the ExpectedOutput to check that executing the compilation produces the expected instrumentation data.
+             3. Use CompleteCheck to check that your expectations about spans were correct.
+            
+             If you only do the third step, the test output will provide you with a template of code for the first step.
+             </summary>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.Test.Utilities.VBInstrumentationChecker">
+             <summary>
+             Helper to check compilations with test instrumentation.
+            
+             Use in three steps:
+             1. Initialize with expectations about methods, what spans they include and which spans were covered.
+                 This is done with calls to Method followed by a call to True or False for each span within a method.
+             2. Use the ExpectedOutput to check that executing the compilation produces the expected instrumentation data.
+             3. Use CompleteCheck to check that your expectations about spans were correct.
+            
+             If you only do the third step, the test output will provide you with a template of code for the first step.
+             </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.Test.Utilities.BaseInstrumentationChecker.Method(System.Int32,System.Int32,System.String,System.Boolean)">
+            <summary>
+            Start recording expectations for a method.
+            They need to be recorded in order, from method with smallest identifier to largest.
+            </summary>
+            <param name="method">The 1-based cardinal for referring to methods in data emitted and instrumentation data collected.</param>
+            <param name="file">The 1-based cardinal identifying a source file, as collected by the instrumentation.</param>
+            <param name="snippet">
+            A short snippet of code capturing the what you expect the span for this method to look like.
+            It will be verified against the start of the actual method source span.
+            If no snippet is passed in, then snippet validation will be disabled for the whole method (subsequent calls to <c>True</c> or <c>False</c>).
+            </param>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.Test.Utilities.BaseInstrumentationChecker.CompleteCheck(Microsoft.CodeAnalysis.Compilation,System.String)">
+            <summary>
+            Verify the recorded expectations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.Test.Utilities.BaseInstrumentationChecker.MethodChecker.True(System.String)">
+            <summary>
+            Records the expectation that the following span will be covered and resembles the provided snippet.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.Test.Utilities.BaseInstrumentationChecker.MethodChecker.False(System.String)">
+            <summary>
+            Records the expectation that the following span will *not* be covered and resembles the provided snippet.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.Test.Utilities.MetadataSignatureUnitTestHelper.VerifyMemberSignatures(Roslyn.Test.Utilities.IRuntimeEnvironment,Microsoft.CodeAnalysis.Test.Utilities.SignatureDescription[])">
+            <summary>
+            Uses Reflection to verify that the specified member signatures are present in emitted metadata
+            </summary>
+            <param name="appDomainHost">Unit test AppDomain host</param>
+            <param name="expectedSignatures">Baseline signatures - use the Signature() factory method to create instances of SignatureDescription</param>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.Test.Utilities.MetadataSignatureUnitTestHelper.VerifyMemberSignatureHelper(Roslyn.Test.Utilities.IRuntimeEnvironment,System.String,System.String,System.String@,System.Collections.Generic.List{System.String}@)">
+            <summary>
+            Uses Reflection to verify that the specified member signature is present in emitted metadata
+            </summary>
+            <param name="appDomainHost">Unit test AppDomain host</param>
+            <param name="fullyQualifiedTypeName">
+            Fully qualified type name for member
+            Names must be in format recognized by reflection
+            e.g. MyType&lt;T&gt;.MyNestedType&lt;T, U&gt; => MyType`1+MyNestedType`2
+            </param>
+            <param name="memberName">
+            Name of member on specified type whose signature needs to be verified
+            Names must be in format recognized by reflection
+            e.g. For explicitly implemented member - I1&lt;string&gt;.Method => I1&lt;System.String&gt;.Method
+            </param>
+            <param name="expectedSignature">
+            Baseline string for signature of specified member
+            Skip this argument to get an error message that shows all available signatures for specified member
+            This argument is passed by reference and it will be updated with a formatted form of the baseline signature for error reporting purposes
+            </param>
+            <param name="actualSignatures">List of found signatures matching member name</param>
+            <returns>True if a matching member signature was found, false otherwise</returns>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.Test.Utilities.MetadataSignatureUnitTestHelper.TriggerSignatureMismatchFailure(System.Collections.Generic.List{System.String},System.Collections.Generic.List{System.String})">
+            <summary>
+            Triggers assert when expected and actual signatures don't match
+            </summary>
+            <param name="expectedSignatures">List of baseline signature strings</param>
+            <param name="actualSignatures">List of actually found signature strings</param>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.Test.Utilities.DisposableFile.DeleteFileOnClose(System.String)">
+            <summary>
+            Marks given file for automatic deletion when all its handles are closed.
+            Note that after doing this the file can't be opened again, not even by the same process.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.Test.Utilities.TempDirectory.CreateFile(System.String)">
+            <summary>
+            Creates a file in this directory.
+            </summary>
+            <param name="name">File name.</param>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.Test.Utilities.TempDirectory.CreateOrOpenFile(System.String)">
+            <summary>
+            Creates a file or opens an existing file in this directory.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.Test.Utilities.TempDirectory.CopyFile(System.String,System.String)">
+            <summary>
+            Creates a file in this directory that is a copy of the specified file.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.Test.Utilities.TempDirectory.CreateDirectory(System.String)">
+            <summary>
+            Creates a subdirectory in this directory.
+            </summary>
+            <param name="name">Directory name or unrooted directory path.</param>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.Test.Utilities.TestResource.AllInOneCSharpCode">
+            <summary>#error Error message
+            #warning Warning message
+            #pragma warning disable 414, 3021
+            #pragma warning restore 3021
+            #pragma checksum "file.txt" "{00000000-0000-0000-0000-000000000000}" "2453"
+            #define goo
+            #if goo
+            #else
+            #endif
+            #undef goo
+            
+            extern alias Goo;
+            
+            using S ...</summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.Test.Utilities.TestResource.AllInOneVisualBasicBaseline">
+            <summary>Option Infer On
+            Option Explicit Off
+            
+            Imports System
+            Imports System.Collections.Generic
+            Imports System.Linq
+            Imports System.Linq.Expressions
+            Imports System.Text
+            Imports M = System.Math
+            Imports System.Collections
+            Imports &lt;xmlns:ns="goo"&gt;
+            Imports &lt;xmlns="goo"&gt; ...</summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.Test.Utilities.TestResource.AllInOneVisualBasicCode">
+            <summary>Option Infer On
+            Option Explicit Off
+            
+            Imports System
+            Imports System.Collections.Generic
+            Imports System.Linq
+            Imports System.Linq.Expressions
+            Imports System.Text
+            Imports M = System.Math
+            Imports System.Collections
+            Imports &lt;xmlns:ns="goo"&gt;
+            Imports &lt;xmlns="goo"&gt; ...</summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.Test.Utilities.TestResource.HelloWorldVisualBasicCode">
+            <summary>Imports System
+            Imports System.Collections.Generic
+            Imports System.Linq
+            
+            ''' &lt;summary&gt;
+            ''' Sample Documentation
+            ''' &lt;/summary&gt;
+            Module Program
+                Sub Main(args As String())
+                    ' User Comments
+                    Console.WriteLine(5)
+                End Sub
+            End Module</summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.FlowAnalysis.CustomDataFlowAnalysis`1.Run(Microsoft.CodeAnalysis.FlowAnalysis.ControlFlowGraph,Microsoft.CodeAnalysis.FlowAnalysis.DataFlowAnalyzer{`0},System.Threading.CancellationToken)">
+            <summary>
+            Runs dataflow analysis for the given <paramref name="analyzer"/> on the given <paramref name="controlFlowGraph"/>.
+            </summary>
+            <param name="controlFlowGraph">Control flow graph on which to execute analysis.</param>
+            <param name="analyzer">Dataflow analyzer.</param>
+            <returns>Block analysis data at the end of the exit block.</returns>
+            <remarks>
+            Algorithm for this CFG walker has been forked from <see cref="T:Microsoft.CodeAnalysis.FlowAnalysis.ControlFlowGraphBuilder"/>'s internal
+            implementation for basic block reachability computation: "MarkReachableBlocks",
+            we should keep them in sync as much as possible.
+            </remarks>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.FlowAnalysis.DataFlowAnalyzer`1">
+            <summary>
+            Analyzer to execute custom dataflow analysis on a control flow graph.
+            </summary>
+            <typeparam name="TBlockAnalysisData">Custom data tracked for each basic block with values at start of the block.</typeparam>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.FlowAnalysis.DataFlowAnalyzer`1.GetCurrentAnalysisData(Microsoft.CodeAnalysis.FlowAnalysis.BasicBlock)">
+            <summary>
+            Gets current analysis data for the given basic block, or an empty analysis data.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.FlowAnalysis.DataFlowAnalyzer`1.GetEmptyAnalysisData">
+            <summary>
+            Gets empty analysis data for first analysis pass on a basic block.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.FlowAnalysis.DataFlowAnalyzer`1.SetCurrentAnalysisData(Microsoft.CodeAnalysis.FlowAnalysis.BasicBlock,`0,System.Threading.CancellationToken)">
+            <summary>
+            Updates the current analysis data for the given basic block.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.FlowAnalysis.DataFlowAnalyzer`1.AnalyzeBlock(Microsoft.CodeAnalysis.FlowAnalysis.BasicBlock,System.Threading.CancellationToken)">
+            <summary>
+            Analyze the given basic block and return the block analysis data at the end of the block for its successors.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.FlowAnalysis.DataFlowAnalyzer`1.AnalyzeNonConditionalBranch(Microsoft.CodeAnalysis.FlowAnalysis.BasicBlock,`0,System.Threading.CancellationToken)">
+            <summary>
+            Analyze the non-conditional fallthrough successor branch for the given basic block
+            and return the block analysis data for the branch destination.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.FlowAnalysis.DataFlowAnalyzer`1.AnalyzeConditionalBranch(Microsoft.CodeAnalysis.FlowAnalysis.BasicBlock,`0,System.Threading.CancellationToken)">
+            <summary>
+            Analyze the given conditional branch for the given basic block and return the
+            block analysis data for the branch destinations for the fallthrough and
+            conditional successor branches.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.FlowAnalysis.DataFlowAnalyzer`1.Merge(`0,`0,System.Threading.CancellationToken)">
+            <summary>
+            Merge the given block analysis data instances to produce the resultant merge data.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.FlowAnalysis.DataFlowAnalyzer`1.IsEqual(`0,`0)">
+            <summary>
+            Returns true if both the given block analysis data instances should be considered equivalent by analysis.
+            </summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.FlowAnalysis.DataFlowAnalyzer`1.AnalyzeUnreachableBlocks">
+            <summary>
+            Flag indicating if the dataflow analysis should run on unreachable blocks.
+            </summary>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.CommonDiagnosticAnalyzers.ConcurrentAnalyzer">
+            <summary>
+            This analyzer is intended to be used only when concurrent execution is enabled for analyzers.
+            This analyzer will deadlock if the driver runs analyzers on a single thread OR takes a lock around callbacks into this analyzer to prevent concurrent analyzer execution
+            Former indicates a bug in the test using this analyzer and the latter indicates a bug in the analyzer driver.
+            </summary>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.CommonDiagnosticAnalyzers.NonConcurrentAnalyzer">
+            <summary>
+            This analyzer will report diagnostics only if it receives any concurrent action callbacks, which would be a
+            bug in the analyzer driver as this analyzer doesn't invoke <see cref="M:Microsoft.CodeAnalysis.Diagnostics.AnalysisContext.EnableConcurrentExecution"/>.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.DiagnosticExtensions.VerifyErrorCodes(System.Collections.Generic.IEnumerable{Microsoft.CodeAnalysis.Diagnostic},Microsoft.CodeAnalysis.Test.Utilities.DiagnosticDescription[])">
+            <summary>
+            This is obsolete. Use Verify instead.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.DiagnosticExtensions.GetEffectiveDiagnostics(Microsoft.CodeAnalysis.Compilation,System.Collections.Generic.IEnumerable{Microsoft.CodeAnalysis.Diagnostic})">
+            <summary>
+            Given a set of compiler or <see cref="T:Microsoft.CodeAnalysis.Diagnostics.DiagnosticAnalyzer"/> generated <paramref name="diagnostics"/>, returns the effective diagnostics after applying the below filters:
+            1) <see cref="P:Microsoft.CodeAnalysis.CompilationOptions.SpecificDiagnosticOptions"/> specified for the given <paramref name="compilation"/>.
+            2) <see cref="P:Microsoft.CodeAnalysis.CompilationOptions.GeneralDiagnosticOption"/> specified for the given <paramref name="compilation"/>.
+            3) Diagnostic suppression through applied <see cref="T:System.Diagnostics.CodeAnalysis.SuppressMessageAttribute"/>.
+            4) Pragma directives for the given <paramref name="compilation"/>.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.DiagnosticExtensions.IsDiagnosticAnalyzerSuppressed(Microsoft.CodeAnalysis.Diagnostics.DiagnosticAnalyzer,Microsoft.CodeAnalysis.CompilationOptions)">
+            <summary>
+            Returns true if all the diagnostics that can be produced by this analyzer are suppressed through options.
+            </summary>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.UnitTests.Diagnostics.BadStuffTestAnalyzer">
+            <summary>Analyzer used to test for bad statements and expressions.</summary>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.UnitTests.Diagnostics.OwningSymbolTestAnalyzer">
+            <summary>Analyzer used to test for operations within symbols of certain names.</summary>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.UnitTests.Diagnostics.BigForTestAnalyzer">
+            <summary>Analyzer used to test for loop IOperations.</summary>
+        </member>
+        <member name="F:Microsoft.CodeAnalysis.UnitTests.Diagnostics.BigForTestAnalyzer.ReliabilityCategory">
+            <summary>Diagnostic category "Reliability".</summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.UnitTests.Diagnostics.BigForTestAnalyzer.SupportedDiagnostics">
+            <summary>Gets the set of supported diagnostic descriptors from this analyzer.</summary>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.UnitTests.Diagnostics.SwitchTestAnalyzer">
+            <summary>Analyzer used to test switch IOperations.</summary>
+        </member>
+        <member name="F:Microsoft.CodeAnalysis.UnitTests.Diagnostics.SwitchTestAnalyzer.ReliabilityCategory">
+            <summary>Diagnostic category "Reliability".</summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.UnitTests.Diagnostics.SwitchTestAnalyzer.SupportedDiagnostics">
+            <summary>Gets the set of supported diagnostic descriptors from this analyzer.</summary>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.UnitTests.Diagnostics.InvocationTestAnalyzer">
+            <summary>Analyzer used to test invocaton IOperations.</summary>
+        </member>
+        <member name="F:Microsoft.CodeAnalysis.UnitTests.Diagnostics.InvocationTestAnalyzer.ReliabilityCategory">
+            <summary>Diagnostic category "Reliability".</summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.UnitTests.Diagnostics.InvocationTestAnalyzer.SupportedDiagnostics">
+            <summary>Gets the set of supported diagnostic descriptors from this analyzer.</summary>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.UnitTests.Diagnostics.SeventeenTestAnalyzer">
+            <summary>Analyzer used to test various contexts in which IOperations can occur.</summary>
+        </member>
+        <member name="F:Microsoft.CodeAnalysis.UnitTests.Diagnostics.SeventeenTestAnalyzer.ReliabilityCategory">
+            <summary>Diagnostic category "Reliability".</summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.UnitTests.Diagnostics.SeventeenTestAnalyzer.SupportedDiagnostics">
+            <summary>Gets the set of supported diagnostic descriptors from this analyzer.</summary>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.UnitTests.Diagnostics.NullArgumentTestAnalyzer">
+            <summary>Analyzer used to test IArgument IOperations.</summary>
+        </member>
+        <member name="F:Microsoft.CodeAnalysis.UnitTests.Diagnostics.NullArgumentTestAnalyzer.ReliabilityCategory">
+            <summary>Diagnostic category "Reliability".</summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.UnitTests.Diagnostics.NullArgumentTestAnalyzer.SupportedDiagnostics">
+            <summary>Gets the set of supported diagnostic descriptors from this analyzer.</summary>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.UnitTests.Diagnostics.MemberInitializerTestAnalyzer">
+            <summary>Analyzer used to test IMemberInitializer IOperations.</summary>
+        </member>
+        <member name="F:Microsoft.CodeAnalysis.UnitTests.Diagnostics.MemberInitializerTestAnalyzer.ReliabilityCategory">
+            <summary>Diagnostic category "Reliability".</summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.UnitTests.Diagnostics.MemberInitializerTestAnalyzer.SupportedDiagnostics">
+            <summary>Gets the set of supported diagnostic descriptors from this analyzer.</summary>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.UnitTests.Diagnostics.AssignmentTestAnalyzer">
+            <summary>Analyzer used to test IAssignmentExpression IOperations.</summary>
+        </member>
+        <member name="F:Microsoft.CodeAnalysis.UnitTests.Diagnostics.AssignmentTestAnalyzer.ReliabilityCategory">
+            <summary>Diagnostic category "Reliability".</summary>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.UnitTests.Diagnostics.ArrayInitializerTestAnalyzer">
+            <summary>Analyzer used to test IArrayInitializer IOperations.</summary>
+        </member>
+        <member name="F:Microsoft.CodeAnalysis.UnitTests.Diagnostics.ArrayInitializerTestAnalyzer.Maintainability">
+            <summary>Diagnostic category "Maintainability".</summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.UnitTests.Diagnostics.ArrayInitializerTestAnalyzer.SupportedDiagnostics">
+            <summary>Gets the set of supported diagnostic descriptors from this analyzer.</summary>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.UnitTests.Diagnostics.VariableDeclarationTestAnalyzer">
+            <summary>Analyzer used to test IVariableDeclarationStatement IOperations.</summary>
+        </member>
+        <member name="F:Microsoft.CodeAnalysis.UnitTests.Diagnostics.VariableDeclarationTestAnalyzer.Maintainability">
+            <summary>Diagnostic category "Maintainability".</summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.UnitTests.Diagnostics.VariableDeclarationTestAnalyzer.SupportedDiagnostics">
+            <summary>Gets the set of supported diagnostic descriptors from this analyzer.</summary>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.UnitTests.Diagnostics.CaseTestAnalyzer">
+            <summary>Analyzer used to test ICase and ICaseClause.</summary>
+        </member>
+        <member name="F:Microsoft.CodeAnalysis.UnitTests.Diagnostics.CaseTestAnalyzer.Maintainability">
+            <summary>Diagnostic category "Maintainability".</summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.UnitTests.Diagnostics.CaseTestAnalyzer.SupportedDiagnostics">
+            <summary>Gets the set of supported diagnostic descriptors from this analyzer.</summary>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.UnitTests.Diagnostics.ExplicitVsImplicitInstanceAnalyzer">
+            <summary>Analyzer used to test for explicit vs. implicit instance references.</summary>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.UnitTests.Diagnostics.MemberReferenceAnalyzer">
+            <summary>Analyzer used to test for member references.</summary>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.UnitTests.Diagnostics.ParamsArrayTestAnalyzer">
+            <summary>Analyzer used to test IOperation treatment of params array arguments.</summary>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.UnitTests.Diagnostics.EqualsValueTestAnalyzer">
+            <summary>Analyzer used to test for initializer constructs for members and parameters.</summary>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.UnitTests.Diagnostics.NoneOperationTestAnalyzer">
+            <summary>Analyzer used to test None IOperations.</summary>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.UnitTests.Diagnostics.LambdaTestAnalyzer">
+            <summary>Analyzer used to test LambdaExpression IOperations.</summary>
+        </member>
+    </members>
+</doc>

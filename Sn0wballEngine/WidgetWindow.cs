@@ -7,7 +7,7 @@ namespace Sn0wballEngine
     {
         public List<Widget> widgets = new List<Widget>();
 
-        RectangleShape background = new RectangleShape();
+        SFRoundedRectangle background = new SFRoundedRectangle(SNVector2f.Zero(), 30, 10);
 
         SNVector2f offset = new SNVector2f();
 
@@ -15,6 +15,7 @@ namespace Sn0wballEngine
 
         void HandleMouse()
         {
+
             if (Clicked())
             {
                 foreach(var widget in widgets)
@@ -49,7 +50,7 @@ namespace Sn0wballEngine
             HandleMouse();
             background.FillColor = new Color(color.r, color.g, color.b);
             background.Position = new SFML.System.Vector2f(position.x - 25, position.y - 25);
-            background.Size = new SFML.System.Vector2f(GetBounds().x + 50, GetBounds().y + 50);
+            background.size = new SNVector2f(GetBounds().x + 50, GetBounds().y + 50);
 
             DisplayManager.window.Draw(background);
 

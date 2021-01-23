@@ -1,0 +1,212 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+Microsoft.CodeAnalysis.VisualBasic.Semantic.UnitTests
+</name>
+</assembly>
+<members>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.Binder_Statements_Tests.FullWidthColonInXmlNames">
+ <summary>
+ Tests that FULLWIDTH COLON (U+FF1A) is never parsed as part of XML name,
+ but is instead parsed as a statement separator when it immediately follows an XML name.
+ If the next token is an identifier or keyword, it should be parsed as a separate statement.
+ An XML name should never include more than one colon.
+ See also: http://fileformat.info/info/unicode/char/FF1A
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.BindingErrorTests.BC30376ERR_NewIfNullOnAbstractClass1">
+ We decided to not implement this for Roslyn as BC30569 and BC31411 cover the scenarios that BC30376 addresses.
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.BindingErrorTests.BC30524ERR_NoGetProperty1_4">
+ <summary>
+ Report BC30524 even in cases when the
+ expression will be ignored.
+ </summary>
+ <remarks></remarks>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.BindingErrorTests.BC31500ERR_BadAttributeSharedProperty1_1">
+ BC31510 in DEV10 but is BC31500 in Roslyn 
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.BindingErrorTests.BC42104WRN_DefAsgUseNullRef_ConstantUnevaluatedReceiver">
+ <summary>
+ No warning reported for expression that will not be evaluated.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.BindingErrorTests.BC42104WRN_DefAsgUseNullRef_CallUnevaluatedReceiver">
+ <summary>
+ No warning reported for expression that will not be evaluated.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.BindingErrorTests.BC42104WRN_DefAsgUseNullRef_AddressOfUnevaluatedReceiver">
+ <summary>
+ No warning reported for expression that will not be evaluated.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.BindingErrorTests.BC42104WRN_DefAsgUseNullRef_TypeExpressionUnevaluatedReceiver">
+ <summary>
+ No warning reported for expression that will not be evaluated.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.ForLoopTests.MultipleNamesForControlVariable">
+ Bug 8590
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.ForLoopTests.InitializerInControlVariable">
+ Bug 8590
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.ForLoopTests.ControlVariableVerificationOfBadNodes">
+ Bug 8821
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.ForLoopTests.Bug9266">
+ Bug 9266
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.ForLoopTests.Bug9268">
+ Bug 9268
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.ForLoopTests.Bug9267">
+ Bug 9267
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.ForLoopTests.Bug9241">
+ Bug 9241
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.ForLoopTests.Bug9238">
+ Bug 9238
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.ForLoopTests.DontShowInvocationBindingErrorsIfNoDesignPatternMatch">
+ Bug 9238
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.ForLoopTests.Bug9250_InferOn">
+ Bug 9250
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.CompilationAPITests.PreviousSubmissionWithError">
+ <summary>
+ Previous submission has to have no errors.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.GetSemanticInfoBrokenCodeTests.AnalyzePropertyGroup">
+ <summary>
+ The BoundNode tree will contain a BoundPropertyGroup
+ if property overload resolution fails.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.GetSemanticInfoBrokenCodeTests.AnalyzeForEachMeInModule">
+ <summary>
+ Me references are not valid within a Module.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.ReferenceManagerTests.CS1703ERR_DuplicateImport">
+ <summary>
+ Two Framework identities with unified versions.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.ReferenceManagerTests.WinMd_SameSimpleNames_SameVersions">
+ <summary>
+ Although the CLR considers all WinRT references equivalent the Dev11 C# and VB compilers still 
+ compare their identities as if they were regular managed dlls.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.ReferenceManagerTests.WinMd_DifferentSimpleNames">
+ <summary>
+ Although the CLR considers all WinRT references equivalent the Dev11 C# and VB compilers still 
+ compare their identities as if they were regular managed dlls.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.ReferenceManagerTests.WinMd_SameSimpleNames_DifferentVersions">
+ <summary>
+ Although the CLR considers all WinRT references equivalent the Dev11 C# and VB compilers still 
+ compare their identities as if they were regular managed dlls.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.ReferenceManagerTests.MetadataReferencesDifferInCultureOnly">
+ <summary> 
+ We replicate the Dev12 behavior here but is there any real world scenario for this? 
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.ReferenceManagerTests.MissingAssemblyResolution_MissingDueToResolutionMismatch">
+ <summary>
+ Ignore assemblies returned by the resolver that don't match the reference identity.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.ReferenceManagerTests.MissingAssemblyResolution_BindingToForExplicitReference1">
+ <summary>
+ Don't try to resolve AssemblyRefs that already match explicitly specified definition.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.ReferenceManagerTests.MissingAssemblyResolution_BindingToExplicitReference_WorseVersion">
+ <summary>
+ Don't try to resolve AssemblyRefs that already match explicitly specified definition.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.ReferenceManagerTests.MissingAssemblyResolution_BindingToExplicitReference_BetterVersion">
+ <summary>
+ Don't try to resolve AssemblyRefs that already match explicitly specified definition.
+ </summary>
+</member>
+<member name="T:Microsoft.CodeAnalysis.VisualBasic.UnitTests.SemanticModelAPITests">
+ Note: 
+ * Tests for Flow Analysis APIs are under FlowAnalysis folder
+ * Tests for GetDeclaredSymbol API are in SemanticModelGetDeclaredSymbolAPITests.vb
+ * Tests for LookupSymbols API are in SemanticModelLookupSymbolsAPITests.vb
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.Semantics.SemanticModelTests.ReferenceToPropertyWithNoAccessors">
+ <summary>
+ Bind reference to property with no accessors.
+ </summary>
+ <remarks></remarks>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.Semantics.AsyncAwait.AwaiterImplementsICriticalNotifyCompletion_Constraint">
+ <summary>
+ Should call ICriticalNotifyCompletion.UnsafeOnCompleted
+ if the awaiter type implements ICriticalNotifyCompletion.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.Semantics.QueryExpressions.DefaultQueryIndexerField">
+ <summary>
+ Breaking change: Native compiler allows ElementAtOrDefault
+ to be a field, while Roslyn requires ElementAtOrDefault
+ to be a method or property.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.Semantics.UseSiteErrorTests.CompileWithMissingReference(System.Xml.Linq.XElement)">
+ <summary>
+ First, compile the provided source with all assemblies and confirm that there are no errors.
+ Then, compile the provided source again without the unavailable assembly and return the result.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.VisualBasicCompilationOptionsTests.TestHiddenProperty``1(System.Func{Microsoft.CodeAnalysis.CompilationOptions,``0,Microsoft.CodeAnalysis.CompilationOptions},System.Func{Microsoft.CodeAnalysis.CompilationOptions,``0},``0)">
+ <summary>
+ Using an instance of <see cref="T:Microsoft.CodeAnalysis.VisualBasic.VisualBasicCompilationOptions"/>, tests a property in <see cref="T:Microsoft.CodeAnalysis.CompilationOptions"/> , even it is hidden by <see cref="T:Microsoft.CodeAnalysis.VisualBasic.VisualBasicCompilationOptions"/>.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.VisualBasicCompilationOptionsTests.TestFieldsForEqualsAndGetHashCode">
+ <summary>
+ If this test fails, please update the <see cref="M:Microsoft.CodeAnalysis.VisualBasic.VisualBasicCompilationOptions.GetHashCode" />
+ and <see cref="M:Microsoft.CodeAnalysis.VisualBasic.VisualBasicCompilationOptions.Equals(Microsoft.CodeAnalysis.VisualBasic.VisualBasicCompilationOptions)" /> methods and
+ <see cref="T:Microsoft.CodeAnalysis.VisualBasic.VisualBasicCompilationOptions"/> constructor(s) to
+ make sure they are doing the right thing with your new field And then update the baseline
+ here.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.DiagnosticTests.Resources">
+ <summary>
+ Ensure string resources are included.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.DiagnosticTests.NoDuplicates">
+ <summary>
+ ERRID should not have duplicates.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.GetExtendedSemanticInfoTests.ImplementsIEquatable">
+ <summary>
+ SymbolInfo and TypeInfo should implement IEquatable&lt;T&gt;.
+ </summary>
+</member>
+<member name="M:Extensions.GetDeclaredSymbolFromSyntaxNode(Microsoft.CodeAnalysis.SemanticModel,Microsoft.CodeAnalysis.SyntaxNode,System.Threading.CancellationToken)">
+ <summary>
+ This method is provided as a convenience for testing the SemanticModel.GetDeclaredSymbol implementation.
+ </summary>
+ <param name="node">This parameter will be type checked, and a NotSupportedException will be thrown if the type is not currently supported by an overload of GetDeclaredSymbol.</param>
+</member>
+</members>
+</doc>

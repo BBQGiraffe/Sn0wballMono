@@ -1,0 +1,171 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.CodeAnalysis.CSharp.Test.Utilities</name>
+    </assembly>
+    <members>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.CompilationUtils.VerifyTypes(Microsoft.CodeAnalysis.CSharp.CSharpCompilation,Microsoft.CodeAnalysis.SyntaxTree)">
+            <summary>
+            Verify the type and nullability inferred by NullabilityWalker of all expressions in the source
+            that are followed by specific annotations. Annotations are of the form /*T:type*/.
+            </summary>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.CSharp.UnitTests.ErrorDescription">
+            <summary>
+            OBSOLETE: Use DiagnosticDescription instead.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.DiagnosticsUtils.VerifyErrorCodes(Microsoft.CodeAnalysis.CSharp.CSharpCompilation,Microsoft.CodeAnalysis.CSharp.UnitTests.ErrorDescription[])">
+            <summary>
+            OBSOLETE: Use VerifyDiagnostics from Roslyn.Compilers.CSharp.Test.Utilities instead.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.DiagnosticsUtils.TestDiagnostics(System.String,System.String[])">
+            <summary>
+            OBSOLETE: Use VerifyDiagnostics from Roslyn.Compilers.CSharp.Test.Utilities instead.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.DiagnosticsUtils.TestDiagnosticsExact(System.String,System.String[])">
+            <summary>
+            OBSOLETE: Use VerifyDiagnostics from Roslyn.Compilers.CSharp.Test.Utilities instead.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.DiagnosticsUtils.VerifyErrorsAndGetCompilationWithMscorlib(System.String,Microsoft.CodeAnalysis.CSharp.UnitTests.ErrorDescription[])">
+            <summary>
+            OBSOLETE: Use VerifyDiagnostics from Roslyn.Compilers.CSharp.Test.Utilities instead.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.DiagnosticsUtils.VerifyErrorsAndGetCompilationWithMscorlib(System.String[],Microsoft.CodeAnalysis.CSharp.UnitTests.ErrorDescription[])">
+            <summary>
+            OBSOLETE: Use VerifyDiagnostics from Roslyn.Compilers.CSharp.Test.Utilities instead.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.DiagnosticsUtils.VerifyErrorsAndGetCompilationWithMscorlib(System.String,System.Collections.Generic.IEnumerable{Microsoft.CodeAnalysis.MetadataReference},Microsoft.CodeAnalysis.CSharp.UnitTests.ErrorDescription[])">
+            <summary>
+            OBSOLETE: Use VerifyDiagnostics from Roslyn.Compilers.CSharp.Test.Utilities instead.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.DiagnosticsUtils.VerifyErrorsAndGetCompilationWithMscorlib(System.Collections.Generic.List{System.String},System.Collections.Generic.IEnumerable{Microsoft.CodeAnalysis.MetadataReference},Microsoft.CodeAnalysis.CSharp.UnitTests.ErrorDescription[])">
+            <summary>
+            OBSOLETE: Use VerifyDiagnostics from Roslyn.Compilers.CSharp.Test.Utilities instead.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.DiagnosticsUtils.VerifyErrorsAndGetCompilationWithMscorlib(Microsoft.CodeAnalysis.SyntaxTree[],System.Collections.Generic.IEnumerable{Microsoft.CodeAnalysis.MetadataReference},Microsoft.CodeAnalysis.CSharp.UnitTests.ErrorDescription[])">
+            <summary>
+            OBSOLETE: Use VerifyDiagnostics from Roslyn.Compilers.CSharp.Test.Utilities instead.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.DiagnosticsUtils.VerifyErrorsAndGetCompilation(System.Collections.Generic.IEnumerable{Microsoft.CodeAnalysis.SyntaxTree},System.Collections.Generic.IEnumerable{Microsoft.CodeAnalysis.MetadataReference},Microsoft.CodeAnalysis.CSharp.UnitTests.ErrorDescription[])">
+            <summary>
+            OBSOLETE: Use VerifyDiagnostics from Roslyn.Compilers.CSharp.Test.Utilities instead.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.DiagnosticsUtils.VerifyErrorCodes(System.Collections.Generic.IEnumerable{Microsoft.CodeAnalysis.Diagnostic},Microsoft.CodeAnalysis.CSharp.UnitTests.ErrorDescription[])">
+            <summary>
+            OBSOLETE: Use VerifyDiagnostics from Roslyn.Compilers.CSharp.Test.Utilities instead.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.DiagnosticsUtils.VerifyErrorCodesNoLineColumn(System.Collections.Generic.IEnumerable{Microsoft.CodeAnalysis.Diagnostic},Microsoft.CodeAnalysis.CSharp.UnitTests.ErrorDescription[])">
+            <summary>
+            OBSOLETE: Use VerifyDiagnostics from Roslyn.Compilers.CSharp.Test.Utilities instead.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Extensions.IsEqual(Microsoft.CodeAnalysis.CSharp.Symbols.TypeSymbol,System.Type)">
+            For argument is not simple 'Type' (generic or array)
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.Test.Utilities.CSharpTestBase.CompileAndVerifyException``1(System.String,System.String,System.Boolean,Microsoft.CodeAnalysis.Test.Utilities.Verification)">
+            <summary>
+            Like CompileAndVerify, but confirms that execution raises an exception.
+            </summary>
+            <typeparam name="T">Expected type of the exception.</typeparam>
+            <param name="source">Program to compile and execute.</param>
+            <param name="expectedMessage">Ignored if null.</param>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.Test.Utilities.CSharpTestBase.GetBindingNode``1(Microsoft.CodeAnalysis.CSharp.CSharpCompilation,System.Int32)">
+            <summary>
+            This method handles one binding text with strong SyntaxNode type
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.Test.Utilities.CSharpTestBase.GetBindingNodes``1(Microsoft.CodeAnalysis.CSharp.CSharpCompilation,System.Int32,System.Int32)">
+            <summary>
+            Find multiple binding nodes by looking for pair /*&lt;bind#&gt;*/ &amp; /*&lt;/bind#&gt;*/ in source text
+            </summary>
+            <param name="compilation"></param>
+            <param name="treeIndex">which tree</param>
+            <param name="which">
+                * if which &lt; 0, find ALL wrapped nodes
+                * if which &gt;=0, find a specific binding node wrapped by /*&lt;bind#&gt;*/ &amp; /*&lt;/bind#&gt;*/
+                  e.g. if which = 1, find node wrapped by /*&lt;bind1&gt;*/ &amp; /*&lt;/bind1&gt;*/
+            </param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.Test.Utilities.CSharpTestBase.VisualizeRealIL(Microsoft.CodeAnalysis.CSharp.Symbols.Metadata.PE.PEModuleSymbol,Microsoft.CodeAnalysis.CodeGen.CompilationTestData.MethodData,System.Collections.Generic.IReadOnlyDictionary{System.Int32,System.String},System.Boolean)">
+            <summary>
+            Returns a string representation of IL read from metadata.
+            </summary>
+            <remarks>
+            Currently unsupported IL decoding:
+            - multidimensional arrays
+            - vararg calls
+            - winmd
+            - global methods
+            </remarks>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.CSharp.Test.Utilities.CSharpTestSource">
+            <summary>
+            Represents the source code used for a C# test. Allows us to have single helpers that enable all the different ways
+            we typically provide source in testing.
+            </summary>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.CSharp.Test.Utilities.NativeIntegerAttributesVisitor">
+            <summary>
+            Returns a string with all symbols containing NativeIntegerAttributes.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.Test.Utilities.NativeIntegerAttributesVisitor.GetContainingSymbol(Microsoft.CodeAnalysis.CSharp.Symbol)">
+            <summary>
+            Return the containing symbol used in the hierarchy here. Specifically, the
+            hierarchy contains types, members, and parameters only, and accessors are
+            considered members of the associated symbol rather than the type.
+            </summary>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.CSharp.Test.Utilities.NullableAttributesVisitor">
+            <summary>
+            Returns a string with all symbols containing nullable attributes.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.Test.Utilities.NullableAttributesVisitor.GetContainingSymbol(Microsoft.CodeAnalysis.CSharp.Symbol)">
+            <summary>
+            Return the containing symbol used in the hierarchy here. Specifically, the
+            hierarchy contains types, members, and parameters only, and accessors are
+            considered members of the associated symbol rather than the type.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.Test.Utilities.TestOptions.CreateTestOptions(Microsoft.CodeAnalysis.OutputKind,Microsoft.CodeAnalysis.OptimizationLevel,System.Boolean)">
+            <summary>
+            Create <see cref="T:Microsoft.CodeAnalysis.CSharp.CSharpCompilationOptions"/> with the maximum warning level.
+            </summary>
+            <param name="outputKind">The output kind of the created compilation options.</param>
+            <param name="optimizationLevel">The optimization level of the created compilation options.</param>
+            <param name="allowUnsafe">A boolean specifying whether to allow unsafe code. Defaults to false.</param>
+            <returns>A CSharpCompilationOptions with the specified <paramref name="outputKind"/>, <paramref name="optimizationLevel"/>, and <paramref name="allowUnsafe"/>.</returns>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.CSharp.Test.Utilities.UsesIsNullableVisitor">
+            <summary>
+            Returns the set of members that contain reference types with IsNullable set.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.Test.Utilities.UsesIsNullableVisitor.AddIfUsesIsNullable(Microsoft.CodeAnalysis.CSharp.Symbol,System.Collections.Immutable.ImmutableArray{Microsoft.CodeAnalysis.CSharp.Symbols.ParameterSymbol},Roslyn.Utilities.ConsList{Microsoft.CodeAnalysis.CSharp.Symbols.TypeParameterSymbol})">
+            <summary>
+            Check the parameters of a method or property, but report that method/property rather than
+            the parameter itself.
+            </summary>
+        </member>
+        <member name="M:Extensions.GetDeclaredSymbolFromSyntaxNode(Microsoft.CodeAnalysis.CSharp.CSharpSemanticModel,Microsoft.CodeAnalysis.SyntaxNode,System.Threading.CancellationToken)">
+            <summary>
+            This method is provided as a convenience for testing the SemanticModel.GetDeclaredSymbol implementation.
+            </summary>
+            <param name="declaration">This parameter will be type checked, and a NotSupportedException will be thrown if the type is not currently supported by an overload of GetDeclaredSymbol.</param>
+        </member>
+    </members>
+</doc>

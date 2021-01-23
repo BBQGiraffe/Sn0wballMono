@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.CodeAnalysis.CSharp.Scripting.UnitTests</name>
+    </assembly>
+    <members>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.Scripting.UnitTests.InteractiveSessionTests.CompilationChain_HostObjectMembersHidesGlobal">
+            <summary>
+            Symbol declaration in host object model hides global definition.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.Scripting.UnitTests.InteractiveSessionTests.CompilationChain_Ldftn">
+            <summary>
+            Tests that we emit ldftn and ldvirtftn instructions correctly.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.Scripting.UnitTests.InteractiveSessionTests.CompilationChain_Ldftn_GenericType">
+            <summary>
+            Tests that we emit ldftn and ldvirtftn instructions correctly.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.Scripting.UnitTests.InteractiveSessionTests.PrivateImplementationDetailsType">
+            <summary>
+            Name of PrivateImplementationDetails type needs to be unique across submissions.
+            The compiler should suffix it with a MVID of the current submission module so we should be fine.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.Scripting.UnitTests.InteractiveSessionTests.Await">
+            <summary>
+            'await' expression at top-level.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.Scripting.UnitTests.InteractiveSessionTests.AwaitSubExpression">
+            <summary>
+            'await' in sub-expression.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.Scripting.UnitTests.InteractiveSessionTests.AwaitInLambda">
+            <summary>
+            'await' in lambda should be ignored.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.Scripting.UnitTests.InteractiveSessionTests.HostObjectBinding_Overloads">
+            <summary>
+            Host object members don't form a method group with submission members.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.Scripting.Test.InteractiveSessionReferencesTests.LibraryReference_NetStandard20">
+            <summary>
+            Test adding a reference to NetStandard 2.0 library.
+            Validates that we resolve all references correctly in the first and the subsequent submissions.
+            </summary>
+        </member>
+    </members>
+</doc>

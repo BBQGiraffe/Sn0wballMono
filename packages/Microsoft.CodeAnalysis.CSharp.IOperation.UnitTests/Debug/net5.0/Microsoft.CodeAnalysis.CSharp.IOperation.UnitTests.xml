@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.CodeAnalysis.CSharp.IOperation.UnitTests</name>
+    </assembly>
+    <members>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.IOperationTests.InvalidConversionForDefaultArgument_InSource">
+            <summary>
+            See <see cref="M:Microsoft.CodeAnalysis.CSharp.UnitTests.IOperationTests.InvalidConversionForDefaultArgument_InIL" /> for a similar scenario for involving a bad constant value from metadata.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.IOperationTests.ConversionExpression_Implicit_IdentityConversion">
+            <summary>
+            This test documents the fact that there is no IConversionExpression between two objects of the same type.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.IOperationTests.ConversionExpression_Implicit_DefaultToClassNoConversion">
+            <summary>
+            This test documents the fact that <c>default(T)</c> is already T, and does not introduce a conversion
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.IOperationTests.ExpectedSymbolVerifier.Verify(Microsoft.CodeAnalysis.IOperation,Microsoft.CodeAnalysis.Compilation,Microsoft.CodeAnalysis.SyntaxNode)">
+             <summary>
+             Verifies that the given operation has the type information that the semantic model has for the given
+             syntax node. A selector is used to walk the operation tree and syntax tree for the final
+             nodes to compare type info for.
+            
+             <see cref="P:Microsoft.CodeAnalysis.CSharp.UnitTests.IOperationTests.ExpectedSymbolVerifier.SyntaxSelector"/> is used to select the syntax node to test.
+             <see cref="P:Microsoft.CodeAnalysis.CSharp.UnitTests.IOperationTests.ExpectedSymbolVerifier.OperationSelector"/> is used to select the IConversion node to test.
+             <see cref="P:Microsoft.CodeAnalysis.CSharp.UnitTests.IOperationTests.ExpectedSymbolVerifier.ConversionChildSelector"/> is used to select what child node of the IConversion to compare original types to.
+             this is useful for multiple conversion scenarios where we end up with multiple IConversion nodes in the tree.
+             </summary>
+        </member>
+    </members>
+</doc>

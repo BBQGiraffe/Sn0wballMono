@@ -1,0 +1,230 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+Microsoft.CodeAnalysis.VisualBasic.Test.Utilities
+</name>
+</assembly>
+<members>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.BasicTestBase.CompileWithCustomILSource(System.Xml.Linq.XElement,System.Xml.Linq.XCData)">
+ <summary>
+ Compile sources and adds a custom reference using a custom IL
+ </summary>
+ <param name="source">The sources compile according to the following schema
+ &lt;compilation name="assemblyname[optional]"&gt;
+ &lt;file name="file1.vb[optional]"&gt;
+ source
+ &lt;/file&gt;
+ &lt;/compilation&gt;
+ </param>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.BasicTestBase.CompileWithCustomILSource(System.Xml.Linq.XElement,System.String,Microsoft.CodeAnalysis.VisualBasic.VisualBasicCompilationOptions,System.Action{Microsoft.CodeAnalysis.VisualBasic.VisualBasicCompilation},System.String)">
+ <summary>
+ Compile sources and adds a custom reference using a custom IL
+ </summary>
+ <param name="source">The sources compile according to the following schema
+ &lt;compilation name="assemblyname[optional]"&gt;
+ &lt;file name="file1.vb[optional]"&gt;
+ source
+ &lt;/file&gt;
+ &lt;/compilation&gt;
+ </param>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.BasicTestSource.op_Implicit(System.Xml.Linq.XElement)~Microsoft.CodeAnalysis.VisualBasic.UnitTests.BasicTestSource">
+ <summary>
+ 
+ </summary>
+ <param name="source">The sources compile according to the following schema        
+ &lt;compilation name="assemblyname[optional]"&gt;
+ &lt;file name="file1.vb[optional]"&gt;
+ source
+ &lt;/file&gt;
+ &lt;/compilation&gt;
+ </param>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.CompilationUtils.CreateCompilationWithMscorlib40(System.Xml.Linq.XElement,Microsoft.CodeAnalysis.OutputKind,Microsoft.CodeAnalysis.VisualBasic.VisualBasicParseOptions)">
+ <summary>
+ 
+ </summary>
+ <param name="source">The sources compile according to the following schema        
+ &lt;compilation name="assemblyname[optional]"&gt;
+ &lt;file name="file1.vb[optional]"&gt;
+ source
+ &lt;/file&gt;
+ &lt;/compilation&gt;
+ </param>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.CompilationUtils.CreateCompilationWithMscorlib40AndVBRuntime(System.Xml.Linq.XElement,Microsoft.CodeAnalysis.MetadataReference[],Microsoft.CodeAnalysis.VisualBasic.VisualBasicCompilationOptions,Microsoft.CodeAnalysis.VisualBasic.VisualBasicParseOptions,System.String)">
+ <summary>
+ 
+ </summary>
+ <param name="source">The sources compile according to the following schema        
+ &lt;compilation name="assemblyname[optional]"&gt;
+ &lt;file name="file1.vb[optional]"&gt;
+ source
+ &lt;/file&gt;
+ &lt;/compilation&gt;
+ </param>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.CompilationUtils.CreateCompilationWithMscorlib40AndVBRuntimeAndReferences(System.Xml.Linq.XElement,System.Collections.Generic.IEnumerable{Microsoft.CodeAnalysis.MetadataReference},Microsoft.CodeAnalysis.VisualBasic.VisualBasicCompilationOptions,Microsoft.CodeAnalysis.VisualBasic.VisualBasicParseOptions)">
+ <summary>
+ 
+ </summary>
+ <param name="source">The sources compile according to the following schema        
+ &lt;compilation name="assemblyname[optional]"&gt;
+ &lt;file name="file1.vb[optional]"&gt;
+ source
+ &lt;/file&gt;
+ &lt;/compilation&gt;
+ </param>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.CompilationUtils.CreateCompilationWithMscorlib45AndVBRuntime(System.Xml.Linq.XElement,System.Collections.Generic.IEnumerable{Microsoft.CodeAnalysis.MetadataReference},Microsoft.CodeAnalysis.VisualBasic.VisualBasicCompilationOptions,Microsoft.CodeAnalysis.VisualBasic.VisualBasicParseOptions)">
+ <summary>
+ 
+ </summary>
+ <param name="source">The sources compile according to the following schema        
+ &lt;compilation name="assemblyname[optional]"&gt;
+ &lt;file name="file1.vb[optional]"&gt;
+ source
+ &lt;/file&gt;
+ &lt;/compilation&gt;
+ </param>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.CompilationUtils.CreateEmptyCompilationWithReferences(System.Xml.Linq.XElement,System.Collections.Generic.IEnumerable{Microsoft.CodeAnalysis.MetadataReference},Microsoft.CodeAnalysis.VisualBasic.VisualBasicCompilationOptions,Microsoft.CodeAnalysis.VisualBasic.VisualBasicParseOptions,System.String)">
+ <summary>
+ 
+ </summary>
+ <param name="source">The sources compile according to the following schema        
+ &lt;compilation name="assemblyname[optional]"&gt;
+ &lt;file name="file1.vb[optional]"&gt;
+ source
+ &lt;/file&gt;
+ &lt;/compilation&gt;
+ </param>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.CompilationUtils.CreateCompilationWithCustomILSource(System.Xml.Linq.XElement,System.Xml.Linq.XCData)">
+ <summary>
+ 
+ </summary>
+ <param name="sources">The sources compile according to the following schema        
+ &lt;compilation name="assemblyname[optional]"&gt;
+ &lt;file name="file1.vb[optional]"&gt;
+ source
+ &lt;/file&gt;
+ &lt;/compilation&gt;
+ </param>
+ <param name="ilSource"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.CompilationUtils.CreateCompilationWithCustomILSource(System.Xml.Linq.XElement,System.String,Microsoft.CodeAnalysis.VisualBasic.VisualBasicCompilationOptions,System.Collections.Generic.IEnumerable{System.Collections.Generic.IEnumerable{Microsoft.CodeAnalysis.Text.TextSpan}}@,System.Boolean,System.Boolean,System.Boolean,Microsoft.CodeAnalysis.VisualBasic.VisualBasicParseOptions,System.Collections.Generic.IEnumerable{Microsoft.CodeAnalysis.MetadataReference},Microsoft.CodeAnalysis.MetadataReference@,System.Collections.Immutable.ImmutableArray{System.Byte}@)">
+ <summary>
+ 
+ </summary>
+ <param name="sources">The sources compile according to the following schema        
+ &lt;compilation name="assemblyname[optional]"&gt;
+ &lt;file name="file1.vb[optional]"&gt;
+ source
+ &lt;/file&gt;
+ &lt;/compilation&gt;
+ </param>
+ <param name="ilSource"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.CompilationUtils.CreateParseTree(System.Xml.Linq.XElement)">
+ <summary>
+ Create a parse tree from the data inside an XElement
+ </summary>
+ <param name="programElement">The program element to create the tree from according to the following schema        
+ &lt;file name="filename.vb[optional]"&gt;
+ source
+ &lt;/file&gt;
+ </param>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.CompilationUtils.CreateParseTreeAndSpans(System.Xml.Linq.XElement,Microsoft.CodeAnalysis.VisualBasic.VisualBasicParseOptions)">
+ <summary>
+ Create a parse tree from the data inside an XElement
+ </summary>
+ <param name="programElement">The program element to create the tree from according to the following schema        
+ &lt;file name="filename.vb[optional]"&gt;
+ source
+ &lt;/file&gt;
+ </param>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.CompilationUtils.AssertNoDiagnostics(Microsoft.CodeAnalysis.VisualBasic.VisualBasicCompilation,System.Boolean)">
+ <remarks>
+ Does not consider INFO diagnostics.
+ </remarks>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.CompilationUtils.AssertNoDiagnostics(System.Collections.Immutable.ImmutableArray{Microsoft.CodeAnalysis.Diagnostic},System.Boolean)">
+ <remarks>
+ Does not consider INFO and HIDDEN diagnostics.
+ </remarks>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.CompilationUtils.AssertTheseDeclarationDiagnostics(Microsoft.CodeAnalysis.VisualBasic.VisualBasicCompilation,System.Xml.Linq.XElement,System.Boolean)">
+ <summary>
+ Check that a compilation has these declaration errors.
+ </summary>
+ <param name="compilation"></param>
+ <param name="errs">Expected errors according to this schema
+ &lt;error&gt;[full errors text]&lt;/error&gt;</param>
+ <param name="suppressInfos">True to ignore info-severity diagnostics.</param>
+ <remarks></remarks>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.CompilationUtils.AssertTheseCompileDiagnostics(Microsoft.CodeAnalysis.Compilation,System.Xml.Linq.XElement,System.Boolean)">
+ <summary>
+ Check that a compilation has these errors at Compile stage or before.
+ </summary>
+ <param name="compilation"></param>
+ <param name="errs">Expected errors according to this schema
+ &lt;error&gt;[full errors text]&lt;/error&gt;</param>
+ <param name="suppressInfos">True to ignore info-severity diagnostics.</param>
+ <remarks></remarks>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.CompilationUtils.AssertTheseEmitDiagnostics(Microsoft.CodeAnalysis.Compilation,System.Xml.Linq.XElement,System.Boolean)">
+ <summary>
+ Check that a compilation has these errors during Emit.
+ </summary>
+ <param name="compilation"></param>
+ <param name="errs">Expected errors according to this schema
+ &lt;error&gt;[full errors text]&lt;/error&gt;</param>
+ <param name="suppressInfos">True to ignore info-severity diagnostics.</param>
+ <remarks></remarks>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.CompilationUtils.AssertTheseDiagnostics(Microsoft.CodeAnalysis.Compilation,System.Xml.Linq.XElement,System.Boolean)">
+ <summary>
+ Check that a compilation has these declaration or compilation errors.
+ </summary>
+ <param name="compilation"></param>
+ <param name="errs">Expected errors according to this schema
+ &lt;error&gt;[full errors text]&lt;/error&gt;</param>
+ <param name="suppressInfos">True to ignore info-severity diagnostics.</param>
+ <remarks></remarks>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.CompilationUtils.AssertTheseDiagnostics(System.Collections.Immutable.ImmutableArray{Microsoft.CodeAnalysis.Diagnostic},System.Xml.Linq.XElement,System.Boolean)">
+ <param name="errors"></param>
+ <param name="errs">Expected errors according to this schema
+ &lt;expected&gt;[full errors text]&lt;/expected&gt;</param>
+ <param name="suppressInfos">True to ignore info-severity diagnostics.</param>
+ <remarks></remarks>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.Extensions.IsEqual(Microsoft.CodeAnalysis.VisualBasic.Symbols.TypeSymbol,System.Type)">
+ For argument is not simple 'Type' (generic or array)
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.MockNamedTypeSymbol.GenerateDeclarationErrors(System.Threading.CancellationToken)">
+ <summary>
+ Force all declaration errors to be generated.
+ </summary>
+</member>
+<member name="T:Microsoft.CodeAnalysis.VisualBasic.UnitTests.ParserTestUtilities.IncParseNode">
+ <summary>
+ Represents the incremental parser change
+ </summary>
+ <field cref="F:Microsoft.CodeAnalysis.VisualBasic.UnitTests.ParserTestUtilities.IncParseNode.oldText">Old text on which the incremental parse is applied</field>
+ <field cref="F:Microsoft.CodeAnalysis.VisualBasic.UnitTests.ParserTestUtilities.IncParseNode.changeText">The new text that is added/removed/replaced</field>
+ <field cref="F:Microsoft.CodeAnalysis.VisualBasic.UnitTests.ParserTestUtilities.IncParseNode.changeSpan">OF type TextSpan. The start and length of the change</field>
+ <field cref="F:Microsoft.CodeAnalysis.VisualBasic.UnitTests.ParserTestUtilities.IncParseNode.changeType">Whether text was added, removed or replaced</field>
+</member>
+</members>
+</doc>

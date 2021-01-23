@@ -1,0 +1,994 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.CodeAnalysis.CSharp.CodeStyle</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.CodeAnalysis.CodeStyle.PreferBracesPreference">
+            <summary>
+            Defines the known values for <see cref="F:Microsoft.CodeAnalysis.CSharp.CodeStyle.CSharpCodeStyleOptions.PreferBraces"/>.
+            </summary>
+        </member>
+        <member name="F:Microsoft.CodeAnalysis.CodeStyle.PreferBracesPreference.None">
+            <summary>
+            Braces are allowed, but not preferred.
+            </summary>
+            <remarks>
+            <para>The value <c>0</c> is important for serialization compatibility in
+            <see cref="M:Microsoft.CodeAnalysis.CodeStyle.CodeStyleOption2`1.FromXElement(System.Xml.Linq.XElement)"/>. Prior to the use of this enum, the serialized value
+            was the <see cref="T:System.Boolean"/> value <see langword="false"/>.</para>
+            </remarks>
+        </member>
+        <member name="F:Microsoft.CodeAnalysis.CodeStyle.PreferBracesPreference.Always">
+             <summary>
+             <para>Braces are preferred where allowed except in the following limited situations:</para>
+            
+             <list type="bullet">
+             <item><description>Braces are not required for the embedded statement of an <c>else</c> clause when the embedded statement is an <c>if</c> statement.</description></item>
+             <item><description>In a sequence of consecutive <c>using</c> statements, only the last statement requires braces.</description></item>
+             <item><description>In a sequence of consecutive <c>lock</c> statements, only the last statement requires braces.</description></item>
+             <item><description>In a sequence of consecutive <c>fixed</c> statements, only the last statement requires braces.</description></item>
+             </list>
+             </summary>
+             <remarks>
+             <para>The value <c>1</c> is important for serialization compatibility in
+             <see cref="M:Microsoft.CodeAnalysis.CodeStyle.CodeStyleOption2`1.FromXElement(System.Xml.Linq.XElement)"/>. Prior to the use of this enum, the serialized value
+             was the <see cref="T:System.Boolean"/> value <see langword="true"/>.</para>
+             </remarks>
+        </member>
+        <member name="F:Microsoft.CodeAnalysis.CodeStyle.PreferBracesPreference.WhenMultiline">
+             <summary>
+             <para>Braces are always allowed, and generally preferred except in limited situations involving single-line
+             statements and expressions:</para>
+            
+             <list type="bullet">
+             <item><description>Braces may be omitted in the cases described for <see cref="F:Microsoft.CodeAnalysis.CodeStyle.PreferBracesPreference.Always"/>.</description></item>
+             <item><description>Braces may be omitted when the entire statement is placed on one line.</description></item>
+             <item><description>For a statement that contains one or more embedded statements, braces may be omitted when
+             every embedded statement fits on one line, and the part preceding the embedded statement is placed on one
+             line. If any embedded statement uses braces, braces are preferred for all embedded statements of the same
+             parent statement. For the purposes of evaluating this rule, if the embedded statement following an
+             <c>else</c> keyword is an if statement, the embedded statements of the nested if statement are treated as
+             children of the parent statement of the <c>else</c> keyword.</description></item>
+             </list>
+             </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.CodeStyle.TypeStyle.TypeStyleHelper.IsTypeApparentInAssignmentExpression(Microsoft.CodeAnalysis.CSharp.CodeStyle.TypeStyle.UseVarPreference,Microsoft.CodeAnalysis.CSharp.Syntax.ExpressionSyntax,Microsoft.CodeAnalysis.SemanticModel,Microsoft.CodeAnalysis.ITypeSymbol,System.Threading.CancellationToken)">
+            <summary>
+            Analyzes if type information is obvious to the reader by simply looking at the assignment expression.
+            </summary>
+            <remarks>
+            <paramref name="typeInDeclaration"/> accepts null, to be able to cater to codegen features
+            that are about to generate a local declaration and do not have this information to pass in.
+            Things (like analyzers) that do have a local declaration already, should pass this in.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.CodeStyle.TypeStyle.TypeStyleHelper.IsPossibleCreationMethod(Microsoft.CodeAnalysis.IMethodSymbol,Microsoft.CodeAnalysis.ITypeSymbol,Microsoft.CodeAnalysis.ITypeSymbol)">
+            <summary>
+            Looks for types that have static methods that return the same type as the container.
+            e.g: int.Parse, XElement.Load, Tuple.Create etc.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.CodeStyle.TypeStyle.TypeStyleHelper.IsPossibleConversionMethod(Microsoft.CodeAnalysis.IMethodSymbol)">
+            <summary>
+            If we have a method ToXXX and its return type is also XXX, then type name is apparent
+            e.g: Convert.ToString.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.CodeStyle.TypeStyle.TypeStyleHelper.IsContainerTypeEqualToReturnType(Microsoft.CodeAnalysis.IMethodSymbol,Microsoft.CodeAnalysis.ITypeSymbol,Microsoft.CodeAnalysis.ITypeSymbol)">
+            <remarks>
+            If there are type arguments on either side of assignment, we match type names instead of type equality 
+            to account for inferred generic type arguments.
+            e.g: Tuple.Create(0, true) returns Tuple&lt;X,y&gt; which isn't the same as type Tuple.
+            otherwise, we match for type equivalence
+            </remarks>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.Extensions.ArgumentSyntaxExtensions.DetermineParameter(Microsoft.CodeAnalysis.CSharp.Syntax.ArgumentSyntax,Microsoft.CodeAnalysis.SemanticModel,System.Boolean,System.Threading.CancellationToken)">
+            <summary>
+            Returns the parameter to which this argument is passed. If <paramref name="allowParams"/>
+            is true, the last parameter will be returned if it is params parameter and the index of
+            the specified argument is greater than the number of parameters.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.Extensions.AttributeArgumentSyntaxExtensions.DetermineParameter(Microsoft.CodeAnalysis.CSharp.Syntax.AttributeArgumentSyntax,Microsoft.CodeAnalysis.SemanticModel,System.Boolean,System.Threading.CancellationToken)">
+            <summary>
+            Returns the parameter to which this argument is passed. If <paramref name="allowParams"/>
+            is true, the last parameter will be returned if it is params parameter and the index of
+            the specified argument is greater than the number of parameters.
+            </summary>
+            <remarks>
+            Returns null if the <paramref name="argument"/> is a named argument.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.Extensions.ExpressionSyntaxExtensions.IsExpressionOfArgumentInDeconstruction(Microsoft.CodeAnalysis.CSharp.Syntax.ExpressionSyntax)">
+             <summary>
+             If this declaration or identifier is part of a deconstruction, find the deconstruction.
+             If found, returns either an assignment expression or a foreach variable statement.
+             Returns null otherwise.
+            
+             copied from SyntaxExtensions.GetContainingDeconstruction
+             </summary>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.CSharp.Extensions.OperatorPrecedence">
+            <summary>
+            Operator precedence classes from section 7.3.1 of the C# language specification.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.Extensions.SemanticModelExtensions.DecomposeName(Microsoft.CodeAnalysis.CSharp.Syntax.ExpressionSyntax,Microsoft.CodeAnalysis.CSharp.Syntax.ExpressionSyntax@,System.String@,System.Int32@)">
+            <summary>
+            Decomposes a name or member access expression into its component parts.
+            </summary>
+            <param name="expression">The name or member access expression.</param>
+            <param name="qualifier">The qualifier (or left-hand-side) of the name expression. This may be null if there is no qualifier.</param>
+            <param name="name">The name of the expression.</param>
+            <param name="arity">The number of generic type parameters.</param>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.Extensions.SyntaxKindExtensions.Contains(Microsoft.CodeAnalysis.CSharp.SyntaxKind[],Microsoft.CodeAnalysis.CSharp.SyntaxKind)">
+            <summary>
+            Determine if the given <see cref="T:Microsoft.CodeAnalysis.CSharp.SyntaxKind"/> array contains the given kind.
+            </summary>
+            <param name="kinds">Array to search</param>
+            <param name="kind">Sought value</param>
+            <returns>True if <paramref name = "kinds"/> contains the value<paramref name= "kind"/>.</returns>
+            <remarks>PERF: Not using Array.IndexOf here because it results in a call to IndexOf on the
+            default EqualityComparer for SyntaxKind.The default comparer for SyntaxKind is the
+            ObjectEqualityComparer which results in boxing allocations.</remarks>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.Extensions.SyntaxNodeExtensions.GetAllPrecedingTriviaToPreviousToken(Microsoft.CodeAnalysis.SyntaxToken,Microsoft.CodeAnalysis.Text.SourceText,System.Boolean)">
+            <summary>
+            Returns all of the trivia to the left of this token up to the previous token (concatenates
+            the previous token's trailing trivia and this token's leading trivia).
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.Extensions.SyntaxNodeExtensions.GetRootConditionalAccessExpression(Microsoft.CodeAnalysis.SyntaxNode)">
+            <summary>
+            <inheritdoc cref="M:Microsoft.CodeAnalysis.LanguageServices.ISyntaxFacts.GetRootConditionalAccessExpression(Microsoft.CodeAnalysis.SyntaxNode)"/>
+            </summary>>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.Extensions.SyntaxNodeExtensions.GetEnclosingUsingDirectives(Microsoft.CodeAnalysis.SyntaxNode)">
+            <summary>
+            Returns the list of using directives that affect <paramref name="node"/>. The list will be returned in
+            top down order.  
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.Extensions.SyntaxNodeExtensions.ContainsInterleavedDirective(Microsoft.CodeAnalysis.SyntaxNode,System.Threading.CancellationToken)">
+            <summary>
+            Returns true if the passed in node contains an interleaved pp directive.
+            
+            i.e. The following returns false:
+            
+              void Goo() {
+            #if true
+            #endif
+              }
+            
+            #if true
+              void Goo() {
+              }
+            #endif
+            
+            but these return true:
+            
+            #if true
+              void Goo() {
+            #endif
+              }
+            
+              void Goo() {
+            #if true
+              }
+            #endif
+            
+            #if true
+              void Goo() {
+            #else
+              }
+            #endif
+            
+            i.e. the method returns true if it contains a PP directive that belongs to a grouping
+            constructs (like #if/#endif or #region/#endregion), but the grouping construct isn't
+            entirely contained within the span of the node.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.Extensions.SyntaxNodeExtensions.ContainsInterleavedDirective(Microsoft.CodeAnalysis.SyntaxNode,Microsoft.CodeAnalysis.Text.TextSpan,System.Threading.CancellationToken)">
+            <summary>
+            Similar to <see cref="M:Microsoft.CodeAnalysis.CSharp.Extensions.SyntaxNodeExtensions.ContainsInterleavedDirective(Microsoft.CodeAnalysis.SyntaxNode,System.Threading.CancellationToken)"/> except that the span to check
+            for interleaved directives can be specified separately to the node passed in.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.Extensions.SyntaxNodeExtensions.SplitNodesOnPreprocessorBoundaries``1(System.Collections.Generic.IEnumerable{``0},System.Threading.CancellationToken)">
+            <summary>
+            Breaks up the list of provided nodes, based on how they are interspersed with pp
+            directives, into groups.  Within these groups nodes can be moved around safely, without
+            breaking any pp constructs.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.Extensions.SyntaxNodeExtensions.ChildThatContainsPosition(Microsoft.CodeAnalysis.SyntaxNode,System.Int32,System.Int32@)">
+            <summary>
+            Returns child node or token that contains given position.
+            </summary>
+            <remarks>
+            This is a copy of <see cref="M:Microsoft.CodeAnalysis.SyntaxNode.ChildThatContainsPosition(System.Int32)"/> that also returns the index of the child node.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.Extensions.SyntaxTokenExtensions.CouldBeKeyword(Microsoft.CodeAnalysis.SyntaxToken)">
+            <summary>
+            Returns true if this token is something that looks like a C# keyword. This includes 
+            actual keywords, contextual keywords, and even 'var' and 'dynamic'
+            </summary>
+            <param name="token"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.Extensions.SyntaxTokenExtensions.IsFirstTokenOnLine(Microsoft.CodeAnalysis.SyntaxToken,Microsoft.CodeAnalysis.Text.SourceText)">
+            <summary>
+            Determines whether the given SyntaxToken is the first token on a line in the specified SourceText.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.Extensions.SyntaxTokenExtensions.GetAllTrailingTrivia(Microsoft.CodeAnalysis.SyntaxToken)">
+            <summary>
+            Retrieves all trivia after this token, including it's trailing trivia and
+            the leading trivia of the next token.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.Extensions.SyntaxTriviaListExtensions.TakeRange(Microsoft.CodeAnalysis.SyntaxTriviaList,System.Int32,System.Int32)">
+            <summary>
+            Takes an INCLUSIVE range of trivia from the trivia list. 
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.Extensions.TypeSyntaxExtensions.IsTypeInferred(Microsoft.CodeAnalysis.CSharp.Syntax.TypeSyntax,Microsoft.CodeAnalysis.SemanticModel)">
+            <summary>
+            Determines whether the specified TypeSyntax is actually 'var'.
+            </summary>
+        </member>
+        <member name="F:Microsoft.CodeAnalysis.CSharp.Formatting.LabelPositionOptions.LeftMost">
+            Placed in the Zeroth column of the text editor
+        </member>
+        <member name="F:Microsoft.CodeAnalysis.CSharp.Formatting.LabelPositionOptions.OneLess">
+            Placed at one less indent to the current context
+        </member>
+        <member name="F:Microsoft.CodeAnalysis.CSharp.Formatting.LabelPositionOptions.NoIndent">
+            Placed at the same indent as the current context
+        </member>
+        <member name="F:Microsoft.CodeAnalysis.CSharp.Formatting.BinaryOperatorSpacingOptions.Single">
+            Single Spacing
+        </member>
+        <member name="F:Microsoft.CodeAnalysis.CSharp.Formatting.BinaryOperatorSpacingOptions.Ignore">
+            Ignore Formatting
+        </member>
+        <member name="F:Microsoft.CodeAnalysis.CSharp.Formatting.BinaryOperatorSpacingOptions.Remove">
+            Remove Spacing
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.CSharp.Formatting.FormattingResult">
+            <summary>
+            this holds onto changes made by formatting engine.
+            </summary>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.CSharp.Formatting.TriviaDataFactory">
+            <summary>
+            trivia factory.
+            
+            it will cache some commonly used trivia to reduce memory footprint and heap allocation
+            </summary>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.CSharp.Formatting.TriviaDataFactory.ComplexTrivia">
+            <summary>   
+            represents a general trivia between two tokens. slightly more expensive than others since it
+            needs to calculate stuff unlike other cases
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.Formatting.FormattingHelpers.IsOpenParenInVarDeconstructionDeclaration(Microsoft.CodeAnalysis.SyntaxToken)">
+            <summary>
+            Checks whether currentToken is the opening paren of a deconstruction-declaration in var form, such as <c>var (x, y) = ...</c>
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.Formatting.FormattingHelpers.IsCommaInTupleExpression(Microsoft.CodeAnalysis.SyntaxToken)">
+            <summary>
+            Check whether the currentToken is a comma and is a delimiter between arguments inside a tuple expression.
+            </summary>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.CSharp.Utilities.FormattingRangeHelper">
+            <summary>
+            this help finding a range of tokens to format based on given ending token
+            </summary>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.CSharp.Utilities.SpeculationAnalyzer">
+            <summary>
+            Helper class to analyze the semantic effects of a speculated syntax node replacement on the parenting nodes.
+            Given an expression node from a syntax tree and a new expression from a different syntax tree,
+            it replaces the expression with the new expression to create a speculated syntax tree.
+            It uses the original tree's semantic model to create a speculative semantic model and verifies that
+            the syntax replacement doesn't break the semantics of any parenting nodes of the original expression.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.Utilities.SpeculationAnalyzer.#ctor(Microsoft.CodeAnalysis.CSharp.Syntax.ExpressionSyntax,Microsoft.CodeAnalysis.CSharp.Syntax.ExpressionSyntax,Microsoft.CodeAnalysis.SemanticModel,System.Threading.CancellationToken,System.Boolean,System.Boolean)">
+            <summary>
+            Creates a semantic analyzer for speculative syntax replacement.
+            </summary>
+            <param name="expression">Original expression to be replaced.</param>
+            <param name="newExpression">New expression to replace the original expression.</param>
+            <param name="semanticModel">Semantic model of <paramref name="expression"/> node's syntax tree.</param>
+            <param name="cancellationToken">Cancellation token.</param>
+            <param name="skipVerificationForReplacedNode">
+            True if semantic analysis should be skipped for the replaced node and performed starting from parent of the original and replaced nodes.
+            This could be the case when custom verifications are required to be done by the caller or
+            semantics of the replaced expression are different from the original expression.
+            </param>
+            <param name="failOnOverloadResolutionFailuresInOriginalCode">
+            True if semantic analysis should fail when any of the invocation expression ancestors of <paramref name="expression"/> in original code has overload resolution failures.
+            </param>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.Utilities.SpeculationAnalyzer.ReplacementChangesSemanticsOfUnchangedLambda(Microsoft.CodeAnalysis.CSharp.Syntax.ExpressionSyntax,Microsoft.CodeAnalysis.CSharp.Syntax.ExpressionSyntax)">
+            <summary>
+            Determines whether performing the syntax replacement in one of the sibling nodes of the given lambda expressions will change the lambda binding semantics.
+            This is done by first determining the lambda parameters whose type differs in the replaced lambda node.
+            For each of these parameters, we find the descendant identifier name nodes in the lambda body and check if semantics of any of the parenting nodes of these
+            identifier nodes have changed in the replaced lambda.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.Utilities.SpeculationAnalyzer.ReplacementBreaksBoxingInConditionalExpression(Microsoft.CodeAnalysis.TypeInfo,Microsoft.CodeAnalysis.TypeInfo,Microsoft.CodeAnalysis.CSharp.Syntax.ExpressionSyntax,Microsoft.CodeAnalysis.CSharp.Syntax.ExpressionSyntax)">
+            <summary>
+            Checks if the conversion might change the resultant boxed type.
+            Similar boxing checks are performed elsewhere, but in this case we need to perform the check on the entire conditional expression.
+            This will make sure the resultant cast is proper for the type of the conditional expression.
+            </summary>
+        </member>
+        <member name="F:Microsoft.CodeAnalysis.CSharp.Utilities.TypeStyleResult.IsStylePreferred">
+            <summary>
+            Whether or not converting would transition the code to the style the user prefers. i.e. if the user likes
+            <c>var</c> for everything, and you have <c>int i = 0</c> then <see cref="F:Microsoft.CodeAnalysis.CSharp.Utilities.TypeStyleResult.IsStylePreferred"/> will be
+            <see langword="true"/>. However, if the user likes <c>var</c> for everything and you have <c>var i = 0</c>,
+            then it's still possible to convert that, it would just be <see langword="false"/> for
+            <see cref="F:Microsoft.CodeAnalysis.CSharp.Utilities.TypeStyleResult.IsStylePreferred"/> because it goes against the user's preferences.
+            </summary>
+            <remarks>
+            <para>In general, most features should only convert the type if <see cref="F:Microsoft.CodeAnalysis.CSharp.Utilities.TypeStyleResult.IsStylePreferred"/> is
+            <see langword="true"/>. The one exception is the refactoring, which is explicitly there to still let people
+            convert things quickly, even if it's going against their stated style.</para>
+            </remarks>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.Utilities.CSharpTypeStyleHelper.State.IsTypeApparentInDeclaration(Microsoft.CodeAnalysis.CSharp.Syntax.VariableDeclarationSyntax,Microsoft.CodeAnalysis.SemanticModel,Microsoft.CodeAnalysis.CSharp.CodeStyle.TypeStyle.UseVarPreference,System.Threading.CancellationToken)">
+            <summary>
+            Returns true if type information could be gleaned by simply looking at the given statement.
+            This typically means that the type name occurs in right hand side of an assignment.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.Utilities.CSharpTypeStyleHelper.State.IsPredefinedTypeInDeclaration(Microsoft.CodeAnalysis.SyntaxNode,Microsoft.CodeAnalysis.SemanticModel)">
+            <summary>
+            checks if the type represented by the given symbol is one of the
+            simple types defined in the compiler.
+            </summary>
+            <remarks>
+            From the IDE perspective, we also include object and string to be simplified
+            to var. <see cref="M:Microsoft.CodeAnalysis.CSharp.SyntaxFacts.IsPredefinedType(Microsoft.CodeAnalysis.CSharp.SyntaxKind)"/> considers string
+            and object but the compiler's implementation of IsIntrinsicType does not.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.Utilities.CSharpTypeStyleHelper.State.IsMadeOfSpecialTypes(Microsoft.CodeAnalysis.ITypeSymbol)">
+            <summary>
+            Returns true for type that are arrays/nullable/pointer types of special types
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.Utilities.CSharpUseExplicitTypeHelper.AssignmentSupportsStylePreference(Microsoft.CodeAnalysis.SyntaxToken,Microsoft.CodeAnalysis.CSharp.Syntax.TypeSyntax,Microsoft.CodeAnalysis.CSharp.Syntax.ExpressionSyntax,Microsoft.CodeAnalysis.SemanticModel,Microsoft.CodeAnalysis.Diagnostics.AnalyzerConfigOptions,System.Threading.CancellationToken)">
+            <summary>
+            Analyzes the assignment expression and rejects a given declaration if it is unsuitable for explicit typing.
+            </summary>
+            <returns>
+            false, if explicit typing cannot be used.
+            true, otherwise.
+            </returns>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.Utilities.CSharpUseImplicitTypeHelper.AssignmentSupportsStylePreference(Microsoft.CodeAnalysis.SyntaxToken,Microsoft.CodeAnalysis.CSharp.Syntax.TypeSyntax,Microsoft.CodeAnalysis.CSharp.Syntax.ExpressionSyntax,Microsoft.CodeAnalysis.SemanticModel,Microsoft.CodeAnalysis.Diagnostics.AnalyzerConfigOptions,System.Threading.CancellationToken)">
+            <summary>
+            Analyzes the assignment expression and rejects a given declaration if it is unsuitable for implicit typing.
+            </summary>
+            <returns>
+            false, if implicit typing cannot be used.
+            true, otherwise.
+            </returns>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.Diagnostics.AddBraces.CSharpAddBracesDiagnosticAnalyzer.ContainsInterleavedDirective(Microsoft.CodeAnalysis.SyntaxNode,Microsoft.CodeAnalysis.CSharp.Syntax.StatementSyntax,System.Threading.CancellationToken)">
+            <summary>
+            Check if there are interleaved directives on the statement.
+            Handles special case with if/else.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.Diagnostics.AddBraces.CSharpAddBracesDiagnosticAnalyzer.IsConsideredMultiLine(Microsoft.CodeAnalysis.SyntaxNode,Microsoft.CodeAnalysis.SyntaxNode)">
+            <summary>
+            <para>In general, statements are considered multiline if any of the following span more than one line:</para>
+            <list type="bullet">
+            <item><description>The part of the statement preceding the embedded statement</description></item>
+            <item><description>The embedded statement itself</description></item>
+            <item><description>The part of the statement following the embedded statement, for example the
+            <c>while (...);</c> portion of a <c>do ... while (...);</c> statement</description></item>
+            </list>
+            <para>The third condition is not checked for <c>else</c> clauses because they are only considered multiline
+            when their embedded statement is multiline.</para>
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.Diagnostics.AddBraces.CSharpAddBracesDiagnosticAnalyzer.RequiresBracesToMatchContext(Microsoft.CodeAnalysis.SyntaxNode)">
+            <summary>
+            Determines whether <paramref name="statement"/> should use braces under a
+            <see cref="F:Microsoft.CodeAnalysis.CodeStyle.PreferBracesPreference.WhenMultiline"/> preference due to the presence of braces on one or more
+            sibling statements (the "context").
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.Diagnostics.AddBraces.CSharpAddBracesDiagnosticAnalyzer.GetOutermostIfStatementOfSequence(Microsoft.CodeAnalysis.SyntaxNode)">
+            <summary>
+            Gets the top-most <see cref="T:Microsoft.CodeAnalysis.CSharp.Syntax.IfStatementSyntax"/> for which <paramref name="ifStatementOrElseClause"/> is
+            part of the <c>if</c>/<c>else if</c>/<c>else</c> sequence.
+            </summary>
+            <remarks>
+            <para>For the purpose of brace usage analysis, the embedded statements of an <c>if</c>/<c>else if</c>/<c>else</c>
+            sequence are considered sibling statements, even though they don't appear as immediate siblings in the
+            syntax tree. This method walks up the syntax tree to find the <c>if</c> statement that starts the
+            sequence.</para>
+            </remarks>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.Diagnostics.AddBraces.CSharpAddBracesDiagnosticAnalyzer.AnyPartOfIfSequenceUsesBraces(Microsoft.CodeAnalysis.CSharp.Syntax.IfStatementSyntax)">
+            <summary>
+            Determines if any embedded statement of an <c>if</c>/<c>else if</c>/<c>else</c> sequence uses braces. Only
+            the embedded statements falling <em>immediately</em> under one of these nodes are checked.
+            </summary>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.CSharp.ConvertTypeOfToNameOf.CSharpConvertTypeOfToNameOfDiagnosticAnalyzer">
+            <summary>
+            Finds code like typeof(someType).Name and determines whether it can be changed to nameof(someType), if yes then it offers a diagnostic
+            </summary>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.CSharp.RemoveUnnecessaryDiscardDesignation.CSharpRemoveUnnecessaryDiscardDesignationDiagnosticAnalyzer">
+            <summary>
+            Supports code like <c>o switch { int _ => ... }</c> to just <c>o switch { int => ... }</c> in C# 9 and above.
+            </summary>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.CSharp.FileHeaders.CSharpFileHeaderHelper">
+            <summary>
+            Helper class used for working with file headers.
+            </summary>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.CSharp.InlineDeclaration.CSharpInlineDeclarationDiagnosticAnalyzer">
+            <summary>
+            Looks for code of the form:
+            
+                int i;
+                if (int.TryParse(s, out i)) { }
+                
+            And offers to convert it to:
+            
+                if (int.TryParse(s, out var i)) { }   or
+                if (int.TryParse(s, out int i)) { }   or
+            
+            </summary>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.CSharp.UseCompoundAssignment.CSharpUseCompoundCoalesceAssignmentDiagnosticAnalyzer">
+            <summary>
+            Looks for expressions of the form <c>expr ?? (expr = value)</c> and converts it to
+            <c>expr ??= value</c>.
+            </summary>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.CSharp.UseExpressionBody.UseExpressionBodyHelper`1">
+            <summary>
+            Helper class that allows us to share lots of logic between the diagnostic analyzer and the
+            code refactoring provider.  Those can't share a common base class due to their own inheritance
+            requirements with <see cref="T:Microsoft.CodeAnalysis.Diagnostics.DiagnosticAnalyzer"/> and "CodeRefactoringProvider".
+            </summary>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.CSharp.RemoveUnnecessaryCast.CSharpRemoveUnnecessaryCastDiagnosticAnalyzer">
+            <summary>
+            Supports simplifying cast expressions like <c>(T)x</c> as well as try-cast expressions like <c>x as T</c>
+            </summary>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.CSharp.UseIndexOrRangeOperator.CSharpUseIndexOperatorDiagnosticAnalyzer">
+             <summary>
+             <para>Analyzer that looks for code like:</para>
+            
+             <list type="number">
+             <item><description><c>s[s.Length - n]</c> and offers to change that to <c>s[^n]</c></description></item>
+             <item><description></description><c>s.Get(s.Length - n)</c> and offers to change that to <c>s.Get(^n)</c></item>
+             </list>
+            
+             <para>In order to do convert between indexers, the type must look 'indexable'.  Meaning, it must
+             have an <see cref="T:System.Int32"/>-returning property called <c>Length</c> or <c>Count</c>, and it must have both an
+             <see cref="T:System.Int32"/>-indexer, and a <see cref="T:System.Index"/>-indexer.  In order to convert between methods, the type
+             must have identical overloads except that one takes an <see cref="T:System.Int32"/>, and the other a <see cref="T:System.Index"/>.</para>
+            
+             <para>It is assumed that if the type follows this shape that it is well behaved and that this
+             transformation will preserve semantics.  If this assumption is not good in practice, we
+             could always limit the feature to only work on an allow list of known safe types.</para>
+            
+             <para>Note that this feature only works if the code literally has <c>expr1.Length - expr2</c>. If
+             code has this, and is calling into a method that takes either an <see cref="T:System.Int32"/> or a <see cref="T:System.Index"/>,
+             it feels very safe to assume this is well behaved and switching to <c>^expr2</c> is going to
+             preserve semantics.</para>
+             </summary>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.CSharp.UseIndexOrRangeOperator.CSharpUseIndexOperatorDiagnosticAnalyzer.InfoCache">
+            <summary>
+            Helper type to cache information about types while analyzing the compilation.
+            </summary>
+        </member>
+        <member name="F:Microsoft.CodeAnalysis.CSharp.UseIndexOrRangeOperator.CSharpUseIndexOperatorDiagnosticAnalyzer.InfoCache.IndexType">
+            <summary>
+            The <see cref="T:System.Index"/> type.  Needed so that we only fixup code if we see the type
+            we're using has an indexer that takes an <see cref="T:System.Index"/>.
+            </summary>
+        </member>
+        <member name="F:Microsoft.CodeAnalysis.CSharp.UseIndexOrRangeOperator.CSharpUseIndexOperatorDiagnosticAnalyzer.InfoCache._methodToMemberInfo">
+            <summary>
+            Mapping from a method like <c>MyType.Get(int)</c> to the <c>Length</c>/<c>Count</c> property for
+            <c>MyType</c> as well as the optional <c>MyType.Get(System.Index)</c> member if it exists.
+            </summary>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.CSharp.UseIndexOrRangeOperator.CSharpUseRangeOperatorDiagnosticAnalyzer">
+             <summary>
+             <para>Analyzer that looks for several variants of code like <c>s.Slice(start, end - start)</c> and
+             offers to update to <c>s[start..end]</c> or <c>s.Slice(start..end)</c>.  In order to convert to the
+             indexer, the type being called on needs a slice-like method that takes two ints, and returns
+             an instance of the same type. It also needs a <c>Length</c>/<c>Count</c> property, as well as an indexer
+             that takes a <see cref="T:System.Range"/> instance.  In order to convert between methods, there need to be
+             two overloads that are equivalent except that one takes two ints, and the other takes a
+             <see cref="T:System.Range"/>.</para>
+            
+             <para>It is assumed that if the type follows this shape that it is well behaved and that this
+             transformation will preserve semantics.  If this assumption is not good in practice, we
+             could always limit the feature to only work on an allow list of known safe types.</para>
+             </summary>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.CSharp.UseIndexOrRangeOperator.CSharpUseRangeOperatorDiagnosticAnalyzer.InfoCache">
+            <summary>
+            Helper type to cache information about types while analyzing the compilation.
+            </summary>
+        </member>
+        <member name="F:Microsoft.CodeAnalysis.CSharp.UseIndexOrRangeOperator.CSharpUseRangeOperatorDiagnosticAnalyzer.InfoCache.RangeType">
+            <summary>
+            The <see cref="T:System.Range"/> type.  Needed so that we only fixup code if we see the type
+            we're using has an indexer that takes a <see cref="T:System.Range"/>.
+            </summary>
+        </member>
+        <member name="F:Microsoft.CodeAnalysis.CSharp.UseIndexOrRangeOperator.CSharpUseRangeOperatorDiagnosticAnalyzer.Result.Op2">
+            <summary>
+            Can be null, if we are dealing with one-argument call to a slice-like method.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UseIndexOrRangeOperator.Helpers.TryGetLengthOrCountProperty(Microsoft.CodeAnalysis.ITypeSymbol)">
+            <summary>
+            Find an `int MyType.Count` or `int MyType.Length` property.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UseIndexOrRangeOperator.Helpers.TryGetNoArgInt32Property(Microsoft.CodeAnalysis.ITypeSymbol,System.String)">
+            <summary>
+            Tried to find a public, non-static, int-returning property in the given type with the
+            specified <paramref name="name"/>.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UseIndexOrRangeOperator.Helpers.IsInstanceLengthCheck(Microsoft.CodeAnalysis.IPropertySymbol,Microsoft.CodeAnalysis.IOperation,Microsoft.CodeAnalysis.IOperation)">
+            <summary>
+            Checks if this <paramref name="operation"/> is `expr.Length` where `expr` is equivalent
+            to the <paramref name="instance"/> we were originally invoking an accessor/method off
+            of.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UseIndexOrRangeOperator.Helpers.IsSubtraction(Microsoft.CodeAnalysis.IOperation,Microsoft.CodeAnalysis.Operations.IBinaryOperation@)">
+            <summary>
+            Checks if <paramref name="operation"/> is a binary subtraction operator. If so, it
+            will be returned through <paramref name="subtraction"/>.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UseIndexOrRangeOperator.Helpers.IsIntIndexingMethod(Microsoft.CodeAnalysis.IMethodSymbol)">
+            <summary>
+            Look for methods like "SomeType MyType.Get(int)".  Also matches against the 'getter'
+            of an indexer like 'SomeType MyType.this[int]`
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UseIndexOrRangeOperator.Helpers.IsTwoArgumentSliceLikeMethod(Microsoft.CodeAnalysis.IMethodSymbol)">
+            <summary>
+            Look for methods like "SomeType MyType.Slice(int start, int length)".  Note that the
+            names of the parameters are checked to ensure they are appropriate slice-like.  These
+            names were picked by examining the patterns in the BCL for slicing members.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UseIndexOrRangeOperator.Helpers.IsOneArgumentSliceLikeMethod(Microsoft.CodeAnalysis.IMethodSymbol)">
+            <summary>
+            Look for methods like "SomeType MyType.Slice(int start)".  Note that the
+            name of the parameter is checked to ensure it is appropriate slice-like.
+            This name was picked by examining the patterns in the BCL for slicing members.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UseIndexOrRangeOperator.Helpers.GetIndexer(Microsoft.CodeAnalysis.ITypeSymbol,Microsoft.CodeAnalysis.ITypeSymbol,Microsoft.CodeAnalysis.ITypeSymbol)">
+            <summary>
+            Finds a public, non-static indexer in the given type.  The indexer has to accept the
+            provided <paramref name="parameterType"/> and must return the provided <paramref
+            name="returnType"/>.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UseIndexOrRangeOperator.Helpers.GetOverload(Microsoft.CodeAnalysis.IMethodSymbol,Microsoft.CodeAnalysis.ITypeSymbol)">
+            <summary>
+            Finds a public, non-static overload of <paramref name="method"/> in the containing type.
+            The overload must have the same return type as <paramref name="method"/>.  It must only
+            have a single parameter, with the provided <paramref name="parameterType"/>.
+            </summary>
+        </member>
+        <member name="F:Microsoft.CodeAnalysis.CSharp.UseIndexOrRangeOperator.MemberInfo.LengthLikeProperty">
+            <summary>
+            The <c>Length</c>/<c>Count</c> property on the type.  Must be public, non-static, no-parameter,
+            <see cref="T:System.Int32"/>-returning.
+            </summary>
+        </member>
+        <member name="F:Microsoft.CodeAnalysis.CSharp.UseIndexOrRangeOperator.MemberInfo.OverloadedMethodOpt">
+            <summary>
+            Optional paired overload that takes a <see cref="T:System.Range"/>/<see cref="T:System.Index"/> parameter instead.
+            </summary>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.CSharp.UseLocalFunction.CSharpUseLocalFunctionDiagnosticAnalyzer">
+            <summary>
+            Looks for code of the form:
+            
+                Func&lt;int, int&gt; fib = n =>
+                {
+                    if (n &lt;= 2)
+                        return 1
+                        
+                    return fib(n - 1) + fib(n - 2);
+                }
+                
+            and converts it to:
+            
+                int fib(int n)
+                {
+                    if (n &lt;= 2)
+                        return 1
+                        
+                    return fib(n - 1) + fib(n - 2);
+                }
+            </summary>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.CSharp.UsePatternCombinators.AnalyzedPattern">
+            <summary>
+            Base class to represent a pattern constructed from various checks
+            </summary>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.CSharp.UsePatternCombinators.AnalyzedPattern.Type">
+            <summary>
+            Represents a type-pattern, constructed from an is-expression
+            </summary>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.CSharp.UsePatternCombinators.AnalyzedPattern.Source">
+            <summary>
+            Represents a source-pattern, constructed from C# patterns
+            </summary>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.CSharp.UsePatternCombinators.AnalyzedPattern.Constant">
+            <summary>
+            Represents a constant-pattern, constructed from an equality check
+            </summary>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.CSharp.UsePatternCombinators.AnalyzedPattern.Relational">
+            <summary>
+            Represents a relational-pattern, constructed from relational operators
+            </summary>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.CSharp.UsePatternCombinators.AnalyzedPattern.Binary">
+            <summary>
+            Represents an and/or pattern, constructed from a logical and/or expression.
+            </summary>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.CSharp.UsePatternCombinators.AnalyzedPattern.Not">
+            <summary>
+            Represents a not-pattern, constructed from inequality check or a logical-not expression.
+            </summary>
+        </member>
+        <member name="F:Microsoft.CodeAnalysis.CSharp.UsePatternCombinators.CSharpUsePatternCombinatorsAnalyzer.ConstantResult.None">
+            <summary>
+            None of operands were constant.
+            </summary>
+        </member>
+        <member name="F:Microsoft.CodeAnalysis.CSharp.UsePatternCombinators.CSharpUsePatternCombinatorsAnalyzer.ConstantResult.Left">
+            <summary>
+            The left operand is the constant.
+            </summary>
+        </member>
+        <member name="F:Microsoft.CodeAnalysis.CSharp.UsePatternCombinators.CSharpUsePatternCombinatorsAnalyzer.ConstantResult.Right">
+            <summary>
+            The right operand is the constant.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UsePatternCombinators.CSharpUsePatternCombinatorsAnalyzer.Flip(Microsoft.CodeAnalysis.Operations.BinaryOperatorKind)">
+            <summary>
+            Changes the direction the operator is pointing at.
+            </summary>
+            <remarks>
+            Relational patterns only come in the prefix form so we'll have to
+            flip the operator if the constant happens to be on the left-hand-side.
+            For instance: `123 &gt; x` would be rewritten as `x is &lt; 123`.
+            </remarks>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.CSharp.UsePatternMatching.CSharpAsAndNullCheckDiagnosticAnalyzer">
+            <summary>
+            Looks for code of the forms:
+            
+                var x = o as Type;
+                if (x != null) ...
+            
+            and converts it to:
+            
+                if (o is Type x) ...
+                
+            </summary>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.CSharp.UsePatternMatching.CSharpIsAndCastCheckDiagnosticAnalyzer">
+            <summary>
+            Looks for code of the form:
+            
+                if (expr is Type)
+                {
+                    var v = (Type)expr;
+                }
+                
+            and converts it to:
+            
+                if (expr is Type v)
+                {
+                }
+            </summary>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.CSharp.UsePatternMatching.CSharpUseNotPatternDiagnosticAnalyzer">
+            <summary>
+            Looks for code of the forms:
+            
+                var x = o as Type;
+                if (!(x is Y y)) ...
+            
+            and converts it to:
+            
+                if (x is not Y y) ...
+                
+            </summary>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.CSharp.UseSimpleUsingStatement.UseSimpleUsingStatementDiagnosticAnalyzer">
+             <summary>
+             Looks for code like:
+            
+                 ```c#
+                 using (var a = b)
+                 using (var c = d)
+                 using (var e = f)
+                 {
+                 }
+                 ```
+             
+             And offers to convert it to:
+            
+                 ```c#
+                 using var a = b;
+                 using var c = d;
+                 using var e = f;
+                 ```
+            
+             (this of course works in the case where there is only one using).
+             
+             A few design decisions:
+                 
+             1. We only offer this if the entire group of usings in a nested stack can be
+                converted.  We don't want to take a nice uniform group and break it into
+                a combination of using-statements and using-declarations.  That may feel 
+                less pleasant to the user than just staying uniform.
+             
+             2. We're conservative about converting.  Because `using`s may be critical for
+                program correctness, we only convert when we're absolutely *certain* that
+                semantics will not change.
+             </summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.CSharp.CSharpCodeStyleResources.Indentation_preferences">
+            <summary>Indentation preferences</summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.CSharp.CSharpCodeStyleResources.Space_preferences">
+            <summary>Space preferences</summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.CSharp.CSharpCodeStyleResources.Wrapping_preferences">
+            <summary>Wrapping preferences</summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.CSharp.CSharpCompilerExtensionsResources.var_preferences">
+            <summary>var preferences</summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.CSharp.CSharpCompilerExtensionsResources.Expression_bodied_members">
+            <summary>Expression-bodied members</summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.CSharp.CSharpCompilerExtensionsResources.Pattern_matching_preferences">
+            <summary>Pattern matching preferences</summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.CSharp.CSharpCompilerExtensionsResources.Null_checking_preferences">
+            <summary>Null-checking preferences</summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.CSharp.CSharpCompilerExtensionsResources.Code_block_preferences">
+            <summary>Code-block preferences</summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.CSharp.CSharpCompilerExtensionsResources.using_directive_preferences">
+            <summary>'using' directive preferences</summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.CSharp.CSharpCompilerExtensionsResources.Expected_string_or_char_literal">
+            <summary>Expected string or char literal</summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.CSharp.CSharpCompilerExtensionsResources._0_1_is_not_supported_in_this_version">
+            <summary>'{0}.{1}' is not supported in this version</summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.CSharp.CSharpAnalyzersResources.Convert_switch_statement_to_expression">
+            <summary>Convert switch statement to expression</summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.CSharp.CSharpAnalyzersResources.Use_switch_expression">
+            <summary>Use 'switch' expression</summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.CSharp.CSharpAnalyzersResources.Use_explicit_type_instead_of_var">
+            <summary>Use explicit type instead of 'var'</summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.CSharp.CSharpAnalyzersResources.Use_explicit_type">
+            <summary>Use explicit type</summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.CSharp.CSharpAnalyzersResources.use_var_instead_of_explicit_type">
+            <summary>use 'var' instead of explicit type</summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.CSharp.CSharpAnalyzersResources.Use_implicit_type">
+            <summary>Use implicit type</summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.CSharp.CSharpAnalyzersResources.Using_directive_is_unnecessary">
+            <summary>Using directive is unnecessary.</summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.CSharp.CSharpAnalyzersResources.Add_braces">
+            <summary>Add braces</summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.CSharp.CSharpAnalyzersResources.Add_braces_to_0_statement">
+            <summary>Add braces to '{0}' statement.</summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.CSharp.CSharpAnalyzersResources.Misplaced_using_directive">
+            <summary>Misplaced using directive</summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.CSharp.CSharpAnalyzersResources.Move_misplaced_using_directives">
+            <summary>Move misplaced using directives</summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.CSharp.CSharpAnalyzersResources.Using_directives_must_be_placed_inside_of_a_namespace_declaration">
+            <summary>Using directives must be placed inside of a namespace declaration</summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.CSharp.CSharpAnalyzersResources.Using_directives_must_be_placed_outside_of_a_namespace_declaration">
+            <summary>Using directives must be placed outside of a namespace declaration</summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.CSharp.CSharpAnalyzersResources.Warning_colon_Moving_using_directives_may_change_code_meaning">
+            <summary>Warning: Moving using directives may change code meaning.</summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.CSharp.CSharpAnalyzersResources.Use_expression_body_for_methods">
+            <summary>Use expression body for methods</summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.CSharp.CSharpAnalyzersResources.Use_block_body_for_methods">
+            <summary>Use block body for methods</summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.CSharp.CSharpAnalyzersResources.Use_block_body_for_accessors">
+            <summary>Use block body for accessors</summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.CSharp.CSharpAnalyzersResources.Use_block_body_for_constructors">
+            <summary>Use block body for constructors</summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.CSharp.CSharpAnalyzersResources.Use_block_body_for_indexers">
+            <summary>Use block body for indexers</summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.CSharp.CSharpAnalyzersResources.Use_block_body_for_operators">
+            <summary>Use block body for operators</summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.CSharp.CSharpAnalyzersResources.Use_block_body_for_properties">
+            <summary>Use block body for properties</summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.CSharp.CSharpAnalyzersResources.Use_expression_body_for_accessors">
+            <summary>Use expression body for accessors</summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.CSharp.CSharpAnalyzersResources.Use_expression_body_for_constructors">
+            <summary>Use expression body for constructors</summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.CSharp.CSharpAnalyzersResources.Use_expression_body_for_indexers">
+            <summary>Use expression body for indexers</summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.CSharp.CSharpAnalyzersResources.Use_expression_body_for_operators">
+            <summary>Use expression body for operators</summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.CSharp.CSharpAnalyzersResources.Use_expression_body_for_properties">
+            <summary>Use expression body for properties</summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.CSharp.CSharpAnalyzersResources.Use_block_body_for_local_functions">
+            <summary>Use block body for local functions</summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.CSharp.CSharpAnalyzersResources.Use_expression_body_for_local_functions">
+            <summary>Use expression body for local functions</summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.CSharp.CSharpAnalyzersResources.Unreachable_code_detected">
+            <summary>Unreachable code detected</summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.CSharp.CSharpAnalyzersResources.Use_pattern_matching">
+            <summary>Use pattern matching</summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.CSharp.CSharpAnalyzersResources.Use_is_null_check">
+            <summary>Use 'is null' check</summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.CSharp.CSharpAnalyzersResources.Use_simple_using_statement">
+            <summary>Use simple 'using' statement</summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.CSharp.CSharpAnalyzersResources.using_statement_can_be_simplified">
+            <summary>'using' statement can be simplified</summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.CSharp.CSharpAnalyzersResources.if_statement_can_be_simplified">
+            <summary>'if' statement can be simplified</summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.CSharp.CSharpAnalyzersResources.Simplify_default_expression">
+            <summary>Simplify 'default' expression</summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.CSharp.CSharpAnalyzersResources.default_expression_can_be_simplified">
+            <summary>'default' expression can be simplified</summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.CSharp.CSharpAnalyzersResources.Make_readonly_fields_writable">
+            <summary>Make readonly fields writable</summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.CSharp.CSharpAnalyzersResources.Struct_contains_assignment_to_this_outside_of_constructor_Make_readonly_fields_writable">
+            <summary>Struct contains assignment to 'this' outside of constructor. Make readonly fields writable</summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.CSharp.CSharpAnalyzersResources.Deconstruct_variable_declaration">
+            <summary>Deconstruct variable declaration</summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.CSharp.CSharpAnalyzersResources.Variable_declaration_can_be_deconstructed">
+            <summary>Variable declaration can be deconstructed</summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.CSharp.CSharpAnalyzersResources.Local_function_can_be_made_static">
+            <summary>Local function can be made static</summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.CSharp.CSharpAnalyzersResources.Make_local_function_static">
+            <summary>Make local function 'static'</summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.CSharp.CSharpAnalyzersResources._0_can_be_simplified">
+            <summary>{0} can be simplified</summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.CSharp.CSharpAnalyzersResources.Indexing_can_be_simplified">
+            <summary>Indexing can be simplified</summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.CSharp.CSharpAnalyzersResources.Use_local_function">
+            <summary>Use local function</summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.CSharp.CSharpAnalyzersResources.Use_index_operator">
+            <summary>Use index operator</summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.CSharp.CSharpAnalyzersResources.Use_range_operator">
+            <summary>Use range operator</summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.CSharp.CSharpAnalyzersResources.Delegate_invocation_can_be_simplified">
+            <summary>Delegate invocation can be simplified.</summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.CSharp.CSharpAnalyzersResources.Inline_variable_declaration">
+            <summary>Inline variable declaration</summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.CSharp.CSharpAnalyzersResources.Variable_declaration_can_be_inlined">
+            <summary>Variable declaration can be inlined</summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.CSharp.CSharpAnalyzersResources.Negate_expression_changes_semantics">
+            <summary>Negate expression (changes semantics)</summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.CSharp.CSharpAnalyzersResources.Remove_operator_preserves_semantics">
+            <summary>Remove operator (preserves semantics)</summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.CSharp.CSharpAnalyzersResources.Remove_suppression_operators">
+            <summary>Remove suppression operators</summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.CSharp.CSharpAnalyzersResources.Remove_unnecessary_suppression_operator">
+            <summary>Remove unnecessary suppression operator</summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.CSharp.CSharpAnalyzersResources.Suppression_operator_has_no_effect_and_can_be_misinterpreted">
+            <summary>Suppression operator has no effect and can be misinterpreted</summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.CSharp.CSharpAnalyzersResources.typeof_can_be_converted__to_nameof">
+            <summary>'typeof' can be converted  to 'nameof'</summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.CSharp.CSharpAnalyzersResources.Use_new">
+            <summary>Use 'new(...)'</summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.CSharp.CSharpAnalyzersResources.new_expression_can_be_simplified">
+            <summary>'new' expression can be simplified</summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.CSharp.CSharpAnalyzersResources.Discard_can_be_removed">
+            <summary>Discard can be removed</summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.CSharp.CSharpAnalyzersResources.Remove_unnessary_discard">
+            <summary>Remove unnecessary discard</summary>
+        </member>
+    </members>
+</doc>

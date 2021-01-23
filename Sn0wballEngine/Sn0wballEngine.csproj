@@ -143,6 +143,9 @@
     <Compile Include="SelectionBox.cs" />
     <Compile Include="WidgetWindow.cs" />
     <Compile Include="InputBox.cs" />
+    <Compile Include="SFRoundedRectangle.cs" />
+    <Compile Include="BitmapImage.cs" />
+    <Compile Include="Hitbox.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

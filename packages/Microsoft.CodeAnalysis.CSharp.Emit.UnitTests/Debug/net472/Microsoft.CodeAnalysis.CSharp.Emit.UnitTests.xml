@@ -1,0 +1,718 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.CodeAnalysis.CSharp.Emit.UnitTests</name>
+    </assembly>
+    <members>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.AttributeTests.AttributeWithTypeReferenceToCurrentCompilation_WithCheckAttributes">
+            <summary>
+            Looking up C explicitly after calling GetAttributes will cause <see cref="M:Microsoft.CodeAnalysis.CSharp.Symbols.SourceAssemblySymbol.GetForwardedTypes"/> to use the cached attributes, rather that do partial binding
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.AttributeTests.CS1502ERR_NullAttributeUsageArgument">
+            <summary>
+            Bug 7620: System.Nullreference Exception throws while the value of  parameter  AttributeUsage Is Null
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.AttributeTests.CS0404ERR_GenericAttributeError">
+            <summary>
+            Bug 7632: Debug.Assert() Failure  while Attribute Contains Generic
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.AttributeTests_CallerInfoAttributes.Bug991476_1">
+            <summary>
+            DELIBERATE SPEC VIOLATION: The C# spec currently requires to provide caller information only in explicit invocations and query expressions.
+            We also provide caller information to an invocation of an <c>Add</c> method generated for an element-initializer in a collection-initializer
+            to match the native compiler behavior and user requests. 
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.AttributeTests_MarshalAs.SimpleTypes">
+            <summary>
+            type only, others ignored, field type ignored
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.AttributeTests_MarshalAs.ComInterfaces">
+            <summary>
+            (type, IidParamIndex), others ignored, field type ignored
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.AttributeTests_MarshalAs.NativeTypeArray">
+            <summary>
+            (ArraySubType, SizeConst, SizeParamIndex), SafeArraySubType not allowed, others ignored
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.AttributeTests_MarshalAs.NativeTypeFixedArray">
+            <summary>
+            (ArraySubType, SizeConst), (SizeParamIndex, SafeArraySubType) not allowed, others ignored
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.AttributeTests_MarshalAs.NativeTypeSafeArray">
+            <summary>
+            (SafeArraySubType, SafeArrayUserDefinedSubType), (ArraySubType, SizeConst, SizeParamIndex) not allowed,
+            (SafeArraySubType, SafeArrayUserDefinedSubType) not allowed together unless VT_DISPATCH, VT_UNKNOWN, VT_RECORD; others ignored.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.AttributeTests_MarshalAs.NativeTypeFixedSysString">
+            <summary>
+            (SizeConst - required), (SizeParamIndex, ArraySubType) not allowed
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.AttributeTests_MarshalAs.CustomMarshal">
+            <summary>
+            Custom (MarshalType, MarshalTypeRef, MarshalCookie) one of {MarshalType, MarshalTypeRef} required, others ignored
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.AttributeTests_MarshalAs.NativeTypeByValStr">
+            <summary>
+             type only, only on parameters
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.AttributeTests_Nullable.EmitPrivateMetadata_MissingAttributeConstructor">
+            <summary>
+            Should only require NullableAttribute constructor if nullable annotations are emitted.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.AttributeTests_NullableContext.ExplicitAttribute_Module">
+            <summary>
+            Module-level NullableContextAttribute is ignored.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.AttributeTests_StructLayout.Inheritance">
+            <summary>
+            CLI spec (22.8 ClassLayout):
+             "A type has layout if it is marked SequentialLayout or ExplicitLayout. 
+              If any type within an inheritance chain has layout, then so shall all its base classes, 
+              up to the one that descends immediately from System.ValueType (if it exists in the type's hierarchy); 
+              otherwise, from System.Object."
+              
+            But this rule is only enforced by the loader, not by the compiler.
+            TODO: should we report an error?
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.AttributeTests_StructLayout.ExplicitFieldLayout_Errors">
+            <summary>
+            CLI spec (22.16 FieldLayout):
+             - Offset shall be zero or more.
+             - The Type whose Fields are described by each row of the FieldLayout table shall have Flags.ExplicitLayout.
+             - Flags.Static for the row in the Field table indexed by Field shall be non-static
+             - Every Field of an ExplicitLayout Type shall be given an offset; that is, it shall have a row in the FieldLayout table
+            </summary>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.CSharp.UnitTests.AttributeTests_Synthesized">
+            <summary>
+            NYI: PEVerify currently fails for netmodules with error: "The module X was expected to contain an assembly manifest".
+            Verification was disabled for net modules for now. Add it back once module support has been added.
+            See tests having verify: !outputKind.IsNetModule()
+            https://github.com/dotnet/roslyn/issues/23475
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.AttributeTests_WellKnownAttributes.TestMultipleDeprecatedAttributes">
+            <summary>
+            Report warning or error based on last attribute.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.BreakingChanges.CastOnLhsOfConditionalOperator">
+            <summary>
+            When determining whether the LHS of a null-coalescing operator (??) is non-null, the native compiler strips off casts.  
+            
+            We have decided not to reproduce this behavior.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.CodeGen.CodeGenAsyncIteratorTests.Run(System.Int32,System.String)">
+            <summary>
+            Enumerates `C.M()` a given number of iterations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.CodeGen.CodeGenAsyncTests.AwaitInScriptStaticInitializer">
+            <summary>
+            await should be disallowed in static field initializer
+            since the static initialization of the class must be
+            handled synchronously in the .cctor.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.CodeGen.CodeGenAwaitForeachTests.TestInFinally">
+            Covered in greater details by <see cref="M:Microsoft.CodeAnalysis.CSharp.UnitTests.CodeGen.CodeGenAsyncIteratorTests.TryFinally_AwaitForeachInFinally(System.Int32,System.String)"/>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.CodeGen.CodeGenCapturing.GenerateAllSetCombinations(System.Int32,System.Int32)">
+            <summary>
+            Generates all combinations of distributing a sum to a list of subsets.
+            This is equivalent to the "stars and bars" combinatorics construction.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.CodeGen.CodeGenCapturing.AllCaptureTests">
+            <summary>
+            This test exercises the C# local function capturing analysis by generating
+            all possible combinations of capturing within a certain complexity. The
+            generating functions use a maximum number of variables captured per local function,
+            a maximum number of local functions, and a maximum scope depth to decide the
+            limits of the combinations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.CodeGen.CodeGenClosureLambdaTests.YCombinatorTest">
+            <remarks>
+            Based on MadsT blog post:
+            http://blogs.msdn.com/b/madst/archive/2007/05/11/recursive-lambda-expressions.aspx
+            </remarks>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.CodeGen.CodeGenConditionalOperatorTests.TestConditionalOperatorInterfaceRegression1">
+            <summary>
+            This specific code has caused problems in the past.
+            System.Security.VerificationException on the second attempt.
+            </summary>
+            <remarks>
+            No special handling seems to have been required to make this work
+            in Roslyn.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.CodeGen.CodeGenConditionalOperatorTests.TestConditionalOperatorInterfaceRegression2">
+            <summary>
+            From orcas bug #42645.  PEVerify fails.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.CodeGen.CodeGenConditionalOperatorTests.TestConditionalOperatorInterfaceRegression3">
+            <summary>
+            From whidbey bug #108643.  Extraneous class casts in Test1.m2 (vs Test1.m1).
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.CodeGen.CodeGenConditionalOperatorTests.TestConditionalOperatorInterfaceRegression4">
+            <summary>
+            From whidbey bug #49619.  PEVerify fails.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.CodeGen.CodeGen_DynamicTests.ExplicitInterfaceImplementation">
+            <summary>
+            Dev11 doesn't include name of explicit interface implementation method into site container name.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.CodeGen.CodeGen_DynamicTests.BooleanOperation_Or_UserDefinedImplicitConversion_Dynamic">
+            <summary>
+            Implicit conversion has precedence over operator true/false.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.CodeGen.CodeGen_DynamicTests.BooleanOperation_And_UserDefinedImplicitConversion_Dynamic">
+            <summary>
+            Implicit conversion has precedence over operator true/false.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.CodeGen.CodeGen_DynamicTests.InvokeMember_ByRefDynamic">
+            <summary>
+            By-ref dynamic argument doesn't make the call dynamic.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.CodeGen.CodeGen_DynamicTests.InvokeMember_CallSiteRefOutOmitted">
+            <summary>
+            ref/out can be omitted at call-site.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.CodeGen.CodeGen_DynamicTests.DynamicObjectInitializer_Level3">
+            <summary>
+            We can shared dynamic sites for GetMembers of level n-1 on level n for n >= 3.
+            </summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.CSharp.UnitTests.CodeGen.CodeGenExprLambdaTests.ExpressionAssemblyRef">
+            <summary>
+            Reference to an assembly that defines Expression Trees.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.CodeGen.CodeGenExprLambdaTests.IgnoreInaccessibleExpressionMembers">
+            <summary>
+            Ignore inaccessible members of System.Linq.Expressions.Expression.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.CodeGen.CodeGenForEachTests.TestPatternEnumerableTypeParameterEnumeratorIDisposable">
+            <summary>
+            Enumerable exposed with pattern, enumerator exposed
+            through type parameter constrained to class with pattern,
+            and implementing IDisposable. Dispose should be called
+            without requiring "isinst IDisposable".
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.CodeGen.CodeGenImplicitImplementationTests.TestBaseInterfaceMetadata">
+            <summary>
+            In IL, list all declared interfaces *and their base interfaces*.  If they don't, the
+            runtime doesn't find implicit implementation of base interface methods.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.CodeGen.CodeGenImplicitImplementationTests.TestPartialPropertyOverriding">
+            <summary>
+            Override different accessors of a virtual property in different subtypes.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.CodeGen.CodeGenImplicitImplementationTests.CreateCompilationWithMscorlibAndReference(System.String,System.String)">
+            <summary>
+            Compile libSource into a dll and then compile exeSource with that DLL as a reference.
+            Assert that neither compilation has errors.  Return the exe compilation.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.CodeGen.CodeGenIterators.SpillFieldName">
+            <summary>
+            Name of public fields for spill temps must start with
+            "&lt;&gt;[c]__" so the fields are hidden in the debugger.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.CodeGen.CodeGenMscorlibTests.NoVoidForSynthesizedCtor">
+            <summary>
+            Report CS0518 for missing System.Void
+            when generating synthesized .ctor.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.CodeGen.CodeGenMscorlibTests.NoDecimalConversion">
+            <summary>
+            Report CS0656 for missing Decimal to int conversion.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.CodeGen.CodeGenOperators.TestNullCoalesce_InterfaceRegression1">
+            <summary>
+            From orcas bug #42645.  PEVerify fails.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.CodeGen.CodeGenOperators.TestNullCoalesce_InterfaceRegression2">
+            <summary>
+            From whidbey bug #49619.  PEVerify fails.
+            </summary>
+            <remarks>
+            Dev10 does not produce verifiable code for this example.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.CodeGen.CodeGenOverridingAndHidingTests.TestOverrideGenericMethodWithTypeParamDiffNameWithCustomModifiers">
+            <summary>
+            Override generic method with different type parameter letter
+             - public virtual void Method&lt;TMethod&gt;(TOuter modopt(IsConst)[] modopt(IsConst) x, 
+                                                   TInner modopt(IsConst)[] modopt(IsConst) y, 
+                                                   TMethod modopt(IsConst)[] modopt(IsConst) z);
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.CodeGen.CodeGenOverridingAndHidingTests.ExplicitOverrideWithoutCSharpOverride">
+            <summary>
+            If a PEMethodSymbol is metadata virtual and explicitly
+            overrides another method, then it will return true for
+            IsOverride, even if the method is not considered to be
+            overridden by C# semantics.  In such cases, IsOverride
+            will be true, but OverriddenMethod will return null.
+            This test just checks that nothing blows up in such cases.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.CodeGen.CodeGenTests.FloatToDecimal03">
+            <summary>
+            Dev11 reports CS0030 "Cannot convert type '...' to 'decimal' for
+            float/double constants out of range, even in unchecked code.
+            Roslyn reports CS0221 "Constant value '...' cannot be converted to a
+            'decimal' ..." in checked code only, and no error in unchecked code.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.CodeGen.CodeGenTests.IgnoreOtherDiagnosticsCompilingSynthesizedMethods">
+            <summary>
+            Diagnostics from other methods should be ignored
+            when compiling and emitting synthesized methods.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.CodeGen.ForLoopsTests.ForLoopNoStatements">
+            <summary>
+            No statements in for loop parts.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.CodeGen.ForLoopsTests.ForLoopStatementExpressionListInitializer">
+            <summary>
+            Statement expression list in initializer.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.CodeGen.WinMdDelegateTests.SimpleDelegateMembersTest">
+            <summary>
+            When the output type is .winmdobj, delegate types shouldn't output Begin/End invoke 
+            members.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Emit.CodeGenScriptTests.ScriptEntryPoint">
+            <summary>
+            The script entry point should complete synchronously.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Emit.CompilationEmitTests.VerifyMvid(System.IO.MemoryStream,System.Boolean)">
+            <summary>
+            Extract the MVID using two different methods (PEReader and MvidReader) and compare them. 
+            We only expect an .mvid section in ref assemblies.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Emit.CompilationEmitTests.CompareAssemblies(System.String,System.String,System.String,Microsoft.CodeAnalysis.CSharp.UnitTests.Emit.CompilationEmitTests.Match,System.Boolean)">
+            <summary>
+            Are the metadata-only assemblies identical with two source code modifications?
+            Metadata-only assemblies can either include private/internal members or not.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Emit.CompilationEmitTests.VerifyRefAssemblyClient(System.String,System.String,System.Action{Microsoft.CodeAnalysis.CSharp.CSharpCompilation},System.Int32)">
+            <summary>
+            The client compilation should not be affected (except for some diagnostic differences)
+            by the library assembly only having metadata, or not including private members.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Emit.CompilationEmitTests.EmitMetadataOnly_SynthesizedExplicitImplementations">
+            <summary>
+            Check that when we emit metadata only, we include metadata for
+            compiler generate methods (e.g. the ones for implicit interface
+            implementation).
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Emit.CompilationEmitTests.AnonymousTypeMetadataOrder">
+            <summary>
+            Ordering of anonymous type definitions
+            in metadata should be deterministic.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Emit.CompilationEmitTests.SynthesizedDelegateMetadataOrder">
+            <summary>
+            Ordering of synthesized delegates in
+            metadata should be deterministic.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Emit.EmitCustomModifiers.TestSingleInterfaceImplementationWithCustomModifiers">
+            <summary>
+            Test implementing a single interface with custom modifiers.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Emit.EmitCustomModifiers.TestMultipleInterfaceImplementationWithCustomModifiers">
+            <summary>
+            Test implementing multiple (identical) interfaces with custom modifiers.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Emit.EmitCustomModifiers.TestSingleOverrideWithCustomModifiers">
+            <summary>
+            Test a direct override of a metadata method with custom modifiers.
+            Also confirm that a source method without custom modifiers can hide
+            a metadata method with custom modifiers (in the sense that "new" is
+            required) but does not copy the custom modifiers.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Emit.EmitCustomModifiers.TestRepeatedOverrideWithCustomModifiers">
+            <summary>
+            Test overriding a source method that overrides a metadata method with
+            custom modifiers.  The custom modifiers should propagate to the second
+            override as well.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Emit.EmitCustomModifiers.TestImplicitImplementationInBaseWithCustomModifiers">
+            <summary>
+            Test the case of a source type extending a metadata type that could implicitly
+            implement a metadata interface with custom modifiers.  If the source type does
+            not implement an interface method, the base method fills in and a bridge method
+            is synthesized in the source type.  If the source type does implement an interface
+            method, no bridge method is synthesized.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Emit.EmitCustomModifiers.TestImplicitImplementationBestMatchWithCustomModifiers">
+            <summary>
+            Unlike override lookup, implicit implementation lookup ignores custom
+            modifiers and should simply choose the most derived method that matches
+            the interface method signature (modulo custom modifiers).
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Emit.EmitCustomModifiers.TestGenericsWithCustomModifiers">
+            <summary>
+            Make sure custom modifiers can be applied to type parameters.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Emit.EmitCustomModifiers.TestAssignmentWithCustomModifiers">
+            <summary>
+            Sanity check assignment conversions in the presence of custom modifiers.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Emit.EndToEndTests.RunInThread(System.Action)">
+            <summary>
+            These tests are very sensitive to stack size hence we use a fresh thread to ensure there 
+            is a consistent stack size for them to execute in. 
+            </summary>
+            <param name="action"></param>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Emit.EntryPointTests.ERR_NoEntryPoint_Overloads">
+            <summary>
+            Dev10 reports the .exe full path in CS5001. We don't.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Emit.EntryPointTests.ERR_MultipleEntryPoints">
+            <summary>
+            Dev10 reports the .exe full path in CS0017. We don't.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Emit.EntryPointTests.ERR_NoEntryPoint_PartialClass">
+            <summary>
+            Unlike Dev10 we report a single error for Main method with incorrect signature defined in a partial class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Emit.EntryPointTests.ExplicitMainTypeName_GenericAndNonGeneric">
+            <summary>
+            The nongeneric is used.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Emit.EntryPointTests.ExplicitMainTypeName_GenericMultipleArities">
+            <summary>
+            Dev10: the first definition of C is reported (i.e. C{S,T}).
+            We report the one with the least arity (i.e. C{T}).
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Emit.EntryPointTests.ExplicitMainTypeHasMultipleMains_NoViable">
+            <summary>
+            Warnings reported for all nonviable, "missing main" error reported.
+            Dev10: reports a warning for instance Main(bool) but that's seems to be a bug 
+            since the warning is not reported when main type name is not specified.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Emit.EntryPointTests.ExplicitMainTypeHasMultipleMains_SingleViable">
+            <summary>
+            No errors or warnings reported.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Emit.EntryPointTests.ExplicitMainTypeHasMultipleMains_MultipleViable">
+            <summary>
+            Warnings reported for nonviable and "multiple mains" error reported for viable.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.Emit.OptionalArgumentsTests.TestDuplicateConstantAttributesDifferentValues_BadValue">
+            <summary>
+            Should not report differences if either value is bad.
+            </summary>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.CSharp.UnitTests.EmitErrorTests">
+            <summary>
+            this place is dedicated to emit/codegen related error tests
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.EmitMetadataTestBase.ValidateDeclSecurity(Microsoft.CodeAnalysis.CSharp.Symbols.ModuleSymbol,Microsoft.CodeAnalysis.CSharp.UnitTests.EmitMetadataTestBase.DeclSecurityEntry[])">
+            <summary>
+            Validate the contents of the DeclSecurity metadata table.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.EmitMetadata.PrivatePropertyAccessorNotVirtual">
+            <summary>
+            Private accessors of a virtual property should not be virtual.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.PDB.PDBTests.MethodsWithDebuggerAttributes">
+            <summary>
+            Although the debugging info attached to DebuggerHidden method is not used by the debugger 
+            (the debugger doesn't ever stop in the method) Dev11 emits the info and so do we.
+            
+            StepThrough method needs the information if JustMyCode is disabled and a breakpoint is set within the method.
+            NonUserCode method needs the information if JustMyCode is disabled.
+            
+            It's up to the tool that consumes the debugging information, not the compiler to decide whether to ignore the info or not.
+            BTW, the information can actually be retrieved at runtime from the PDB file via Reflection StackTrace.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.PDB.PDBTests.SequencePointAtOffset0">
+            <summary>
+            If a synthesized method contains any user code,
+            the method must have a sequence point at
+            offset 0 for correct stepping behavior.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.PDB.PDBTests.SyntaxOffsetInPresenceOfTrivia_Methods">
+            <summary>
+            Leading trivia is not included in the syntax offset.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UnitTests.PDB.PDBTests.SyntaxOffsetInPresenceOfTrivia_Initializers">
+            <summary>
+            Leading and trailing trivia are not included in the syntax offset.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.EditAndContinue.UnitTests.AssemblyReferencesTests.CompilationReferences_Less">
+            <summary>
+            The baseline metadata might have less (or even different) references than
+            the current compilation. We shouldn't assume that the reference sets are the same.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.EditAndContinue.UnitTests.AssemblyReferencesTests.CompilationReferences_More">
+            <summary>
+            The baseline metadata might have more references than the current compilation. 
+            References that aren't found in the compilation are treated as missing.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.EditAndContinue.UnitTests.AssemblyReferencesTests.ChangingCompilationDependencies">
+            <summary>
+            Symbol matcher considers two source types that only differ in the declaring compilations different.
+            </summary>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.CSharp.EditAndContinue.UnitTests.EditAndContinueTests">
+            <summary>
+            Tip: debug EncVariableSlotAllocator.TryGetPreviousClosure or other TryGet methods to figure out missing markers in your test.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.EditAndContinue.UnitTests.EditAndContinueTests.AddThenModifyMethod">
+            <summary>
+            Add a method that requires entries in the ParameterDefs table.
+            Specifically, normal parameters or return types with attributes.
+            Add the method in the first edit, then modify the method in the second.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.EditAndContinue.UnitTests.EditAndContinueTests.AddNestedTypesOrder">
+            <summary>
+            Nested types should be emitted in the
+            same order as full emit.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.EditAndContinue.UnitTests.EditAndContinueTests.AssemblyAndModuleAttributeReferences">
+            <summary>
+            [assembly: ...] and [module: ...] attributes should
+            not be included in delta metadata.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.EditAndContinue.UnitTests.EditAndContinueTests.ClassAndFieldLayout">
+            <summary>
+            ClassLayout and FieldLayout tables.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.EditAndContinue.UnitTests.EditAndContinueTests.DeletedValueTypeLocal">
+            <summary>
+            Types should be retained in deleted locals
+            for correct alignment of remaining locals.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.EditAndContinue.UnitTests.EditAndContinueTests.PrivateImplementationDetails">
+            <summary>
+            Instance and static constructors synthesized for
+            PrivateImplementationDetails should not be
+            generated for delta.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.EditAndContinue.UnitTests.EditAndContinueTests.PrivateImplementationDetails_ComputeStringHash">
+            <summary>
+            Should not generate method for string switch since
+            the CLR only allows adding private members.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.EditAndContinue.UnitTests.EditAndContinueTests.UniqueIds">
+            <summary>
+            Unique ids should not conflict with ids
+            from previous generation.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.EditAndContinue.UnitTests.EditAndContinueTests.ReferencesInIL">
+            <summary>
+            Avoid adding references from method bodies
+            other than the changed methods.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.EditAndContinue.UnitTests.EditAndContinueTests.PreserveLocalSlots">
+            <summary>
+            Local slots must be preserved based on signature.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.EditAndContinue.UnitTests.EditAndContinueTests.PreserveLocalSlots_NewMethod">
+            <summary>
+            Preserve locals for method added after initial compilation.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.EditAndContinue.UnitTests.EditAndContinueTests.PreserveLocalTypes">
+            <summary>
+            Local types should be retained, even if the local is no longer
+            used by the method body, since there may be existing
+            references to that slot, in a Watch window for instance.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.EditAndContinue.UnitTests.EditAndContinueTests.PreserveLocalVariablesFlag">
+            <summary>
+            Preserve locals if SemanticEdit.PreserveLocalVariables is set.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.EditAndContinue.UnitTests.EditAndContinueTests.AnonymousTypes">
+            <summary>
+            Reuse existing anonymous types.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.EditAndContinue.UnitTests.EditAndContinueTests.AnonymousTypes_OtherTypeNames">
+            <summary>
+            Anonymous type names with module ids
+            and gaps in indices.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.EditAndContinue.UnitTests.EditAndContinueTests.AnonymousTypes_SkipGeneration">
+            <summary>
+            Update method with anonymous type that was
+            not directly referenced in previous generation.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.EditAndContinue.UnitTests.EditAndContinueTests.AnonymousTypes_SkipGeneration_2">
+            <summary>
+            Update another method (without directly referencing
+            anonymous type) after updating method with anonymous type.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.EditAndContinue.UnitTests.EditAndContinueTests.AnonymousTypes_AddThenDelete">
+            <summary>
+            Local from previous generation is of an anonymous
+            type not available in next generation.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.EditAndContinue.UnitTests.EditAndContinueTests.LocalType_UnsupportedSignatureContent">
+            <summary>
+            Should not re-use locals if the method metadata
+            signature is unsupported.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.EditAndContinue.UnitTests.EditAndContinueTests.LocalType_CustomModifiers">
+            <summary>
+            Should not re-use locals with custom modifiers.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.EditAndContinue.UnitTests.EditAndContinueTests.TemporaryLocals_Other">
+            <summary>
+            Temporaries for locals used within a single
+            statement should not be preserved.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.EditAndContinue.UnitTests.EditAndContinueTests.Bug782270">
+            <summary>
+            Local names array (from PDB) may have fewer slots than method
+            signature (from metadata) when the trailing slots are unnamed.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.EditAndContinue.UnitTests.EditAndContinueTests.Bug782270_NoNamedLocals">
+            <summary>
+            Similar to above test but with no named locals in original.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.EditAndContinue.UnitTests.EditAndContinueTests.NoPIAReferences">
+            <summary>
+            Disallow edits that require NoPIA references.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.EditAndContinue.UnitTests.EditAndContinueTests.UnrecognizedLocalOfTypeFromAssembly">
+            <summary>
+            Should use TypeDef rather than TypeRef for unrecognized
+            local of a type defined in the original assembly.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.EditAndContinue.UnitTests.EditAndContinueTests.UnrecognizedLocalOfAnonymousTypeFromAssembly">
+            <summary>
+            Similar to above test but with anonymous type
+            added in subsequent generation.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.EditAndContinue.UnitTests.LocalSlotMappingTests.SlotMappingWithNoChanges">
+            <summary>
+            If no changes were made we don't produce a syntax map.
+            If we don't have syntax map and preserve variables is true we should still successfully map the locals to their previous slots.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.EditAndContinue.UnitTests.LocalSlotMappingTests.DebugOnly">
+            <summary>
+            Enc debug info is only present in debug builds.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.EditAndContinue.UnitTests.LocalSlotMappingTests.Lock_Pre40">
+            <summary>
+            Using Monitor.Enter(object).
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.EditAndContinue.UnitTests.LocalSlotMappingTests.ForEachArray_ToManyDimensions">
+            <summary>
+            Unlike Dev12 we can handle array with more than 256 dimensions.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.EditAndContinue.UnitTests.LocalSlotMappingTests.NoReuseDifferentTempKind">
+            <summary>
+            Should not reuse temporary locals
+            having different temporary kinds.
+            </summary>
+        </member>
+    </members>
+</doc>

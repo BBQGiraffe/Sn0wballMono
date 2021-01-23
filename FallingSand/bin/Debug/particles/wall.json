@@ -1,0 +1,14 @@
+{
+  "$type": "FallingSand.Particle, FallingSand",
+  "type": 0,
+  "speed": 0,
+  "name": "wall",
+  "id": 3,
+  "color": {
+    "$type": "Sn0wballEngine.SNColor, Sn0wballEngine",
+    "r": 255,
+    "g": 0,
+    "b": 0,
+    "a": 255
+  }
+}

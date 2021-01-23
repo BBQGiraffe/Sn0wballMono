@@ -1,0 +1,141 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.CodeAnalysis.CSharp.CodeStyle.Fixes</name>
+    </assembly>
+    <members>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.Extensions.BasePropertyDeclarationSyntaxExtensions.TryGetSemicolonToken(Microsoft.CodeAnalysis.CSharp.Syntax.BasePropertyDeclarationSyntax)">
+            <summary>
+            Available if <paramref name="node"/> is <see cref="T:Microsoft.CodeAnalysis.CSharp.Syntax.PropertyDeclarationSyntax"/> or <see cref="T:Microsoft.CodeAnalysis.CSharp.Syntax.IndexerDeclarationSyntax"/>.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.Extensions.BasePropertyDeclarationSyntaxExtensions.TryWithSemicolonToken(Microsoft.CodeAnalysis.CSharp.Syntax.BasePropertyDeclarationSyntax,Microsoft.CodeAnalysis.SyntaxToken)">
+            <summary>
+            Available if <paramref name="node"/> is <see cref="T:Microsoft.CodeAnalysis.CSharp.Syntax.PropertyDeclarationSyntax"/> or <see cref="T:Microsoft.CodeAnalysis.CSharp.Syntax.IndexerDeclarationSyntax"/>.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.Extensions.BasePropertyDeclarationSyntaxExtensions.TryWithExpressionBody(Microsoft.CodeAnalysis.CSharp.Syntax.BasePropertyDeclarationSyntax,Microsoft.CodeAnalysis.CSharp.Syntax.ArrowExpressionClauseSyntax)">
+            <summary>
+            Available if <paramref name="node"/> is <see cref="T:Microsoft.CodeAnalysis.CSharp.Syntax.PropertyDeclarationSyntax"/> or <see cref="T:Microsoft.CodeAnalysis.CSharp.Syntax.IndexerDeclarationSyntax"/>.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.Extensions.ContextQuery.CSharpSyntaxContext.IsAwaitStatementContext(System.Int32,System.Threading.CancellationToken)">
+            <summary>
+            Is this a possible position for an await statement (`await using` or `await foreach`)?
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.Extensions.ContextQuery.SyntaxTreeExtensions.IsPossibleTupleContext(Microsoft.CodeAnalysis.SyntaxTree,Microsoft.CodeAnalysis.SyntaxToken,System.Int32)">
+            <summary>
+            Are you possibly typing a tuple type or expression?
+            This is used to suppress colon as a completion trigger (so that you can type element names).
+            This is also used to recommend some keywords (like var).
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.Extensions.ContextQuery.SyntaxTreeExtensions.IsPossibleDeconstructionDesignation(Microsoft.CodeAnalysis.SyntaxTree,System.Int32,System.Threading.CancellationToken)">
+            <summary>
+            Are you possibly in the designation part of a deconstruction?
+            This is used to enter suggestion mode (suggestions become soft-selected).
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.Extensions.ContextQuery.SyntaxTreeExtensions.UnwrapPossibleTuple(Microsoft.CodeAnalysis.SyntaxNode)">
+            <summary>
+            If inside a parenthesized or tuple expression, unwrap the nestings and return the container.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.Extensions.ExpressionSyntaxExtensions.CastIfPossible(Microsoft.CodeAnalysis.CSharp.Syntax.ExpressionSyntax,Microsoft.CodeAnalysis.ITypeSymbol,System.Int32,Microsoft.CodeAnalysis.SemanticModel,System.Threading.CancellationToken)">
+            <summary>
+            Adds to <paramref name="targetType"/> if it does not contain an anonymous
+            type and binds to the same type at the given <paramref name="position"/>.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.Extensions.ITypeSymbolExtensions.TypeSyntaxGeneratorVisitor.AddGlobalAlias(Microsoft.CodeAnalysis.INamespaceOrTypeSymbol,Microsoft.CodeAnalysis.CSharp.Syntax.SimpleNameSyntax)">
+            <summary>
+            We always unilaterally add "global::" to all named types/namespaces.  This
+            will then be trimmed off if possible by calls to 
+            <see cref="M:Microsoft.CodeAnalysis.Simplification.Simplifier.ReduceAsync(Microsoft.CodeAnalysis.Document,Microsoft.CodeAnalysis.Options.OptionSet,System.Threading.CancellationToken)"/>
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.Extensions.SyntaxTokenExtensions.FindLastTokenOfPartialGenericName(Microsoft.CodeAnalysis.SyntaxToken)">
+            <summary>
+            Lexically, find the last token that looks like it's part of this generic name.
+            </summary>
+            <param name="genericIdentifier">The "name" of the generic identifier, last token before
+            the "&amp;"</param>
+            <returns>The last token in the name</returns>
+            <remarks>This is related to the code in <see cref="M:Microsoft.CodeAnalysis.CSharp.Extensions.SyntaxTreeExtensions.IsInPartiallyWrittenGeneric(Microsoft.CodeAnalysis.SyntaxTree,System.Int32,System.Threading.CancellationToken)"/></remarks>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.CodeGeneration.CSharpSyntaxGeneratorInternal.RequiresLocalDeclarationType">
+            <summary>
+            C# always requires a type to be present with a local declaration.  (Even if that type is
+            <c>var</c>).
+            </summary>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.CSharp.FileHeaders.CSharpFileHeaderCodeFixProvider">
+            <summary>
+            Implements a code fix for file header diagnostics.
+            </summary>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.CSharp.MisplacedUsingDirectives.MisplacedUsingDirectivesCodeFixProvider">
+            <summary>
+            Implements a code fix for all misplaced using statements.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.RemoveUnusedMembers.CSharpRemoveUnusedMembersCodeFixProvider.AdjustAndAddAppropriateDeclaratorsToRemove(System.Collections.Generic.HashSet{Microsoft.CodeAnalysis.CSharp.Syntax.FieldDeclarationSyntax},System.Collections.Generic.HashSet{Microsoft.CodeAnalysis.SyntaxNode})">
+            <summary>
+            This method adjusts the <paramref name="declarators"/> to remove based on whether or not all variable declarators
+            within a field declaration should be removed,
+            i.e. if all the fields declared within a field declaration are unused,
+            we can remove the entire field declaration instead of individual variable declarators.
+            </summary>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.CSharp.UseConditionalExpression.MultiLineConditionalExpressionFormattingRule">
+            <summary>
+            Special formatting rule that will convert a conditional expression into the following
+            form if it has the <see cref="F:Microsoft.CodeAnalysis.UseConditionalExpression.UseConditionalExpressionCodeFixHelpers.SpecializedFormattingAnnotation"/> on it:
+            
+            <code>
+                var v = expr
+                    ? whenTrue
+                    : whenFalse
+            </code>
+            
+            i.e. both branches will be on a newline, indented once from the parent indentation.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UseIndexOrRangeOperator.CSharpUseRangeOperatorCodeFixProvider.IsFromEnd(Microsoft.CodeAnalysis.IPropertySymbol,Microsoft.CodeAnalysis.IOperation,Microsoft.CodeAnalysis.IOperation@)">
+            <summary>
+            check if its the form: `expr.Length - value`.  If so, update rangeOperation to then
+            point to 'value' so that we can generate '^value'.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.UseIndexOrRangeOperator.CodeFixHelpers.IndexExpression(Microsoft.CodeAnalysis.CSharp.Syntax.ExpressionSyntax)">
+            <summary>
+            Creates an `^expr` index expression from a given `expr`.
+            </summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.CSharp.CSharpCodeStyleFixesResources.EmptyResource">
+            <summary>Remove this value when another is added.</summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.CSharp.CSharpWorkspaceExtensionsResources.EmptyResource">
+            <summary>Remove this value when another is added.</summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.CSharp.CSharpCodeFixesResources.Remove_Unnecessary_Usings">
+            <summary>Remove Unnecessary Usings</summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.CSharp.CSharpCodeFixesResources.Add_this">
+            <summary>Add 'this.'</summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.CSharp.CSharpCodeFixesResources.Remove_unreachable_code">
+            <summary>Remove unreachable code</summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.CSharp.CSharpCodeFixesResources.Pass_in_captured_variables_as_arguments">
+            <summary>Pass in captured variables as arguments</summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.CSharp.CSharpCodeFixesResources.Warning_colon_Adding_parameters_to_local_function_declaration_may_produce_invalid_code">
+            <summary>Warning: Adding parameters to local function declaration may produce invalid code.</summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.CSharp.CSharpCodeFixesResources.Convert_typeof_to_nameof">
+            <summary>Convert 'typeof' to 'nameof'</summary>
+        </member>
+    </members>
+</doc>

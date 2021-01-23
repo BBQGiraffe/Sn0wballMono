@@ -1,0 +1,62 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+Microsoft.CodeAnalysis.VisualBasic.Scripting
+</name>
+</assembly>
+<members>
+<member name="T:Microsoft.CodeAnalysis.VisualBasic.Scripting.VisualBasicScript">
+ <summary>
+ A factory for creating and running Visual Basic scripts.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.Scripting.VisualBasicScript.Create``1(System.String,Microsoft.CodeAnalysis.Scripting.ScriptOptions,System.Type,Microsoft.CodeAnalysis.Scripting.Hosting.InteractiveAssemblyLoader)">
+ <summary>
+ Create a new Visual Basic script.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.Scripting.VisualBasicScript.Create(System.String,Microsoft.CodeAnalysis.Scripting.ScriptOptions,System.Type,Microsoft.CodeAnalysis.Scripting.Hosting.InteractiveAssemblyLoader)">
+ <summary>
+ Create a new Visual Basic script.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.Scripting.VisualBasicScript.RunAsync``1(System.String,Microsoft.CodeAnalysis.Scripting.ScriptOptions,System.Object,System.Threading.CancellationToken)">
+ <summary>
+ Run a Visual Basic script.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.Scripting.VisualBasicScript.RunAsync(System.String,Microsoft.CodeAnalysis.Scripting.ScriptOptions,System.Object,System.Threading.CancellationToken)">
+ <summary>
+ Run a Visual Basic script.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.Scripting.VisualBasicScript.EvaluateAsync``1(System.String,Microsoft.CodeAnalysis.Scripting.ScriptOptions,System.Object,System.Threading.CancellationToken)">
+ <summary>
+ Run a Visual Basic script and return its resulting value.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.Scripting.VisualBasicScript.EvaluateAsync(System.String,Microsoft.CodeAnalysis.Scripting.ScriptOptions,System.Object,System.Threading.CancellationToken)">
+ <summary>
+ Run a Visual Basic script and return its resulting value.
+ </summary>
+</member>
+<member name="P:Microsoft.CodeAnalysis.VisualBasic.Scripting.VBScriptingResources.LogoLine1">
+ <summary>Microsoft (R) Visual Basic Interactive Compiler version {0}</summary>
+</member>
+<member name="P:Microsoft.CodeAnalysis.VisualBasic.Scripting.VBScriptingResources.LogoLine2">
+ <summary>Copyright (C) Microsoft Corporation. All rights reserved.</summary>
+</member>
+<member name="P:Microsoft.CodeAnalysis.VisualBasic.Scripting.VBScriptingResources.InteractiveHelp">
+ <summary>Usage: vbi [options] [script-file.vbx] [-- script-arguments]
+ 
+ If script-file is specified executes the script, otherwise launches an interactive REPL (Read Eval Print Loop).
+ 
+ Options:
+   /help                          Display this usage message (Short form: ...</summary>
+</member>
+<member name="P:Microsoft.CodeAnalysis.VisualBasic.Scripting.VBScriptingResources.ExceptionEscapeWithoutQuote">
+ <summary>Cannot escape non-printable characters in Visual Basic notation unless quotes are used.</summary>
+</member>
+</members>
+</doc>

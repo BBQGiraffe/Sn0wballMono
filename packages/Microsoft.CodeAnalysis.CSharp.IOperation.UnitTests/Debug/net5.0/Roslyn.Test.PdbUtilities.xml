@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Roslyn.Test.PdbUtilities</name>
+    </assembly>
+    <members>
+        <member name="T:Roslyn.Test.Utilities.MethodDebugInfoBytes.Builder">
+            <remarks>
+            This is a helper class for creating mostly-correct <see cref="T:Roslyn.Test.Utilities.MethodDebugInfoBytes"/> objects (e.g. circular forwards, extra records, etc).
+            To create totally broken objects (e.g. corrupted bytes, alternate scope structures, etc), construct <see cref="T:Roslyn.Test.Utilities.MethodDebugInfoBytes"/> objects directly.
+            </remarks>
+        </member>
+        <member name="M:Roslyn.Test.Utilities.PdbTestUtilities.TryGetCustomDebugInformation(System.Reflection.Metadata.MetadataReader,System.Reflection.Metadata.EntityHandle,System.Guid,System.Reflection.Metadata.CustomDebugInformation@)">
+            <exception cref="T:System.BadImageFormatException">Invalid data format.</exception>
+        </member>
+    </members>
+</doc>

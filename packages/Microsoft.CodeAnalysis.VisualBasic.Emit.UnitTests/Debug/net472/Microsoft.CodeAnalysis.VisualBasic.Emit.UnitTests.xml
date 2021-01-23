@@ -1,0 +1,494 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+Microsoft.CodeAnalysis.VisualBasic.Emit.UnitTests
+</name>
+</assembly>
+<members>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.Semantics.AttributeTests.PEParameterSymbolParamArrayAttribute2">
+ <summary>
+ This function is the same as PEParameterSymbolParamArray
+ except that we check attributes first (to check for race
+ conditions).
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.Semantics.AttributeTests.TestAttributeLookupInaccessibleFriend">
+ <summary>
+ Verify that inaccessible friend AAttribute is preferred over accessible A
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.Semantics.AttributeTests.TestAttributeLookupInaccessibleInheritedPrivate">
+ <summary>
+ Verify that inaccessible inherited private is preferred
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.Semantics.AttributeTests.TestAttributeLookupAmbiguousAttributesWithPrefix">
+ <summary>
+ Verify that ambiguous error is reported when A binds to two Attributes.
+ </summary>
+ <remarks>If this is run in the IDE make sure global namespace is empty or add
+ global namespace prefix to N1 and N2 or run test at command line.</remarks>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.Semantics.AttributeTests.TestAttributeLookupSourceOverridesMetadata">
+ <summary>
+ Verify that source attribute takes precedence over metadata attribute with the same name
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.Semantics.AttributeTests.TestAttributeUsageInheritedBaseAttribute">
+ <summary>
+ Verify that attributeusage from base class is used by derived class
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.Semantics.AttributeTests_MarshalAs.SimpleTypes">
+ <summary> 
+ type only, others ignored, field type ignored 
+ </summary>       
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.Semantics.AttributeTests_MarshalAs.ComInterfaces">
+ <summary>
+  (type, IidParamIndex), others ignored, field type ignored
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.Semantics.AttributeTests_MarshalAs.NativeTypeArray">
+ <summary>
+  (ArraySubType, SizeConst, SizeParamIndex), SafeArraySubType not allowed, others ignored
+  </summary>       
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.Semantics.AttributeTests_MarshalAs.NativeTypeFixedArray">
+ <summary> 
+ (ArraySubType, SizeConst), (SizeParamIndex, SafeArraySubType) not allowed, others ignored 
+ </summary>       
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.Semantics.AttributeTests_MarshalAs.NativeTypeSafeArray">
+ <summary> 
+ (SafeArraySubType, SafeArrayUserDefinedSubType), (ArraySubType, SizeConst, SizeParamIndex) not allowed,
+ (SafeArraySubType, SafeArrayUserDefinedSubType) not allowed together unless VT_DISPATCH, VT_UNKNOWN, VT_RECORD; others ignored. 
+ </summary>       
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.Semantics.AttributeTests_MarshalAs.NativeTypeFixedSysString">
+ <summary> 
+ (SizeConst - required), (SizeParamIndex, ArraySubType) not allowed 
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.Semantics.AttributeTests_MarshalAs.CustomMarshal">
+ <summary> 
+ Custom (MarshalType, MarshalTypeRef, MarshalCookie) one of {MarshalType, MarshalTypeRef} required, others ignored 
+ </summary>        
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.Semantics.AttributeTests_MarshalAs.NativeTypeByValStr">
+ <summary>  
+ type only, only on parameters 
+ </summary>   
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.Semantics.AttributeTests_StructLayout.Inheritance">
+ <summary> 
+ CLI spec (22.8 ClassLayout): 
+  "A type has layout if it is marked SequentialLayout or ExplicitLayout.   
+   If any type within an inheritance chain has layout, then so shall all its base classes,    
+   up to the one that descends immediately from System.ValueType (if it exists in the type's hierarchy);    
+   otherwise, from System.Object."    
+ 
+ But this rule is only enforced by the loader, not by the compiler. 
+ TODO: should we report an error? 
+ </summary>        
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.Semantics.AttributeTests_StructLayout.ExplicitFieldLayout_Errors">
+ <summary> 
+ CLI spec (22.16 FieldLayout):  
+ - Offset shall be zero or more.  
+ - The Type whose Fields are described by each row of the FieldLayout table shall have Flags.ExplicitLayout.  
+ - Flags.Static for the row in the Field table indexed by Field shall be non-static  
+ - Every Field of an ExplicitLayout Type shall be given an offset; that is, it shall have a row in the FieldLayout table 
+ 
+ Dev11 VB checks only the first rule.
+ </summary>        
+</member>
+<member name="T:Microsoft.CodeAnalysis.VisualBasic.UnitTests.Semantics.AttributeTests_Synthesized">
+ <summary>
+ NYI: PEVerify currently fails for netmodules with error: "The module X was expected to contain an assembly manifest".
+ Verification was disabled for net modules for now. Add it back once module support has been added.
+ See tests having verify: !outputKind.IsNetModule()
+ https://github.com/dotnet/roslyn/issues/23475
+ TODO: Add tests for assembly attributes emitted into netmodules which suppress synthesized CompilationRelaxationsAttribute/RuntimeCompatibilityAttribute
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.Semantics.AttributeTests_WellKnownAttributes.TestPseudoDllImport">
+ 6879: Pseudo DllImport looks very different in metadata: pinvokeimpl(...) +
+ PreserveSig
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.Semantics.AttributeTests_WellKnownAttributes.DefaultCharSet_EmbeddedTypes">
+ <summary>
+ DefaultCharSet is not applied on embedded types.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.BreakingChanges.BC30934ERR_RequiredAttributeConstConversion2_1">
+ Roslyn doesn't give warning BC30934 while Dev10 does (Eval ctor as no const)
+  but gives new warning BC42025 for accessing const field through object instance
+ This is an improvement in Roslyn that we are able to eval the const access through 'new object()' instance
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.CodeGenDelegateCreation.DelegateInvocationStructureTests">
+ Bug 5987 "Target parameter of a delegate instantiation is not boxed in case of a structure"
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.CodeGenDelegateCreation.WideningArgumentsDelegateSubRelaxationByRefStrictOff">
+ Bug 7191: "Lambda rewriter does not work for widening conversions of byref params with option strict off"
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.CodeGenDelegateCreation.AddressOfAndGenerics1">
+ bug 7319
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.CodeGenNullable.Op_ExplicitImplicitOnNullable">
+ <summary>
+ same as Dev11
+    implicit: int  --> int?
+    explicit: int? --> int
+ </summary>
+ <remarks></remarks>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.CodeGenNullable.BooleanExpression_30_Helpers.Shapes(System.Int32)">
+ <summary>
+ Enumerate all possible shapes of binary trees with given amount of nodes in it.
+ </summary>
+ <param name="count"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.CodeGenRefReturnTests.Local">
+ <summary>
+ Locals should be values not references.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.CodeGenRefReturnTests.ReadWriteProperty">
+ <summary>
+ Setter of read/write property should be ignored.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.CodeGenRefReturnTests.ReadWriteProperty_DifferentSignatures">
+ <summary>
+ Setter of read/write property should be ignored,
+ even if mismatched signature.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.CodeGenRefReturnTests.RefReturnArgumentToLateBoundCall">
+ <summary>
+ Early-bound calls to ByRef-returning methods
+ supported as arguments to late-bound methods.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.CodeGenRefReturnTests.RefReturnLateBoundCall">
+ <summary>
+ Late-bound calls with ByRef return values not supported.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.Emit.CodeGenScriptTests.LookupSymbols">
+ <summary>
+ LookupSymbols should not include the submission class.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.Emit.CodeGenScriptTests.ScriptEntryPoint">
+ <summary>
+ The script entry point should complete synchronously.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.Emit.CompilationEmitTests.ValidateDeclSecurity(Microsoft.CodeAnalysis.VisualBasic.Symbols.ModuleSymbol,Microsoft.CodeAnalysis.VisualBasic.UnitTests.Emit.CompilationEmitTests.DeclSecurityEntry[])">
+ <summary>
+ Validate the contents of the DeclSecurity metadata table.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.Emit.CompilationEmitTests.AnonymousTypeMetadataOrder">
+ <summary>
+ Ordering of anonymous type definitions
+ in metadata should be deterministic.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.Emit.EntryPointTests.ERR_NoEntryPoint_Overloads">
+ <summary>
+ Dev10 reports the .exe full path in CS5001. We don't. 
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.Emit.EntryPointTests.ERR_MultipleEntryPoints">
+ <summary> 
+ Dev10 reports the .exe full path in CS0017. We don't. 
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.Emit.EntryPointTests.ExplicitMainTypeName_GenericAndNonGeneric">
+ <summary> 
+ The nongeneric is used. 
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.Emit.EntryPointTests.ExplicitMainTypeName_GenericMultipleArities">
+ <summary> 
+ Dev10: the first definition of C is reported (i.e. C{S,T}). We report the one with the least arity (i.e. C{T}). 
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.Emit.FieldInitializerTests.Bug_7629">
+ Bug 7629
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.Emit.OptionalArgumentsTests.TestDuplicateConstantAttributesDifferentValues_BadValue">
+ <summary>
+ Should not report differences if either value is bad.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.CodeGenTests.DecimalLiteral_BreakingChange">
+ <summary>
+ Breaking change: native compiler considers
+ digits &lt; 1e-49 when rounding.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.CodeGenTests.DecimalZero_BreakingChange">
+ <summary>
+ Breaking change: native compiler allows 0eNm where N > 0.
+ (The native compiler ignores sign and scale in 0eNm if N > 0
+ and represents such cases as 0e0m.)
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.CodeGenTests.ConstantLiteralToDecimal">
+ <summary>
+ Won't fix :(
+ </summary>
+ <remarks></remarks>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.CodeGenWinMdDelegates.SimpleDelegateMembersTest">
+ <summary>
+ When the output type is .winmdobj, delegate types shouldn't output Begin/End invoke 
+ members.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.CodeGenWinMdEvents.FieldLikeEventSerialization">
+ <summary>
+ Dev11 had bugs in this area (e.g. 281866, 298564), but Roslyn shouldn't be affected.
+ </summary>
+ <remarks>
+ I'm assuming this is why the final dev11 impl uses GetOrCreateEventRegistrationTokenTable.
+ </remarks>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.EditAndContinueClosureTests.SelectClauseCrossMatch">
+ <summary>
+ We need to handle case when an old node that represents a lambda body with multiple nodes 
+ of the same kind is mapped to a new node that belongs to the lambda body but is 
+ different from the one that represents the new body.
+ 
+ This handling is done in <see cref="M:Microsoft.CodeAnalysis.VisualBasic.LambdaUtilities.GetCorrespondingLambdaBody(Microsoft.CodeAnalysis.SyntaxNode,Microsoft.CodeAnalysis.SyntaxNode)"/>
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.EditAndContinueClosureTests.JoinClauseCrossMatch">
+ <summary>
+ We need to handle case when an old node that represents a lambda body with multiple nodes 
+ of the same kind is mapped to a new node that belongs to the lambda body but is 
+ different from the one that represents the new body.
+ 
+ This handling is done in <see cref="M:Microsoft.CodeAnalysis.VisualBasic.LambdaUtilities.GetCorrespondingLambdaBody(Microsoft.CodeAnalysis.SyntaxNode,Microsoft.CodeAnalysis.SyntaxNode)"/>
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.EditAndContinueTests.PrivateImplementationDetails_ComputeStringHash">
+ <summary>
+ Should not generate method for string switch since
+ the CLR only allows adding private members.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.EditAndContinueTests.ReferencesInIL">
+ <summary>
+ Avoid adding references from method bodies
+ other than the changed methods.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.EditAndContinueTests.NoPIAReferences">
+ <summary>
+ Disallow edits that require NoPIA references.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.EditAndContinueTests.UnrecognizedLocalOfTypeFromAssembly">
+ <summary>
+ Should use TypeDef rather than TypeRef for unrecognized
+ local of a type defined in the original assembly.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.EditAndContinueTests.PreserveLocalSlots">
+ <summary>
+ Local slots must be preserved based on signature.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.EditAndContinueTests.PreserveLocalSlots_NewMethod">
+ <summary>
+ Preserve locals for method added after initial compilation.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.EditAndContinueTests.PreserveLocalTypes">
+ <summary>
+ Local types should be retained, even if the local is no longer
+ used by the method body, since there may be existing
+ references to that slot, in a Watch window for instance.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.EditAndContinueTests.PreserveLocalSlotsReferences">
+ <summary>
+ Local slots must be preserved based on signature.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.EditAndContinueTests.PreserveLocalSlotsUsing">
+ <summary>
+ Local slots must be preserved based on signature.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.EditAndContinueTests.PreserveLocalSlotsWithByRef">
+ <summary>
+ Local slots must be preserved based on signature.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.EditAndContinueTests.PreserveLocalSlotsWithByVal">
+ <summary>
+ Local slots must be preserved based on signature.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.EditAndContinueTests.PreserveLocalSlotsSyncLock">
+ <summary>
+ Local slots must be preserved based on signature.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.EditAndContinueTests.PreserveLocalSlotsForEach">
+ <summary>
+ Local slots must be preserved based on signature.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.EditAndContinueTests.PreserveLocalSlotsForEach001">
+ <summary>
+ Local slots must be preserved based on signature.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.EditAndContinueTests.PreserveLocalSlotsFor001">
+ <summary>
+ Local slots must be preserved based on signature.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.EditAndContinueTests.PreserveLocalSlotsImplicit">
+ <summary>
+ Local slots must be preserved based on signature.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.EditAndContinueTests.PreserveLocalSlotsImplicitQualified">
+ <summary>
+ Local slots must be preserved based on signature.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.EditAndContinueTests.PreserveLocalSlotsImplicitXmlNs">
+ <summary>
+ Local slots must be preserved based on signature.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.EditAndContinueTests.PreserveLocalSlotsImplicitNamedArgXml">
+ <summary>
+ Local slots must be preserved based on signature.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.EditAndContinueTests.AnonymousTypes_SkipGeneration">
+ <summary>
+ Update method with anonymous type that was
+ not directly referenced in previous generation.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.EditAndContinueTests.AnonymousTypes_SkipGeneration_2">
+ <summary>
+ Update another method (without directly referencing
+ anonymous type) after updating method with anonymous type.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.EditAndContinueTests.LocalType_CustomModifiers">
+ <summary>
+ Should not re-use locals with custom modifiers.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.NoPiaEmbedTypes.NewCoClassWithArguments">
+ <summary>
+ Report error attempting to instantiate NoPIA CoClass with arguments.
+ Note: Dev11 silently drops any arguments and does not report an error.
+ </summary>
+</member>
+<member name="T:Microsoft.CodeAnalysis.VisualBasic.UnitTests.CodeGenExprLambda">
+ <summary>
+ Tests for lambdas converted to expression trees.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.PDB.PDBIteratorTests.DebuggerHiddenIterator">
+ <summary>
+ Sequence points of MoveNext method shall not be affected by DebuggerHidden attribute. 
+ The method contains user code that can be edited during debugging and might need remapping.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.PDB.PDBTests.DefaultConstructorWithInitializer">
+ <summary>
+ If a synthesized .ctor contains user code (field initializers),
+ the method must have a sequence point at
+ offset 0 for correct stepping behavior.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.PDB.PDBTests.SequencePointAtOffset0">
+ <summary>
+ If a synthesized method contains any user code,
+ the method must have a sequence point at
+ offset 0 for correct stepping behavior.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.XmlLiteralTests.ValueExtensionPropertyAndExtensionMethod">
+ <summary>
+ If there is an accessible extension method named "Value", the InternalXmlHelper
+ Value extension property should be dropped, since we do not perform overload
+ resolution between methods and properties. If the extension method is inaccessible
+ however, the InternalXmlHelper property should be used.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.XmlLiteralTests.ValueExtensionPropertyAndInaccessibleMember">
+ <summary>
+ Bind to InternalXmlHelper Value extension property if a member named "Value" is inaccessible.
+ Note that Dev11 ignores the InternalXmlHelper property if regular binding finds a
+ member (in this case, the inaccessible member). Therefore this is a breaking change.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.XmlLiteralTests.NormalizeNewlinesTest">
+ <summary>
+ CR/LF and single CR characters should be
+ replaced by single LF characters.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.XmlLiteralTests.RemoveNamespaceAttributes_OtherContentTypes">
+ <summary>
+ Should not call RemoveNamespaceAttributes
+ on intrinsic types or enums.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.XmlLiteralTests.RemoveNamespaceAttributes_XmlnsInScope">
+ <summary>
+ Should not call RemoveNamespaceAttributes
+ unless there are xmlns Imports in scope.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.XmlLiteralTests.XmlnsPrefixUsedInEmbeddedExpressionAndSibling_Constant">
+ <summary>
+ Constant embedded expression with duplicate xmlns attribute.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.XmlLiteralTests.XmlnsPrefixUsedInEmbeddedExpressionAndSibling_NonConstant">
+ <summary>
+ Non-constant embedded expression with duplicate xmlns attribute.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.XmlLiteralTests.XmlnsPrefix_UnusedExpression">
+ <summary>
+ Should not traverse into embedded expressions
+ to determine set of used Imports.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.UnitTests.XmlLiteralTests.InternalXmlHelper_RootNamespace">
+ <summary>
+ My.InternalXmlHelper should be emitted into the root namespace.
+ </summary>
+</member>
+<member name="M:Microsoft.CodeAnalysis.VisualBasic.EditAndContinue.UnitTests.AssemblyReferencesTests.ChangingCompilationDependencies">
+ <summary>
+ Symbol matcher considers two source types that only differ in the declaring compilations different.
+ </summary>
+</member>
+<member name="M:InternalsVisibleToAndStrongNameTests.DeclareAssemblyKeyNameAndFile_BC41008(Microsoft.CodeAnalysis.VisualBasic.VisualBasicParseOptions)">
+ <summary>
+ Won't fix (easy to be tested here)
+ </summary>
+</member>
+</members>
+</doc>

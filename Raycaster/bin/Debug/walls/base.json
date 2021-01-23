@@ -1,0 +1,5 @@
+{
+  "$type": "Raycaster.Wall, Raycaster",
+  "texture": null,
+  "id": 0
+}

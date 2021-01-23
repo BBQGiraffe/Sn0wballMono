@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.CodeAnalysis.CSharp.CommandLine.UnitTests</name>
+    </assembly>
+    <members>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.CommandLine.UnitTests.CommandLineTests.FileShareDeleteCompatibility_Windows">
+             <summary>
+             When the output file is open with <see cref="F:System.IO.FileShare.Read"/> | <see cref="F:System.IO.FileShare.Delete"/>
+             the compiler should delete the file to unblock build while allowing the reader to continue
+             reading the previous snapshot of the file content.
+            
+             On Windows we can read the original data directly from the stream without creating a memory map.
+             </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.CommandLine.UnitTests.CommandLineTests.FileShareDeleteCompatibility_Xplat">
+            <summary>
+            On Linux/Mac <see cref="F:System.IO.FileShare.Delete"/> on its own doesn't do anything.
+            We need to create the actual memory map. This works on Windows as well.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.CommandLine.UnitTests.MiscTests.OverflowCheck">
+            <summary>
+            Sanity check to help ensure our code base was compiled without overflow checking.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.CommandLine.UnitTests.TouchedFileLoggingTests.BuildTouchedFiles(Microsoft.CodeAnalysis.CSharp.CSharpCompiler,System.String,System.Collections.Generic.List{System.String}@,System.Collections.Generic.List{System.String}@)">
+            <summary>
+            Builds the expected base of touched files.
+            Adds a hook for temporary file creation as well,
+            so this method must be called before the execution of
+            Csc.Run.
+            </summary>
+        </member>
+    </members>
+</doc>

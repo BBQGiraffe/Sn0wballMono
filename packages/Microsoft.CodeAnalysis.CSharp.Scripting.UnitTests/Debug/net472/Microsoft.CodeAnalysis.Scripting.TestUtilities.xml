@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.CodeAnalysis.Scripting.TestUtilities</name>
+    </assembly>
+    <members>
+        <member name="T:ObjectFormatterFixtures.MockDesktopSpinLock">
+            <summary>
+            Follows the shape of the Desktop version of <see cref="T:System.Threading.SpinLock"/> relevant for debugger display.
+            </summary>
+        </member>
+        <member name="T:ObjectFormatterFixtures.MockDesktopTask">
+            <summary>
+            Follows the shape of the Desktop version of <see cref="T:System.Threading.Tasks.Task"/> relevant for debugger display.
+            </summary>
+        </member>
+    </members>
+</doc>

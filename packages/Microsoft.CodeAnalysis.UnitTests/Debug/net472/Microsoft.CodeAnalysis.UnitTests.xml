@@ -1,0 +1,225 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.CodeAnalysis.UnitTests</name>
+    </assembly>
+    <members>
+        <member name="M:Microsoft.CodeAnalysis.UnitTests.AsyncQueueTests.TryDequeueAfterComplete">
+            <summary>
+            The analyzer framework explicitly depends on the ability to dequeue existing values
+            after the <see cref="T:Microsoft.CodeAnalysis.Diagnostics.AsyncQueue`1"/> is completed.
+            </summary>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.UnitTests.CachingLookupTests">
+            <summary>
+            Tests for CachingLookup.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.UnitTests.CommonCommandLineParserTests.ParseSeparatedStrings_IncludeQuotes">
+            <summary>
+            This function considers quotes when splitting out the strings.  Ensure they are properly
+            preserved in the final string.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.UnitTests.CommonCommandLineParserTests.SplitCommandLineIntoArguments_Slashes">
+            <summary>
+            This function should always preserve the slashes as they exist in the original command
+            line.  The only serve to decide whether quotes should count as grouping constructors
+            or not. 
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.UnitTests.CommonCommandLineParserTests.SplitCommandLineIntoArguments_Quotes">
+            <summary>
+            Quotes are used as grouping constructs unless they are escaped by an odd number of slashes.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.UnitTests.CommonCommandLineParserTests.RemoveQuotes">
+            <summary>
+            Test all of the cases around slashes in the RemoveQuotes function.  
+            </summary>
+            <remarks>
+            It's important to remember this is testing slash behavior on the strings as they 
+            are passed to RemoveQuotes, not as they are passed to the command line.  Command 
+            line arguments have already gone through an initial round of processing.  So a
+            string that appears here as "\\test.cs" actually came through the command line
+            as \"\\test.cs\". 
+            </remarks>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.UnitTests.CommonCompilationOptionsTests.TestFieldsForEqualsAndGetHashCode">
+            <summary>
+            If this test fails, please update the <see cref="M:Microsoft.CodeAnalysis.CompilationOptions.GetHashCodeHelper"/>
+            and <see cref="M:Microsoft.CodeAnalysis.CompilationOptions.EqualsHelper(Microsoft.CodeAnalysis.CompilationOptions)"/> methods to
+            make sure they are doing the right thing with your new field and then update the baseline
+            here.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.UnitTests.CommonParseOptionsTests.TestFieldsForEqualsAndGetHashCode">
+            <summary>
+            If this test fails, please update the <see cref="M:Microsoft.CodeAnalysis.ParseOptions.GetHashCodeHelper"/>
+            and <see cref="M:Microsoft.CodeAnalysis.ParseOptions.EqualsHelper(Microsoft.CodeAnalysis.ParseOptions)"/> methods to
+            make sure they are doing the right thing with your new field and then update the baseline
+            here.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.UnitTests.EmitOptionsTests.TestFieldsForEqualsAndGetHashCode">
+            <summary>
+            If this test fails, please update the <see cref="M:Microsoft.CodeAnalysis.Emit.EmitOptions.GetHashCode"/>
+            and <see cref="M:Microsoft.CodeAnalysis.Emit.EmitOptions.Equals(Microsoft.CodeAnalysis.Emit.EmitOptions)"/> methods to
+            make sure they are doing the right thing with your new field and then update the baseline
+            here.
+            </summary>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.UnitTests.InternalUtilities.ConcurrentLruCacheTests.OrderedTestDictionary`2">
+            <summary>
+            Dictionary for testing ConcurrentLruCache.
+            Like OrderedDictionary in the BCL, doesn't sort elements,
+            but rather stores them in the order added.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.UnitTests.AssemblyIdentityExtensions.ToAssemblyName(Microsoft.CodeAnalysis.AssemblyIdentity)">
+            <summary>
+            Converts this identity to <see cref="T:System.Reflection.AssemblyName"/>.
+            </summary>
+            <returns>A new instance of <see cref="T:System.Reflection.AssemblyName"/>.</returns>
+            <exception cref="T:System.Globalization.CultureNotFoundException">The culture specified in <see cref="P:Microsoft.CodeAnalysis.AssemblyIdentity.CultureName"/> is not available on the current platform.</exception>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.UnitTests.MetadataReferences.FusionAssemblyIdentityTests.ToAssemblyName(Microsoft.CodeAnalysis.FusionAssemblyIdentity.IAssemblyName)">
+            <summary>
+            Converts <see cref="T:Microsoft.CodeAnalysis.FusionAssemblyIdentity.IAssemblyName"/> to <see cref="T:System.Reflection.AssemblyName"/> with possibly
+            missing name components.
+            </summary>
+            <returns>
+            An <see cref="T:System.Reflection.AssemblyName"/> whose fields are be null if not present in <paramref name="nameObject"/>.
+            </returns>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.UnitTests.FusionAssemblyPortabilityPolicy">
+            <summary>
+            Encapsulates assembly portability information inside an opaque class for use
+            by AssemblyIdentity in comparing assembly identities.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.UnitTests.FusionAssemblyPortabilityPolicy.LoadFromFile(System.String)">
+            <summary>
+            Loads the assembly portability policy from the given path using the CLR API. 
+            If any problems are encountered by the CLR, the errors are passed through via CLR exception.
+            Can throw IO exceptions if any are encountered during file access.
+            </summary>
+            <param name="appConfigPath">Absolute path to the config file.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.UnitTests.MetadataNameLimitsTests">
+            <summary>
+            Test <see cref="M:Microsoft.Cci.MetadataWriter.IsTooLongInternal(System.String,System.Int32)"/>.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.UnitTests.RealParserTests.TestTroublesomeDoubles">
+            <summary>
+            Test some specific floating-point literals that have been shown to be problematic
+            in some implementation.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.UnitTests.RealParserTests.TestSpecificDoubles">
+            <summary>
+            Test round tripping for some specific floating-point values constructed to test the edge cases of conversion implementations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.UnitTests.Text.SourceTextStreamTests.MinimumLength">
+            <summary>
+            In the case the destination buffer is of insufficient length to store the reading of a single 
+            character we will throw.  Returning 0 is not correct here as that indicates end of stream
+            not insufficient space in destination buffer.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.UnitTests.Text.SourceTextStreamTests.Issue1197">
+            <summary>
+            In the case there is insufficient number of bytes to store the next character the read should
+            complete with the already read data vs. throwing.
+            </summary>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.UnitTests.StringTextTest">
+            <summary>
+            This is a test class for StringTextTest and is intended
+            to contain all StringTextTest Unit Tests
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.UnitTests.StringTextTest_Default.Ctor2">
+            <summary>
+            Empty string case
+            </summary>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.UnitTests.TextSpanTest">
+            <summary>
+            This is a test class for TextSpan and is intended
+            to contain all TextSpan Unit Tests
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.UnitTests.TextSpanTest.Ctor3">
+            <summary>
+            0 length spans are valid
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.UnitTests.TextSpanTest.Equals2">
+            <summary>
+            Different start values
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.UnitTests.TextSpanTest.Equals3">
+            <summary>
+            Different length values
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.UnitTests.TextUtilitiesTests.GetLengthOfLineBreak2">
+            <summary>
+            Normal line break within the string
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.UnitTests.TextUtilitiesTests.GetLengthOfLineBreak3">
+            <summary>
+            Ensure \n \r combinations are handled correctly
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.UnitTests.TextUtilitiesTests.GetLengthOfLineBreak4">
+            <summary>
+            Don't go past the end of the buffer
+            </summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.UnitTests.Resources.defaultWin32Manifest">
+            <summary>Resources/default.win32manifest;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.UnitTests.Resources.VerResourceBuiltByRC">
+            <summary>Resources/VerResourceBuiltByRC.RES;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.UnitTests.Resources.nativeWithStringIDsAndTypesAndIntTypes">
+            <summary>Resources/nativeWithStringIDsAndTypesAndIntTypes.res;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.UnitTests.Resources.Roslyn_ico">
+            <summary>Resources/Roslyn.ico.blah;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.FusionAssemblyIdentity.ToAssemblyIdentity(Microsoft.CodeAnalysis.FusionAssemblyIdentity.IAssemblyName)">
+            <summary>
+            Converts <see cref="T:Microsoft.CodeAnalysis.FusionAssemblyIdentity.IAssemblyName"/> to <see cref="T:System.Reflection.AssemblyName"/> with all metadata fields filled.
+            </summary>
+            <returns>
+            Assembly name with Version, Culture and PublicKeyToken components filled in:
+            "SimpleName, Version=#.#.#.#, Culture=XXX, PublicKeyToken=XXXXXXXXXXXXXXXX".
+            In addition Retargetable flag and ContentType are set.
+            </returns>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.FusionAssemblyIdentity.ToAssemblyNameObject(System.Reflection.AssemblyName)">
+            <summary>
+            Converts <see cref="T:System.Reflection.AssemblyName"/> to an equivalent <see cref="T:Microsoft.CodeAnalysis.FusionAssemblyIdentity.IAssemblyName"/>.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.FusionAssemblyIdentity.ToAssemblyNameObject(System.String)">
+            <summary>
+            Creates <see cref="T:Microsoft.CodeAnalysis.FusionAssemblyIdentity.IAssemblyName"/> object by parsing given display name.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.FusionAssemblyIdentity.GetBestMatch(System.Collections.Generic.IEnumerable{Microsoft.CodeAnalysis.FusionAssemblyIdentity.IAssemblyName},System.String)">
+            <summary>
+            Selects the candidate assembly with the largest version number.  Uses culture as a tie-breaker if it is provided.
+            All candidates are assumed to have the same name and must include versions and cultures.  
+            </summary>
+        </member>
+    </members>
+</doc>
